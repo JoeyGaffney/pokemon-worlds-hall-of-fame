@@ -5,7 +5,7 @@ const searchElement = document.getElementById("search");
 const divisionFilter = document.getElementById("divisionFilter");
 const countryFilter = document.getElementById("countryFilter");
 const resultCount = document.getElementById("resultCount");
-
+const yearFilter = document.getElementById("yearFilter");
 
 async function loadData() {
 
@@ -18,7 +18,8 @@ async function loadData() {
         }
 
         appearances = await response.json();
-
+        
+        populateYearFilter();
         populateCountryFilter();
 
         renderResults();
@@ -39,6 +40,27 @@ async function loadData() {
 
 }
 
+function populateYearFilter() {
+
+    const years = [
+        ...new Set(
+            appearances
+                .map(record => record.year)
+                .filter(year => year)
+        )
+    ].sort((a, b) => b - a);
+
+    years.forEach(year => {
+
+        const option = document.createElement("option");
+
+        option.value = year;
+        option.textContent = year;
+
+        yearFilter.appendChild(option);
+
+    });
+}
 
 function populateCountryFilter() {
 
@@ -69,6 +91,9 @@ function renderResults() {
     const searchTerm =
         searchElement.value.trim().toLowerCase();
 
+    const selectedYear =
+        yearFilter.value;
+
     const selectedDivision =
         divisionFilter.value;
 
@@ -92,6 +117,10 @@ function renderResults() {
             !searchTerm ||
             name.includes(searchTerm);
 
+        const matchesYear =
+            !selectedYear ||
+            String(record.year) === selectedYear;
+
         const matchesDivision =
             !selectedDivision ||
             division === selectedDivision;
@@ -103,6 +132,7 @@ function renderResults() {
 
         return (
             matchesSearch &&
+            matchesYear &&
             matchesDivision &&
             matchesCountry
         );
@@ -176,6 +206,11 @@ function escapeHTML(value) {
 
 searchElement.addEventListener(
     "input",
+    renderResults
+);
+
+yearFilter.addEventListener(
+    "change",
     renderResults
 );
 
