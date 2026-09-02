@@ -189,9 +189,22 @@ function renderResults() {
 
         const row = document.createElement("tr");
 
+        let playerName = escapeHTML(record.name);
+
+        if (record.player_id) {
+            playerName = `
+                <a
+                    class="player-link"
+                    href="player.html?id=${encodeURIComponent(record.player_id)}"
+                >
+                    ${escapeHTML(record.name)}
+                </a>
+            `;
+        }
+
         row.innerHTML = `
             <td>${escapeHTML(record.placement)}</td>
-            <td>${escapeHTML(record.name)}</td>
+            <td>${playerName}</td>
             <td>${escapeHTML(record.country)}</td>
             <td>${escapeHTML(record.division)}</td>
             <td>${escapeHTML(record.year)}</td>
