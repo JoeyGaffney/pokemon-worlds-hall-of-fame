@@ -424,7 +424,6 @@ function renderPlayer(records) {
                     <td>${escapeHTML(record.division)}</td>
                     <td>${escapeHTML(record.country)}</td>
                     <td>${escapeHTML(record.placement)}</td>
-                    <td>${formatQual(record.qual)}</td>
                 </tr>
             `;
 
@@ -548,7 +547,6 @@ function renderPlayer(records) {
                             <th>Division</th>
                             <th>Country</th>
                             <th>Placement</th>
-                            <th>Qual</th>
                         </tr>
 
                     </thead>
@@ -643,22 +641,6 @@ function formatPlacement(number) {
             return `${number}th`;
 
     }
-
-}
-
-
-
-function formatQual(value) {
-
-    if (
-        value === null ||
-        value === undefined ||
-        String(value).trim() === ""
-    ) {
-        return "—";
-    }
-
-    return escapeHTML(value);
 
 }
 
