@@ -182,10 +182,6 @@ function renderPlayer(records) {
                 ${escapeHTML(countries.join(" / "))}
             </p>
 
-            <p class="player-id">
-                Player ID: ${escapeHTML(playerId)}
-            </p>
-
         </section>
 
 
