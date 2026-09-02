@@ -16,45 +16,172 @@
 
 <body>
 
-    <header>
-        <div class="container">
-            <h1>Pokémon World Championships Database</h1>
+    <header class="site-header">
 
-            <p>
-                Historical competitor and placement data from the
-                Pokémon World Championships.
-            </p>
+        <div class="container">
+
+            <div class="site-title">
+                <h1>
+                    Pokémon World Championships Database
+                </h1>
+
+                <p>
+                    Historical competitor and placement data from the
+                    Pokémon World Championships.
+                </p>
+            </div>
+
+
+            <section class="controls">
+
+                <input
+                    type="search"
+                    id="search"
+                    placeholder="Search competitor..."
+                >
+
+                <select id="yearFilter">
+                    <option value="">All Years</option>
+                </select>
+
+                <select id="divisionFilter">
+                    <option value="">All Divisions</option>
+                    <option value="Juniors">Juniors</option>
+                    <option value="Seniors">Seniors</option>
+                    <option value="Masters">Masters</option>
+                </select>
+
+                <select id="countryFilter">
+                    <option value="">All Countries</option>
+                </select>
+
+                <button
+                    id="clearFilters"
+                    class="clear-button"
+                    type="button"
+                >
+                    Clear
+                </button>
+
+            </section>
+
         </div>
+
     </header>
 
     <main class="container">
 
-        <section class="controls">
+    <section
+        id="landing"
+        class="landing"
+    >
 
-            <input
-                type="search"
-                id="search"
-                placeholder="Search competitor..."
+        <h2>Explore the World Championships</h2>
+
+        <p>
+            Search for a competitor or jump into one of these
+            views.
+        </p>
+
+
+        <div class="suggestion-grid">
+
+            <button
+                class="suggestion-card"
+                data-preset="champions"
             >
-            
-            <select id="yearFilter">
-                <option value="">All Years</option>
-            </select>
-            
-            <select id="divisionFilter">
-                <option value="">All Divisions</option>
-                <option value="Juniors">Juniors</option>
-                <option value="Seniors">Seniors</option>
-                <option value="Masters">Masters</option>
-            </select>
+                <span class="suggestion-icon">🏆</span>
 
-            <select id="countryFilter">
-                <option value="">All Countries</option>
-            </select>
+                <span>
+                    <strong>World Champions</strong>
+                    <small>Every first-place finisher</small>
+                </span>
+            </button>
 
-        </section>
 
-        <p id="resultCount"></p>
+            <button
+                class="suggestion-card"
+                data-preset="finalists"
+            >
+                <span class="suggestion-icon">🥈</span>
+
+                <span>
+                    <strong>World Finalists</strong>
+                    <small>Players finishing 1st or 2nd</small>
+                </span>
+            </button>
+
+
+            <button
+                class="suggestion-card"
+                data-preset="top8"
+            >
+                <span class="suggestion-icon">⭐</span>
+
+                <span>
+                    <strong>Top 8 Finishers</strong>
+                    <small>Players reaching the Top 8</small>
+                </span>
+            </button>
+
+
+            <button
+                class="suggestion-card"
+                data-year="2026"
+            >
+                <span class="suggestion-icon">📅</span>
+
+                <span>
+                    <strong>2026 Worlds</strong>
+                    <small>Browse the latest results</small>
+                </span>
+            </button>
+
+
+            <button
+                class="suggestion-card"
+                data-division="Masters"
+            >
+                <span class="suggestion-icon">🎴</span>
+
+                <span>
+                    <strong>Masters</strong>
+                    <small>Browse Masters competitors</small>
+                </span>
+            </button>
+
+
+            <button
+                class="suggestion-card"
+                data-preset="returning"
+            >
+                <span class="suggestion-icon">🔁</span>
+
+                <span>
+                    <strong>Returning Players</strong>
+                    <small>Competitors with multiple Worlds appearances</small>
+                </span>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section
+        id="resultsSection"
+        class="results-section"
+        hidden
+    >
+
+        <div class="results-heading">
+
+            <h2>Results</h2>
+
+            <p id="resultCount"></p>
+
+        </div>
+
 
         <div class="table-wrapper">
 
@@ -76,7 +203,9 @@
 
         </div>
 
-    </main>
+    </section>
+
+</main>
 
     <script src="app.js"></script>
 
