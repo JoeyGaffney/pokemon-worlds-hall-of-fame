@@ -196,10 +196,46 @@ function renderResults() {
             escapeHTML(formattedName);
 
         if (record.player_id) {
+
+            const profileParams = new URLSearchParams();
+
+            profileParams.set(
+                "id",
+                record.player_id
+            );
+
+            if (searchElement.value.trim()) {
+                profileParams.set(
+                    "search",
+                    searchElement.value.trim()
+                );
+            }
+
+            if (yearFilter.value) {
+                profileParams.set(
+                    "year",
+                    yearFilter.value
+                );
+            }
+
+            if (divisionFilter.value) {
+                profileParams.set(
+                    "division",
+                    divisionFilter.value
+                );
+            }
+
+            if (countryFilter.value) {
+                profileParams.set(
+                    "country",
+                    countryFilter.value
+                );
+            }
+
             playerName = `
                 <a
                     class="player-link"
-                    href="player.html?id=${encodeURIComponent(record.player_id)}"
+                    href="player.html?${profileParams.toString()}"
                 >
                     ${escapeHTML(formattedName)}
                 </a>
