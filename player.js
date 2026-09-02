@@ -223,7 +223,7 @@ function renderPlayer(records) {
 
 
     document.title =
-        `${displayName} | Pokémon World Championships Database`;
+        `${displayName} | Pokémon TCG Worlds Hall of Fame`;
 
 
 
