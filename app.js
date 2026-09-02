@@ -6,7 +6,104 @@ const yearFilter = document.getElementById("yearFilter");
 const divisionFilter = document.getElementById("divisionFilter");
 const countryFilter = document.getElementById("countryFilter");
 const resultCount = document.getElementById("resultCount");
+const landingElement =
+    document.getElementById("landing");
 
+const resultsSection =
+    document.getElementById("resultsSection");
+
+const clearFiltersButton =
+    document.getElementById("clearFilters");
+
+document
+    .querySelectorAll(".suggestion-card")
+    .forEach(button => {
+
+        button.addEventListener(
+            "click",
+            () => {
+
+                /*
+                 * Start with clean filters.
+                 */
+
+                searchElement.value = "";
+                yearFilter.value = "";
+                divisionFilter.value = "";
+                countryFilter.value = "";
+
+                activePreset = "";
+
+
+                /*
+                 * Preset button
+                 */
+
+                if (button.dataset.preset) {
+
+                    activePreset =
+                        button.dataset.preset;
+
+                }
+
+
+                /*
+                 * Year button
+                 */
+
+                if (button.dataset.year) {
+
+                    yearFilter.value =
+                        button.dataset.year;
+
+                }
+
+
+                /*
+                 * Division button
+                 */
+
+                if (button.dataset.division) {
+
+                    divisionFilter.value =
+                        button.dataset.division;
+
+                }
+
+
+                renderResults();
+
+            }
+        );
+
+    });
+
+clearFiltersButton.addEventListener(
+    "click",
+    () => {
+
+        searchElement.value = "";
+        yearFilter.value = "";
+        divisionFilter.value = "";
+        countryFilter.value = "";
+
+        activePreset = "";
+
+        renderResults();
+
+        /*
+         * Remove query parameters from the URL.
+         */
+        window.history.replaceState(
+            {},
+            "",
+            "index.html"
+        );
+
+    }
+);
+
+let activePreset = "";
 
 async function loadData() {
 
@@ -110,7 +207,47 @@ function renderResults() {
     const selectedCountry =
         countryFilter.value;
 
+    const hasFilters =
+        searchTerm ||
+        selectedYear ||
+        selectedDivision ||
+        selectedCountry ||
+        activePreset;
+    if (!hasFilters) {
 
+        landingElement.hidden = false;
+        resultsSection.hidden = true;
+
+        return;
+    }
+
+    const appearanceCounts =
+        new Map();
+
+
+    appearances.forEach(record => {
+
+        if (!record.player_id) {
+            return;
+        }
+
+
+        if (!appearanceCounts.has(record.player_id)) {
+
+            appearanceCounts.set(
+                record.player_id,
+                new Set()
+            );
+
+        }
+
+
+        appearanceCounts
+            .get(record.player_id)
+            .add(record.year);
+
+    });
+    
     const filtered = appearances.filter(record => {
 
         const name =
@@ -141,13 +278,57 @@ function renderResults() {
         const matchesCountry =
             !selectedCountry ||
             country === selectedCountry;
+        const placement =
+            getPlacementNumber(record.placement);
 
+
+        let matchesPreset = true;
+
+
+        if (activePreset === "champions") {
+
+            matchesPreset =
+                placement === 1;
+
+        }
+        
+
+        if (activePreset === "finalists") {
+
+            matchesPreset =
+                placement !== null &&
+                placement <= 2;
+
+        }
+
+
+        if (activePreset === "top8") {
+
+            matchesPreset =
+                placement !== null &&
+                placement <= 8;
+
+        }
+
+        if (activePreset === "returning") {
+
+            const years =
+                appearanceCounts.get(
+                    record.player_id
+                );
+
+            matchesPreset =
+                years &&
+                years.size >= 2;
+
+        }
 
         return (
             matchesSearch &&
             matchesYear &&
             matchesDivision &&
-            matchesCountry
+            matchesCountry &&
+            matchesPreset
         );
 
     });
@@ -256,7 +437,9 @@ function renderResults() {
 
     });
 
-
+    landingElement.hidden = true;
+    resultsSection.hidden = false;
+    
     resultCount.textContent =
         `${filtered.length} competitor records`;
 
@@ -384,6 +567,34 @@ function restoreFiltersFromURL() {
 
     }
 
+}
+
+function getPlacementNumber(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+        return null;
+    }
+
+
+    const text =
+        String(value).trim();
+
+
+    const match =
+        text.match(
+            /^T?(\d+)(?:st|nd|rd|th)?$/i
+        );
+
+
+    if (!match) {
+        return null;
+    }
+
+
+    return Number(match[1]);
 }
 
 // Filters
