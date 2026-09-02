@@ -323,6 +323,31 @@ function renderPlayer(records) {
     const displayName =
         records[0].name;
 
+    const badges =
+    calculateBadges(records);
+
+
+    const badgesHTML =
+        badges.length > 0
+            ? `
+                <div class="badge-container">
+
+                    ${badges.map(badge => `
+                        <span
+                            class="achievement-badge ${badge.className}"
+                            title="${escapeHTML(badge.description)}"
+                        >
+                            <span class="badge-icon">
+                                ${badge.icon}
+                            </span>
+
+                            ${escapeHTML(badge.name)}
+                        </span>
+                    `).join("")}
+
+                </div>
+            `
+            : "";
 
     document.title =
         `${displayName} | Pokémon World Championships Database`;
@@ -418,6 +443,7 @@ function renderPlayer(records) {
                 ${escapeHTML(countries.join(" / "))}
             </p>
 
+            ${badgesHTML}
         </section>
 
 
