@@ -63,17 +63,39 @@ body {
 }
 
 
+.site-title {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    margin-bottom: 16px;
+}
+
+
+.site-logo {
+    width: 58px;
+    height: 58px;
+
+    object-fit: contain;
+
+    flex-shrink: 0;
+}
+
+
+.site-title-text {
+    min-width: 0;
+}
+
+
 .site-title h1 {
-    margin:
-        0 0 4px;
+    margin: 0 0 4px;
 
     font-size: 24px;
 }
 
 
 .site-title p {
-    margin:
-        0 0 16px;
+    margin: 0;
 
     color: #666;
 }
@@ -775,8 +797,17 @@ tbody tr:hover {
             14px 0 12px;
     }
 
+   .site-logo {
+    width: 44px;
+    height: 44px;
+   }
 
-    .site-title h1 {
+   .site-title {
+    gap: 10px;
+    margin-bottom: 12px;
+   }
+
+   .site-title h1 {
         font-size: 20px;
     }
 
