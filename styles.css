@@ -407,3 +407,14 @@ tbody tr:hover {
 .results-heading #resultCount {
     margin: 0;
 }
+
+.years-cell {
+    min-width: 130px;
+}
+
+.year-list {
+    display: block;
+    margin-top: 3px;
+    color: #777;
+    font-size: 12px;
+}
