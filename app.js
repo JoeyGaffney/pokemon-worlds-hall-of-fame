@@ -23,6 +23,8 @@ async function loadData() {
         populateYearFilter();
         populateCountryFilter();
 
+        restoreFiltersFromURL();
+
         renderResults();
 
     } catch (error) {
@@ -305,6 +307,83 @@ function formatPlayerName(name) {
             /(^|[\s\-'])\p{L}/gu,
             character => character.toUpperCase()
         );
+}
+
+function restoreFiltersFromURL() {
+
+    const params =
+        new URLSearchParams(
+            window.location.search
+        );
+
+
+    const savedSearch =
+        params.get("search");
+
+    const savedYear =
+        params.get("year");
+
+    const savedDivision =
+        params.get("division");
+
+    const savedCountry =
+        params.get("country");
+
+
+    if (savedSearch) {
+        searchElement.value =
+            savedSearch;
+    }
+
+
+    /*
+     * Year and country options are generated
+     * dynamically, so this function must run
+     * AFTER populateYearFilter() and
+     * populateCountryFilter().
+     */
+
+    if (
+        savedYear &&
+        [...yearFilter.options].some(
+            option =>
+                option.value === savedYear
+        )
+    ) {
+
+        yearFilter.value =
+            savedYear;
+
+    }
+
+
+    if (
+        savedDivision &&
+        [...divisionFilter.options].some(
+            option =>
+                option.value === savedDivision
+        )
+    ) {
+
+        divisionFilter.value =
+            savedDivision;
+
+    }
+
+
+    if (
+        savedCountry &&
+        [...countryFilter.options].some(
+            option =>
+                option.value === savedCountry
+        )
+    ) {
+
+        countryFilter.value =
+            savedCountry;
+
+    }
+
 }
 
 // Filters
