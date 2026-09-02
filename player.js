@@ -8,6 +8,65 @@ const params =
 const playerId =
     params.get("id");
 
+const backParams =
+    new URLSearchParams();
+
+
+const savedSearch =
+    params.get("search");
+
+const savedYear =
+    params.get("year");
+
+const savedDivision =
+    params.get("division");
+
+const savedCountry =
+    params.get("country");
+
+
+if (savedSearch) {
+    backParams.set(
+        "search",
+        savedSearch
+    );
+}
+
+if (savedYear) {
+    backParams.set(
+        "year",
+        savedYear
+    );
+}
+
+if (savedDivision) {
+    backParams.set(
+        "division",
+        savedDivision
+    );
+}
+
+if (savedCountry) {
+    backParams.set(
+        "country",
+        savedCountry
+    );
+}
+
+const backLink =
+    document.querySelector(".back-link");
+
+
+if (backLink) {
+
+    const query =
+        backParams.toString();
+
+    backLink.href =
+        query
+            ? `index.html?${query}`
+            : "index.html";
+}
 
 async function loadPlayer() {
 
