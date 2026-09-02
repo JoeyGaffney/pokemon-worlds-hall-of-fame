@@ -14,12 +14,6 @@ body {
     margin: 0 auto;
 }
 
-header {
-    background: white;
-    border-bottom: 1px solid #ddd;
-    padding: 32px 0;
-    margin-bottom: 30px;
-}
 
 header h1 {
     margin: 0 0 8px;
@@ -310,4 +304,106 @@ tbody tr:hover {
 
 .clear-button:hover {
     background: #f2f2f2;
+}
+
+.landing {
+    padding: 42px 0 50px;
+}
+
+
+.landing h2 {
+    margin: 0 0 8px;
+    font-size: 28px;
+}
+
+
+.landing > p {
+    margin: 0 0 26px;
+    color: #666;
+}
+
+
+.suggestion-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(240px, 1fr));
+
+    gap: 14px;
+}
+
+
+.suggestion-card {
+    display: flex;
+    align-items: center;
+
+    gap: 14px;
+
+    padding: 20px;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+
+    background: white;
+
+    text-align: left;
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.15s ease,
+        transform 0.15s ease;
+}
+
+
+.suggestion-card:hover {
+    border-color: #aaa;
+    transform: translateY(-2px);
+}
+
+
+.suggestion-icon {
+    font-size: 28px;
+}
+
+
+.suggestion-card span:last-child {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+
+.suggestion-card strong {
+    font-size: 16px;
+}
+
+
+.suggestion-card small {
+    color: #777;
+    font-size: 13px;
+}
+
+
+.results-section {
+    padding: 30px 0 50px;
+}
+
+
+.results-heading {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+
+    gap: 15px;
+}
+
+
+.results-heading h2 {
+    margin: 0;
+}
+
+
+.results-heading #resultCount {
+    margin: 0;
 }
