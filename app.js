@@ -2,10 +2,11 @@ let appearances = [];
 
 const resultsElement = document.getElementById("results");
 const searchElement = document.getElementById("search");
+const yearFilter = document.getElementById("yearFilter");
 const divisionFilter = document.getElementById("divisionFilter");
 const countryFilter = document.getElementById("countryFilter");
 const resultCount = document.getElementById("resultCount");
-const yearFilter = document.getElementById("yearFilter");
+
 
 async function loadData() {
 
@@ -18,7 +19,7 @@ async function loadData() {
         }
 
         appearances = await response.json();
-        
+
         populateYearFilter();
         populateCountryFilter();
 
@@ -40,27 +41,34 @@ async function loadData() {
 
 }
 
+
 function populateYearFilter() {
 
+    // Get all unique years from the JSON file
     const years = [
         ...new Set(
             appearances
                 .map(record => record.year)
-                .filter(year => year)
+                .filter(year => year !== "" && year !== null && year !== undefined)
         )
-    ].sort((a, b) => b - a);
+    ];
+
+    // Sort newest year first
+    years.sort((a, b) => Number(b) - Number(a));
 
     years.forEach(year => {
 
         const option = document.createElement("option");
 
-        option.value = year;
-        option.textContent = year;
+        option.value = String(year);
+        option.textContent = String(year);
 
         yearFilter.appendChild(option);
 
     });
+
 }
+
 
 function populateCountryFilter() {
 
@@ -112,6 +120,9 @@ function renderResults() {
         const division =
             String(record.division || "");
 
+        const year =
+            String(record.year || "");
+
 
         const matchesSearch =
             !searchTerm ||
@@ -119,7 +130,7 @@ function renderResults() {
 
         const matchesYear =
             !selectedYear ||
-            String(record.year) === selectedYear;
+            year === selectedYear;
 
         const matchesDivision =
             !selectedDivision ||
@@ -142,7 +153,15 @@ function renderResults() {
 
     filtered.sort((a, b) => {
 
-        // First sort divisions
+        // Newest year first
+        const yearDifference =
+            Number(b.year) - Number(a.year);
+
+        if (yearDifference !== 0) {
+            return yearDifference;
+        }
+
+        // Division order
         const divisionOrder = {
             "Juniors": 1,
             "Seniors": 2,
@@ -150,14 +169,14 @@ function renderResults() {
         };
 
         const divisionDifference =
-            divisionOrder[a.division] -
-            divisionOrder[b.division];
+            (divisionOrder[a.division] || 99) -
+            (divisionOrder[b.division] || 99);
 
         if (divisionDifference !== 0) {
             return divisionDifference;
         }
 
-        // Then placement
+        // Placement
         return Number(a.placement) - Number(b.placement);
 
     });
@@ -204,6 +223,8 @@ function escapeHTML(value) {
 }
 
 
+// Filters
+
 searchElement.addEventListener(
     "input",
     renderResults
@@ -224,5 +245,7 @@ countryFilter.addEventListener(
     renderResults
 );
 
+
+// Start the website
 
 loadData();
