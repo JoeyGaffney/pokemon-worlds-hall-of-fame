@@ -189,7 +189,11 @@ function renderResults() {
 
         const row = document.createElement("tr");
 
-        let playerName = escapeHTML(record.name);
+        const formattedName =
+            formatPlayerName(record.name);
+
+        let playerName =
+            escapeHTML(formattedName);
 
         if (record.player_id) {
             playerName = `
@@ -197,7 +201,7 @@ function renderResults() {
                     class="player-link"
                     href="player.html?id=${encodeURIComponent(record.player_id)}"
                 >
-                    ${escapeHTML(record.name)}
+                    ${escapeHTML(formattedName)}
                 </a>
             `;
         }
@@ -234,6 +238,38 @@ function escapeHTML(value) {
 
 }
 
+function formatPlayerName(name) {
+
+    const text = String(name || "").trim();
+
+    if (!text) {
+        return "";
+    }
+
+    /*
+     * If the name already contains both uppercase
+     * and lowercase letters, assume the capitalization
+     * was intentionally entered and leave it alone.
+     */
+    const hasUppercase = /[A-Z]/.test(text);
+    const hasLowercase = /[a-z]/.test(text);
+
+    if (hasUppercase && hasLowercase) {
+        return text;
+    }
+
+
+    /*
+     * Otherwise convert ALL CAPS or all lowercase
+     * names into title case.
+     */
+    return text
+        .toLowerCase()
+        .replace(
+            /(^|[\s\-'])\p{L}/gu,
+            character => character.toUpperCase()
+        );
+}
 
 // Filters
 
