@@ -65,7 +65,243 @@ async function loadPlayer() {
 
 }
 
+function calculateBadges(records) {
 
+    const badges = [];
+
+    const placements = records
+        .map(record => getPlacementNumber(record.placement))
+        .filter(value => value !== null);
+
+
+    const bestFinish =
+        placements.length > 0
+            ? Math.min(...placements)
+            : null;
+
+
+    /*
+     * MAJOR PLACEMENT BADGES
+     */
+
+    if (bestFinish === 1) {
+
+        badges.push({
+            name: "Champion",
+            icon: "🏆",
+            className: "badge-champion",
+            description: "Won a Pokémon World Championship"
+        });
+
+    } else if (bestFinish === 2) {
+
+        badges.push({
+            name: "Finalist",
+            icon: "🥈",
+            className: "badge-finalist",
+            description: "Reached a World Championship final"
+        });
+
+    } else if (bestFinish !== null && bestFinish <= 4) {
+
+        badges.push({
+            name: "Top 4",
+            icon: "⭐",
+            className: "badge-top4",
+            description: "Finished in the Top 4 at Worlds"
+        });
+
+    } else if (bestFinish !== null && bestFinish <= 8) {
+
+        badges.push({
+            name: "Top 8",
+            icon: "🎖️",
+            className: "badge-top8",
+            description: "Finished in the Top 8 at Worlds"
+        });
+
+    }
+
+
+    /*
+     * NUMBER OF WORLD CHAMPIONSHIP APPEARANCES
+     */
+
+    const uniqueYears = [
+        ...new Set(
+            records.map(record =>
+                Number(record.year)
+            )
+        )
+    ];
+
+
+    if (uniqueYears.length >= 3) {
+
+        badges.push({
+            name: `${uniqueYears.length}x Worlds Competitor`,
+            icon: "🌎",
+            className: "badge-worlds",
+            description:
+                `Competed at Worlds in ${uniqueYears.length} different years`
+        });
+
+    }
+
+
+    /*
+     * QUALIFICATION STREAK
+     */
+
+    const qualifierStreak =
+        getLongestQualifierStreak(records);
+
+
+    if (qualifierStreak >= 2) {
+
+        badges.push({
+            name: `${qualifierStreak}x Qualifier Streak`,
+            icon: "🔥",
+            className: "badge-streak",
+            description:
+                `Qualified for Worlds ${qualifierStreak} consecutive years`
+        });
+
+    }
+
+
+    /*
+     * MULTIPLE DIVISIONS
+     */
+
+    const divisions = [
+        ...new Set(
+            records
+                .map(record => record.division)
+                .filter(Boolean)
+        )
+    ];
+
+
+    if (divisions.length >= 2) {
+
+        badges.push({
+            name: "Multi-Division",
+            icon: "🔀",
+            className: "badge-division",
+            description:
+                `Competed in ${divisions.length} different age divisions`
+        });
+
+    }
+
+
+    /*
+     * MULTIPLE TOP 8 FINISHES
+     */
+
+    const top8Count =
+        placements.filter(
+            placement => placement <= 8
+        ).length;
+
+
+    if (top8Count >= 2) {
+
+        badges.push({
+            name: `${top8Count}x Top 8`,
+            icon: "✨",
+            className: "badge-top8",
+            description:
+                `Recorded ${top8Count} World Championship Top 8 finishes`
+        });
+
+    }
+
+
+    /*
+     * MULTIPLE CHAMPIONSHIPS
+     */
+
+    const championshipCount =
+        placements.filter(
+            placement => placement === 1
+        ).length;
+
+
+    if (championshipCount >= 2) {
+
+        badges.push({
+            name: `${championshipCount}x Champion`,
+            icon: "👑",
+            className: "badge-champion",
+            description:
+                `Won ${championshipCount} World Championships`
+        });
+
+    }
+
+
+    return badges;
+}
+
+function getLongestQualifierStreak(records) {
+
+    /*
+     * Every Worlds appearance counts as qualifying.
+     *
+     * Multiple records in the same year still count
+     * as only one qualification year.
+     */
+
+    const qualifiedYears = [
+        ...new Set(
+            records
+                .map(record => Number(record.year))
+                .filter(year => !isNaN(year))
+        )
+    ].sort((a, b) => a - b);
+
+
+    if (qualifiedYears.length === 0) {
+        return 0;
+    }
+
+
+    let longestStreak = 1;
+    let currentStreak = 1;
+
+
+    for (
+        let i = 1;
+        i < qualifiedYears.length;
+        i++
+    ) {
+
+        if (
+            qualifiedYears[i] ===
+            qualifiedYears[i - 1] + 1
+        ) {
+
+            currentStreak++;
+
+            longestStreak =
+                Math.max(
+                    longestStreak,
+                    currentStreak
+                );
+
+        } else {
+
+            currentStreak = 1;
+
+        }
+
+    }
+
+
+    return longestStreak;
+}
 
 function renderPlayer(records) {
 
