@@ -321,7 +321,7 @@ function renderPlayer(records) {
      * from the PLAYERS sheet.
      */
     const displayName =
-        records[0].name;
+        formatPlayerName(records[0].name);
 
     const badges =
     calculateBadges(records);
