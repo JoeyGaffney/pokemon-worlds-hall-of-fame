@@ -1,13 +1,35 @@
+/* =========================================================
+   BASE
+   ========================================================= */
+
 * {
     box-sizing: border-box;
 }
 
+
+[hidden] {
+    display: none !important;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
 body {
     margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     background: #f5f6f8;
+
     color: #222;
 }
+
 
 .container {
     width: min(1200px, 92%);
@@ -15,310 +37,282 @@ body {
 }
 
 
-header h1 {
-    margin: 0 0 8px;
-}
 
-header p {
-    margin: 0;
-    color: #666;
-}
-
-.controls {
-    display: flex;
-    gap: 12px;
-    flex-wrap: wrap;
-    margin-bottom: 20px;
-}
-
-.controls input,
-.controls select {
-    padding: 10px 12px;
-    font-size: 16px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    background: white;
-}
-
-.controls input {
-    flex: 1;
-    min-width: 250px;
-}
-
-.table-wrapper {
-    overflow-x: auto;
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-}
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-th,
-td {
-    padding: 12px 16px;
-    text-align: left;
-    border-bottom: 1px solid #eee;
-}
-
-th {
-    background: #fafafa;
-    font-weight: 600;
-}
-
-tbody tr:hover {
-    background: #f8f9fb;
-}
-
-#resultCount {
-    color: #666;
-}
-
-.player-link {
-    color: #2457a7;
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.player-link:hover {
-    text-decoration: underline;
-}
-
-
-.back-link {
-    display: inline-block;
-    margin-bottom: 28px;
-    color: #555;
-    text-decoration: none;
-}
-
-.back-link:hover {
-    text-decoration: underline;
-}
-
-
-.player-header {
-    margin-bottom: 30px;
-}
-
-.player-header h1 {
-    font-size: 36px;
-    margin: 0 0 8px;
-}
-
-.player-meta {
-    font-size: 18px;
-    margin: 0 0 6px;
-    color: #555;
-}
-
-.player-id {
-    margin: 0;
-    color: #888;
-    font-size: 13px;
-}
-
-
-.stats-grid {
-    display: grid;
-    grid-template-columns:
-        repeat(auto-fit, minmax(160px, 1fr));
-    gap: 16px;
-    margin-bottom: 40px;
-}
-
-
-.stat-card {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 22px;
-}
-
-
-.stat-value {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 5px;
-}
-
-
-.stat-label {
-    color: #666;
-    font-size: 14px;
-}
-
-
-.player-results {
-    margin-bottom: 50px;
-}
-
-.player-results h2 {
-    margin-bottom: 16px;
-}
-
-
-.error-message {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 24px;
-}
-
-.badge-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 9px;
-    margin-top: 18px;
-}
-
-
-.achievement-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-
-    padding: 7px 11px;
-
-    border-radius: 999px;
-    border: 1px solid #d7d7d7;
-
-    background: white;
-
-    font-size: 13px;
-    font-weight: 600;
-
-    white-space: nowrap;
-}
-
-
-.badge-icon {
-    font-size: 15px;
-}
-
-
-/* Champion */
-
-.badge-champion {
-    background: #fff7d6;
-    border-color: #e4c14e;
-    color: #725600;
-}
-
-
-/* Finalist */
-
-.badge-finalist {
-    background: #f1f3f5;
-    border-color: #b9bec5;
-    color: #50555b;
-}
-
-
-/* Top finishes */
-
-.badge-top4 {
-    background: #f7eee4;
-    border-color: #c99668;
-    color: #704826;
-}
-
-
-.badge-top8 {
-    background: #eef3ff;
-    border-color: #aabce5;
-    color: #3c527f;
-}
-
-
-/* Qualification streak */
-
-.badge-streak {
-    background: #fff0e8;
-    border-color: #e6a17d;
-    color: #8c4829;
-}
-
-
-/* Worlds appearances */
-
-.badge-worlds {
-    background: #ebf6ee;
-    border-color: #9ac5a4;
-    color: #376343;
-}
-
-
-/* Multiple divisions */
-
-.badge-division {
-    background: #f3edfa;
-    border-color: #bba6d5;
-    color: #624c80;
-}
+/* =========================================================
+   HEADER
+   ========================================================= */
 
 .site-header {
     position: sticky;
     top: 0;
+
     z-index: 100;
 
     background: white;
-    border-bottom: 1px solid #ddd;
 
-    padding: 18px 0 14px;
+    border-bottom:
+        1px solid #ddd;
+
+    padding:
+        18px 0 14px;
+}
+
+
+.profile-site-header {
+    position: relative;
 }
 
 
 .site-title h1 {
-    margin: 0 0 4px;
+    margin:
+        0 0 4px;
+
     font-size: 24px;
 }
 
 
 .site-title p {
-    margin: 0 0 16px;
+    margin:
+        0 0 16px;
+
     color: #666;
 }
 
 
-.site-header .controls {
-    margin-bottom: 0;
+
+/* =========================================================
+   MAIN SEARCH CONTROLS
+   ========================================================= */
+
+.controls {
+    display: flex;
+
+    gap: 10px;
+
+    align-items: center;
+
+    flex-wrap: wrap;
+
+    margin: 0;
 }
 
 
-.clear-button {
-    padding: 10px 16px;
+.controls input {
+    flex: 1;
 
-    border: 1px solid #ccc;
+    min-width: 240px;
+
+    padding:
+        11px 13px;
+
+    border:
+        1px solid #ccc;
+
+    border-radius: 7px;
+
+    background: white;
+
+    font-size: 16px;
+}
+
+
+.controls input:focus,
+.advanced-filter-group select:focus {
+    outline:
+        2px solid #7e9cd2;
+
+    outline-offset: 1px;
+}
+
+
+.advanced-filter-button,
+.clear-button {
+    padding:
+        11px 15px;
+
+    border:
+        1px solid #ccc;
+
+    border-radius: 7px;
+
+    background: white;
+
+    color: #222;
+
+    font-size: 14px;
+
+    cursor: pointer;
+}
+
+
+.advanced-filter-button:hover,
+.clear-button:hover {
+    background: #f2f2f2;
+}
+
+
+
+/* =========================================================
+   ADVANCED FILTERS
+   ========================================================= */
+
+.advanced-filters {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            3,
+            minmax(
+                160px,
+                1fr
+            )
+        );
+
+    gap: 16px;
+
+    padding-top: 15px;
+
+    margin-top: 15px;
+
+    border-top:
+        1px solid #eee;
+}
+
+
+.advanced-filter-group {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 6px;
+}
+
+
+.advanced-filter-group > label {
+    font-size: 12px;
+
+    font-weight: 700;
+
+    color: #666;
+
+    text-transform: uppercase;
+
+    letter-spacing: 0.04em;
+}
+
+
+.advanced-filter-group select {
+    width: 100%;
+
+    padding:
+        10px 12px;
+
+    border:
+        1px solid #ccc;
+
     border-radius: 6px;
 
     background: white;
 
     font-size: 15px;
+}
+
+
+.badge-filter-group {
+    grid-column:
+        1 / -1;
+}
+
+
+.filter-help {
+    margin: 0;
+
+    color: #777;
+
+    font-size: 12px;
+}
+
+
+.badge-filter-list {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 8px;
+
+    margin-top: 3px;
+}
+
+
+.badge-filter-option {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 7px;
+
+    padding:
+        8px 11px;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 999px;
+
+    background: white;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+
+.badge-filter-option:hover {
+    border-color: #aaa;
+}
+
+
+.badge-filter-option:has(
+    input:checked
+) {
+    background: #eef3ff;
+
+    border-color: #8fa8dc;
+}
+
+
+.badge-filter-option input {
+    margin: 0;
+
     cursor: pointer;
 }
 
 
-.clear-button:hover {
-    background: #f2f2f2;
-}
+
+/* =========================================================
+   LANDING PAGE
+   ========================================================= */
 
 .landing {
-    padding: 42px 0 50px;
+    padding:
+        42px 0 50px;
 }
 
 
 .landing h2 {
-    margin: 0 0 8px;
+    margin:
+        0 0 8px;
+
     font-size: 28px;
 }
 
 
 .landing > p {
-    margin: 0 0 26px;
+    margin:
+        0 0 26px;
+
     color: #666;
 }
 
@@ -327,7 +321,13 @@ tbody tr:hover {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fit, minmax(240px, 1fr));
+        repeat(
+            auto-fit,
+            minmax(
+                240px,
+                1fr
+            )
+        );
 
     gap: 14px;
 }
@@ -335,16 +335,23 @@ tbody tr:hover {
 
 .suggestion-card {
     display: flex;
+
     align-items: center;
 
     gap: 14px;
 
+    min-height: 90px;
+
     padding: 20px;
 
-    border: 1px solid #ddd;
+    border:
+        1px solid #ddd;
+
     border-radius: 10px;
 
     background: white;
+
+    color: #222;
 
     text-align: left;
 
@@ -358,19 +365,33 @@ tbody tr:hover {
 
 .suggestion-card:hover {
     border-color: #aaa;
-    transform: translateY(-2px);
+
+    transform:
+        translateY(-2px);
+}
+
+
+.suggestion-card:focus-visible {
+    outline:
+        2px solid #7e9cd2;
+
+    outline-offset: 2px;
 }
 
 
 .suggestion-icon {
     font-size: 28px;
+
+    flex-shrink: 0;
 }
 
 
-.suggestion-card span:last-child {
+.suggestion-card > span:last-child {
     display: flex;
+
     flex-direction: column;
-    gap: 3px;
+
+    gap: 4px;
 }
 
 
@@ -381,21 +402,35 @@ tbody tr:hover {
 
 .suggestion-card small {
     color: #777;
+
     font-size: 13px;
+
+    line-height: 1.35;
 }
 
 
+
+/* =========================================================
+   RESULTS
+   ========================================================= */
+
 .results-section {
-    padding: 30px 0 50px;
+    padding:
+        30px 0 50px;
 }
 
 
 .results-heading {
     display: flex;
+
     align-items: baseline;
-    justify-content: space-between;
+
+    justify-content:
+        space-between;
 
     gap: 15px;
+
+    margin-bottom: 15px;
 }
 
 
@@ -406,15 +441,412 @@ tbody tr:hover {
 
 .results-heading #resultCount {
     margin: 0;
+
+    color: #666;
 }
+
+
+.table-wrapper {
+    overflow-x: auto;
+
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 9px;
+}
+
+
+table {
+    width: 100%;
+
+    border-collapse:
+        collapse;
+}
+
+
+th,
+td {
+    padding:
+        13px 16px;
+
+    text-align: left;
+
+    vertical-align: top;
+
+    border-bottom:
+        1px solid #eee;
+}
+
+
+th {
+    background: #fafafa;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+
+tbody tr:last-child td {
+    border-bottom: none;
+}
+
+
+tbody tr:hover {
+    background: #f8f9fb;
+}
+
+
+.player-link {
+    color: #2457a7;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+.player-link:hover {
+    text-decoration: underline;
+}
+
 
 .years-cell {
     min-width: 130px;
 }
 
+
 .year-list {
     display: block;
+
     margin-top: 3px;
+
     color: #777;
+
     font-size: 12px;
+
+    line-height: 1.4;
+}
+
+
+
+/* =========================================================
+   PLAYER PROFILE
+   ========================================================= */
+
+.profile-main {
+    padding-top: 28px;
+}
+
+
+.back-link {
+    display: inline-block;
+
+    margin-bottom: 28px;
+
+    color: #555;
+
+    text-decoration: none;
+}
+
+
+.back-link:hover {
+    text-decoration: underline;
+}
+
+
+.player-header {
+    margin-bottom: 28px;
+}
+
+
+.player-header h1 {
+    margin:
+        0 0 7px;
+
+    font-size: 36px;
+}
+
+
+.player-meta {
+    margin: 0;
+
+    color: #555;
+
+    font-size: 18px;
+}
+
+
+
+/* =========================================================
+   PROFILE BADGES
+   ========================================================= */
+
+.badge-container {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 18px;
+}
+
+
+.achievement-badge {
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 6px;
+
+    padding:
+        7px 11px;
+
+    border:
+        1px solid #d7d7d7;
+
+    border-radius: 999px;
+
+    background: white;
+
+    font-size: 13px;
+
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+.badge-icon {
+    font-size: 15px;
+}
+
+
+.badge-champion {
+    background: #fff7d6;
+
+    border-color: #e4c14e;
+
+    color: #725600;
+}
+
+
+.badge-finalist {
+    background: #f1f3f5;
+
+    border-color: #b9bec5;
+
+    color: #50555b;
+}
+
+
+.badge-top4 {
+    background: #f7eee4;
+
+    border-color: #c99668;
+
+    color: #704826;
+}
+
+
+.badge-top8 {
+    background: #eef3ff;
+
+    border-color: #aabce5;
+
+    color: #3c527f;
+}
+
+
+.badge-streak {
+    background: #fff0e8;
+
+    border-color: #e6a17d;
+
+    color: #8c4829;
+}
+
+
+.badge-worlds {
+    background: #ebf6ee;
+
+    border-color: #9ac5a4;
+
+    color: #376343;
+}
+
+
+.badge-division {
+    background: #f3edfa;
+
+    border-color: #bba6d5;
+
+    color: #624c80;
+}
+
+
+
+/* =========================================================
+   PROFILE STAT CARDS
+   ========================================================= */
+
+.stats-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(
+            auto-fit,
+            minmax(
+                160px,
+                1fr
+            )
+        );
+
+    gap: 16px;
+
+    margin-bottom: 40px;
+}
+
+
+.stat-card {
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 9px;
+
+    padding: 22px;
+}
+
+
+.stat-value {
+    margin-bottom: 5px;
+
+    font-size: 28px;
+
+    font-weight: 700;
+}
+
+
+.stat-label {
+    color: #666;
+
+    font-size: 14px;
+}
+
+
+.player-results {
+    margin-bottom: 50px;
+}
+
+
+.player-results h2 {
+    margin-bottom: 16px;
+}
+
+
+.error-message {
+    background: white;
+
+    border:
+        1px solid #ddd;
+
+    border-radius: 8px;
+
+    padding: 24px;
+}
+
+
+
+/* =========================================================
+   MOBILE
+   ========================================================= */
+
+@media (
+    max-width: 700px
+) {
+
+    .site-header {
+        padding:
+            14px 0 12px;
+    }
+
+
+    .site-title h1 {
+        font-size: 20px;
+    }
+
+
+    .site-title p {
+        display: none;
+    }
+
+
+    .controls {
+        align-items: stretch;
+    }
+
+
+    .controls input {
+        flex-basis: 100%;
+
+        min-width: 0;
+    }
+
+
+    .advanced-filter-button,
+    .clear-button {
+        flex: 1;
+    }
+
+
+    .advanced-filters {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .badge-filter-group {
+        grid-column:
+            auto;
+    }
+
+
+    .landing {
+        padding-top: 30px;
+    }
+
+
+    .suggestion-grid {
+        grid-template-columns:
+            1fr;
+    }
+
+
+    .results-heading {
+        align-items:
+            flex-start;
+
+        flex-direction:
+            column;
+
+        gap: 4px;
+    }
+
+
+    th,
+    td {
+        padding:
+            11px 12px;
+    }
+
+
+    .player-header h1 {
+        font-size: 30px;
+    }
+
 }
