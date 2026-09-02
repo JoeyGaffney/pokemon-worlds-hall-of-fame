@@ -11,7 +11,10 @@
 
     <title>Pokémon World Championships Database</title>
 
-    <link rel="stylesheet" href="styles.css">
+    <link
+        rel="stylesheet"
+        href="styles.css?v=7"
+    >
 </head>
 
 <body>
@@ -21,6 +24,7 @@
         <div class="container">
 
             <div class="site-title">
+
                 <h1>
                     Pokémon World Championships Database
                 </h1>
@@ -29,6 +33,7 @@
                     Historical competitor and placement data from the
                     Pokémon World Championships.
                 </p>
+
             </div>
 
 
@@ -37,23 +42,21 @@
                 <input
                     type="search"
                     id="search"
-                    placeholder="Search competitor..."
+                    placeholder="Search players..."
+                    aria-label="Search players"
                 >
 
-                <select id="yearFilter">
-                    <option value="">All Years</option>
-                </select>
 
-                <select id="divisionFilter">
-                    <option value="">All Divisions</option>
-                    <option value="Juniors">Juniors</option>
-                    <option value="Seniors">Seniors</option>
-                    <option value="Masters">Masters</option>
-                </select>
+                <button
+                    id="advancedFiltersButton"
+                    class="advanced-filter-button"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="advancedFilters"
+                >
+                    Advanced Filters
+                </button>
 
-                <select id="countryFilter">
-                    <option value="">All Countries</option>
-                </select>
 
                 <button
                     id="clearFilters"
@@ -65,149 +68,327 @@
 
             </section>
 
+
+            <section
+                id="advancedFilters"
+                class="advanced-filters"
+                hidden
+            >
+
+                <div class="advanced-filter-group">
+
+                    <label for="yearFilter">
+                        Year
+                    </label>
+
+                    <select id="yearFilter">
+
+                        <option value="">
+                            All Years
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="advanced-filter-group">
+
+                    <label for="divisionFilter">
+                        Division
+                    </label>
+
+                    <select id="divisionFilter">
+
+                        <option value="">
+                            All Divisions
+                        </option>
+
+                        <option value="Juniors">
+                            Juniors
+                        </option>
+
+                        <option value="Seniors">
+                            Seniors
+                        </option>
+
+                        <option value="Masters">
+                            Masters
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div class="advanced-filter-group">
+
+                    <label for="countryFilter">
+                        Country
+                    </label>
+
+                    <select id="countryFilter">
+
+                        <option value="">
+                            All Countries
+                        </option>
+
+                    </select>
+
+                </div>
+
+
+                <div
+                    class="advanced-filter-group badge-filter-group"
+                >
+
+                    <label>
+                        Badges
+                    </label>
+
+                    <p class="filter-help">
+                        Selecting multiple badges requires a player to
+                        have all selected badges.
+                    </p>
+
+                    <div
+                        id="badgeFilters"
+                        class="badge-filter-list"
+                    >
+                    </div>
+
+                </div>
+
+            </section>
+
         </div>
 
     </header>
 
+
     <main class="container">
 
-    <section
-        id="landing"
-        class="landing"
-    >
+        <section
+            id="landing"
+            class="landing"
+        >
 
-        <h2>Explore the World Championships</h2>
+            <h2>
+                Explore the Database
+            </h2>
 
-        <p>
-            Search for a competitor or jump into one of these
-            views.
-        </p>
-
-
-        <div class="suggestion-grid">
-
-            <button
-                class="suggestion-card"
-                data-preset="champions"
-            >
-                <span class="suggestion-icon">🏆</span>
-
-                <span>
-                    <strong>World Champions</strong>
-                    <small>Every first-place finisher</small>
-                </span>
-            </button>
+            <p>
+                Search for a player above or jump into one of these
+                views.
+            </p>
 
 
-            <button
-                class="suggestion-card"
-                data-preset="finalists"
-            >
-                <span class="suggestion-icon">🥈</span>
+            <div class="suggestion-grid">
 
-                <span>
-                    <strong>World Finalists</strong>
-                    <small>Players finishing 1st or 2nd</small>
-                </span>
-            </button>
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-preset="champions"
+                >
 
+                    <span class="suggestion-icon">
+                        🏆
+                    </span>
 
-            <button
-                class="suggestion-card"
-                data-preset="top8"
-            >
-                <span class="suggestion-icon">⭐</span>
+                    <span>
 
-                <span>
-                    <strong>Top 8 Finishers</strong>
-                    <small>Players reaching the Top 8</small>
-                </span>
-            </button>
+                        <strong>
+                            World Champions
+                        </strong>
 
+                        <small>
+                            Every first-place finisher
+                        </small>
 
-            <button
-                class="suggestion-card"
-                data-year="2026"
-            >
-                <span class="suggestion-icon">📅</span>
+                    </span>
 
-                <span>
-                    <strong>2026 Worlds</strong>
-                    <small>Browse the latest results</small>
-                </span>
-            </button>
+                </button>
 
 
-            <button
-                class="suggestion-card"
-                data-division="Masters"
-            >
-                <span class="suggestion-icon">🎴</span>
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-preset="finalists"
+                >
 
-                <span>
-                    <strong>Masters</strong>
-                    <small>Browse Masters competitors</small>
-                </span>
-            </button>
+                    <span class="suggestion-icon">
+                        🥈
+                    </span>
 
+                    <span>
 
-            <button
-                class="suggestion-card"
-                data-preset="returning"
-            >
-                <span class="suggestion-icon">🔁</span>
+                        <strong>
+                            World Finalists
+                        </strong>
 
-                <span>
-                    <strong>Returning Players</strong>
-                    <small>Competitors with multiple Worlds appearances</small>
-                </span>
-            </button>
+                        <small>
+                            Players finishing 1st or 2nd
+                        </small>
 
-        </div>
+                    </span>
 
-    </section>
+                </button>
 
 
-    <section
-        id="resultsSection"
-        class="results-section"
-        hidden
-    >
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-preset="top8"
+                >
 
-        <div class="results-heading">
+                    <span class="suggestion-icon">
+                        ⭐
+                    </span>
 
-            <h2>Results</h2>
+                    <span>
 
-            <p id="resultCount"></p>
+                        <strong>
+                            Top 8 Finishers
+                        </strong>
 
-        </div>
+                        <small>
+                            Players reaching the Top 8
+                        </small>
+
+                    </span>
+
+                </button>
 
 
-        <div class="table-wrapper">
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-year="2026"
+                >
 
-            <table>
+                    <span class="suggestion-icon">
+                        📅
+                    </span>
 
-                <thead>
-                    <tr>
-                        <th>Player Name</th>
-                        <th>Country</th>
-                        <th>Divisions Competed</th>
-                        <th>Years Competed</th>
-                        <th>Best Finish</th>
-                    </tr>
-                </thead>
+                    <span>
 
-                <tbody id="results"></tbody>
+                        <strong>
+                            2026 Worlds
+                        </strong>
 
-            </table>
+                        <small>
+                            Browse 2026 competitors
+                        </small>
 
-        </div>
+                    </span>
 
-    </section>
+                </button>
 
-</main>
 
-    <script src="app.js?v=2"></script>
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-division="Masters"
+                >
+
+                    <span class="suggestion-icon">
+                        🎴
+                    </span>
+
+                    <span>
+
+                        <strong>
+                            Masters
+                        </strong>
+
+                        <small>
+                            Browse Masters competitors
+                        </small>
+
+                    </span>
+
+                </button>
+
+
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-preset="returning"
+                >
+
+                    <span class="suggestion-icon">
+                        🔁
+                    </span>
+
+                    <span>
+
+                        <strong>
+                            Returning Players
+                        </strong>
+
+                        <small>
+                            Players with multiple Worlds appearances
+                        </small>
+
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <section
+            id="resultsSection"
+            class="results-section"
+            hidden
+        >
+
+            <div class="results-heading">
+
+                <h2>
+                    Players
+                </h2>
+
+                <p
+                    id="resultCount"
+                    aria-live="polite"
+                ></p>
+
+            </div>
+
+
+            <div class="table-wrapper">
+
+                <table>
+
+                    <thead>
+
+                        <tr>
+                            <th>Player Name</th>
+                            <th>Country</th>
+                            <th>Divisions Competed</th>
+                            <th>Years Competed</th>
+                            <th>Best Finish</th>
+                        </tr>
+
+                    </thead>
+
+                    <tbody id="results">
+                    </tbody>
+
+                </table>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <script src="shared.js?v=7"></script>
+    <script src="app.js?v=7"></script>
 
 </body>
 
