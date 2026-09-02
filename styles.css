@@ -173,3 +173,95 @@ tbody tr:hover {
     border-radius: 8px;
     padding: 24px;
 }
+
+.badge-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 18px;
+}
+
+
+.achievement-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+
+    padding: 7px 11px;
+
+    border-radius: 999px;
+    border: 1px solid #d7d7d7;
+
+    background: white;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    white-space: nowrap;
+}
+
+
+.badge-icon {
+    font-size: 15px;
+}
+
+
+/* Champion */
+
+.badge-champion {
+    background: #fff7d6;
+    border-color: #e4c14e;
+    color: #725600;
+}
+
+
+/* Finalist */
+
+.badge-finalist {
+    background: #f1f3f5;
+    border-color: #b9bec5;
+    color: #50555b;
+}
+
+
+/* Top finishes */
+
+.badge-top4 {
+    background: #f7eee4;
+    border-color: #c99668;
+    color: #704826;
+}
+
+
+.badge-top8 {
+    background: #eef3ff;
+    border-color: #aabce5;
+    color: #3c527f;
+}
+
+
+/* Qualification streak */
+
+.badge-streak {
+    background: #fff0e8;
+    border-color: #e6a17d;
+    color: #8c4829;
+}
+
+
+/* Worlds appearances */
+
+.badge-worlds {
+    background: #ebf6ee;
+    border-color: #9ac5a4;
+    color: #376343;
+}
+
+
+/* Multiple divisions */
+
+.badge-division {
+    background: #f3edfa;
+    border-color: #bba6d5;
+    color: #624c80;
+}
