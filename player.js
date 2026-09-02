@@ -681,6 +681,37 @@ function escapeHTML(value) {
 
 }
 
+function formatPlayerName(name) {
 
+    const text = String(name || "").trim();
+
+    if (!text) {
+        return "";
+    }
+
+    /*
+     * If the name already contains both uppercase
+     * and lowercase letters, assume the capitalization
+     * was intentionally entered and leave it alone.
+     */
+    const hasUppercase = /[A-Z]/.test(text);
+    const hasLowercase = /[a-z]/.test(text);
+
+    if (hasUppercase && hasLowercase) {
+        return text;
+    }
+
+
+    /*
+     * Otherwise convert ALL CAPS or all lowercase
+     * names into title case.
+     */
+    return text
+        .toLowerCase()
+        .replace(
+            /(^|[\s\-'])\p{L}/gu,
+            character => character.toUpperCase()
+        );
+}
 
 loadPlayer();
