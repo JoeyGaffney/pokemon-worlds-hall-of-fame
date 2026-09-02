@@ -265,3 +265,49 @@ tbody tr:hover {
     border-color: #bba6d5;
     color: #624c80;
 }
+
+.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+
+    background: white;
+    border-bottom: 1px solid #ddd;
+
+    padding: 18px 0 14px;
+}
+
+
+.site-title h1 {
+    margin: 0 0 4px;
+    font-size: 24px;
+}
+
+
+.site-title p {
+    margin: 0 0 16px;
+    color: #666;
+}
+
+
+.site-header .controls {
+    margin-bottom: 0;
+}
+
+
+.clear-button {
+    padding: 10px 16px;
+
+    border: 1px solid #ccc;
+    border-radius: 6px;
+
+    background: white;
+
+    font-size: 15px;
+    cursor: pointer;
+}
+
+
+.clear-button:hover {
+    background: #f2f2f2;
+}
