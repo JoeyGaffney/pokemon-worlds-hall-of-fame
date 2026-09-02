@@ -31,7 +31,7 @@ async function loadData() {
 
         resultsElement.innerHTML = `
             <tr>
-                <td colspan="6">
+                <td colspan="5">
                     Error loading competitor data.
                 </td>
             </tr>
@@ -208,7 +208,6 @@ function renderResults() {
             <td>${escapeHTML(record.country)}</td>
             <td>${escapeHTML(record.division)}</td>
             <td>${escapeHTML(record.year)}</td>
-            <td>${escapeHTML(record.qual)}</td>
         `;
 
         resultsElement.appendChild(row);
