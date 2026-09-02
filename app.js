@@ -1,5 +1,10 @@
 let appearances = [];
+
 let activePreset = "";
+
+let playerCareerMap =
+    new Map();
+
 
 
 /* =========================================================
@@ -7,36 +12,69 @@ let activePreset = "";
    ========================================================= */
 
 const resultsElement =
-    document.getElementById("results");
+    document.getElementById(
+        "results"
+    );
 
 const searchElement =
-    document.getElementById("search");
+    document.getElementById(
+        "search"
+    );
 
 const yearFilter =
-    document.getElementById("yearFilter");
+    document.getElementById(
+        "yearFilter"
+    );
 
 const divisionFilter =
-    document.getElementById("divisionFilter");
+    document.getElementById(
+        "divisionFilter"
+    );
 
 const countryFilter =
-    document.getElementById("countryFilter");
+    document.getElementById(
+        "countryFilter"
+    );
+
+const badgeFiltersElement =
+    document.getElementById(
+        "badgeFilters"
+    );
 
 const resultCount =
-    document.getElementById("resultCount");
+    document.getElementById(
+        "resultCount"
+    );
 
 const landingElement =
-    document.getElementById("landing");
+    document.getElementById(
+        "landing"
+    );
 
 const resultsSection =
-    document.getElementById("resultsSection");
+    document.getElementById(
+        "resultsSection"
+    );
 
 const clearFiltersButton =
-    document.getElementById("clearFilters");
+    document.getElementById(
+        "clearFilters"
+    );
+
+const advancedFiltersButton =
+    document.getElementById(
+        "advancedFiltersButton"
+    );
+
+const advancedFilters =
+    document.getElementById(
+        "advancedFilters"
+    );
 
 
 
 /* =========================================================
-   LOAD DATABASE
+   LOAD DATA
    ========================================================= */
 
 async function loadData() {
@@ -44,7 +82,9 @@ async function loadData() {
     try {
 
         const response =
-            await fetch("data/appearances.json");
+            await fetch(
+                "data/appearances.json"
+            );
 
 
         if (!response.ok) {
@@ -60,8 +100,13 @@ async function loadData() {
             await response.json();
 
 
+        buildPlayerCareerMap();
+
         populateYearFilter();
+
         populateCountryFilter();
+
+        populateBadgeFilters();
 
         restoreFiltersFromURL();
 
@@ -73,27 +118,20 @@ async function loadData() {
         console.error(error);
 
 
-        if (landingElement) {
-            landingElement.hidden = true;
-        }
+        landingElement.hidden =
+            true;
+
+        resultsSection.hidden =
+            false;
 
 
-        if (resultsSection) {
-            resultsSection.hidden = false;
-        }
-
-
-        if (resultsElement) {
-
-            resultsElement.innerHTML = `
-                <tr>
-                    <td colspan="5">
-                        Error loading competitor data.
-                    </td>
-                </tr>
-            `;
-
-        }
+        resultsElement.innerHTML = `
+            <tr>
+                <td colspan="5">
+                    Error loading competitor data.
+                </td>
+            </tr>
+        `;
 
     }
 
@@ -102,7 +140,51 @@ async function loadData() {
 
 
 /* =========================================================
-   BUILD FILTER OPTIONS
+   CAREER MAP
+   ========================================================= */
+
+function buildPlayerCareerMap() {
+
+    playerCareerMap =
+        new Map();
+
+
+    appearances.forEach(
+        record => {
+
+            const key =
+                getPlayerKey(
+                    record
+                );
+
+
+            if (
+                !playerCareerMap.has(
+                    key
+                )
+            ) {
+
+                playerCareerMap.set(
+                    key,
+                    []
+                );
+
+            }
+
+
+            playerCareerMap
+                .get(key)
+                .push(record);
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   FILTER OPTIONS
    ========================================================= */
 
 function populateYearFilter() {
@@ -117,28 +199,34 @@ function populateYearFilter() {
                     !isNaN(year)
                 )
         )
-    ];
-
-
-    years.sort(
-        (a, b) => b - a
+    ].sort(
+        (a, b) =>
+            b - a
     );
 
 
-    years.forEach(year => {
+    years.forEach(
+        year => {
 
-        const option =
-            document.createElement("option");
+            const option =
+                document.createElement(
+                    "option"
+                );
 
-        option.value =
-            String(year);
 
-        option.textContent =
-            String(year);
+            option.value =
+                String(year);
 
-        yearFilter.appendChild(option);
+            option.textContent =
+                String(year);
 
-    });
+
+            yearFilter.appendChild(
+                option
+            );
+
+        }
+    );
 
 }
 
@@ -150,46 +238,196 @@ function populateCountryFilter() {
         ...new Set(
             appearances
                 .map(record =>
-                    String(record.country || "").trim()
+                    String(
+                        record.country ||
+                        ""
+                    ).trim()
                 )
                 .filter(Boolean)
         )
-    ];
-
-
-    countries.sort(
+    ].sort(
         (a, b) =>
             a.localeCompare(
                 b,
                 undefined,
                 {
-                    sensitivity: "base"
+                    sensitivity:
+                        "base"
                 }
             )
     );
 
 
-    countries.forEach(country => {
+    countries.forEach(
+        country => {
 
-        const option =
-            document.createElement("option");
+            const option =
+                document.createElement(
+                    "option"
+                );
 
-        option.value =
-            country;
 
-        option.textContent =
-            country;
+            option.value =
+                country;
 
-        countryFilter.appendChild(option);
+            option.textContent =
+                country;
 
-    });
+
+            countryFilter.appendChild(
+                option
+            );
+
+        }
+    );
 
 }
 
 
 
 /* =========================================================
-   RESTORE FILTERS FROM URL
+   BADGE FILTER OPTIONS
+   ========================================================= */
+
+function populateBadgeFilters() {
+
+    const badgeCatalog =
+        new Map();
+
+
+    playerCareerMap.forEach(
+        records => {
+
+            const badges =
+                calculatePlayerBadges(
+                    records
+                );
+
+
+            badges.forEach(
+                badge => {
+
+                    if (
+                        !badgeCatalog.has(
+                            badge.key
+                        )
+                    ) {
+
+                        badgeCatalog.set(
+                            badge.key,
+                            badge
+                        );
+
+                    }
+
+                }
+            );
+
+        }
+    );
+
+
+    const badges = [
+        ...badgeCatalog.values()
+    ].sort(
+        compareBadges
+    );
+
+
+    badgeFiltersElement.innerHTML =
+        "";
+
+
+    badges.forEach(
+        badge => {
+
+            const label =
+                document.createElement(
+                    "label"
+                );
+
+
+            label.className =
+                "badge-filter-option";
+
+
+            const checkbox =
+                document.createElement(
+                    "input"
+                );
+
+
+            checkbox.type =
+                "checkbox";
+
+            checkbox.value =
+                badge.key;
+
+            checkbox.className =
+                "badge-filter-checkbox";
+
+
+            const text =
+                document.createElement(
+                    "span"
+                );
+
+
+            text.textContent =
+                `${badge.icon} ${badge.label}`;
+
+
+            label.appendChild(
+                checkbox
+            );
+
+            label.appendChild(
+                text
+            );
+
+
+            badgeFiltersElement
+                .appendChild(
+                    label
+                );
+
+
+            checkbox.addEventListener(
+                "change",
+                () => {
+
+                    activePreset =
+                        "";
+
+                    renderResults();
+
+                }
+            );
+
+        }
+    );
+
+}
+
+
+
+function getSelectedBadgeKeys() {
+
+    return [
+        ...document.querySelectorAll(
+            ".badge-filter-checkbox:checked"
+        )
+    ].map(
+        checkbox =>
+            checkbox.value
+    );
+
+}
+
+
+
+/* =========================================================
+   URL RESTORATION
    ========================================================= */
 
 function restoreFiltersFromURL() {
@@ -201,19 +439,34 @@ function restoreFiltersFromURL() {
 
 
     const savedSearch =
-        params.get("search");
+        params.get(
+            "search"
+        );
 
     const savedYear =
-        params.get("year");
+        params.get(
+            "year"
+        );
 
     const savedDivision =
-        params.get("division");
+        params.get(
+            "division"
+        );
 
     const savedCountry =
-        params.get("country");
+        params.get(
+            "country"
+        );
 
     const savedPreset =
-        params.get("preset");
+        params.get(
+            "preset"
+        );
+
+    const savedBadges =
+        params.getAll(
+            "badge"
+        );
 
 
     if (savedSearch) {
@@ -273,6 +526,46 @@ function restoreFiltersFromURL() {
 
     }
 
+
+    if (
+        savedBadges.length > 0
+    ) {
+
+        document
+            .querySelectorAll(
+                ".badge-filter-checkbox"
+            )
+            .forEach(
+                checkbox => {
+
+                    checkbox.checked =
+                        savedBadges.includes(
+                            checkbox.value
+                        );
+
+                }
+            );
+
+    }
+
+
+    const hasAdvancedFilters =
+        Boolean(
+            yearFilter.value ||
+            divisionFilter.value ||
+            countryFilter.value ||
+            getSelectedBadgeKeys().length
+        );
+
+
+    if (hasAdvancedFilters) {
+
+        setAdvancedFiltersOpen(
+            true
+        );
+
+    }
+
 }
 
 
@@ -290,6 +583,48 @@ function optionExists(
     );
 
 }
+
+
+
+/* =========================================================
+   ADVANCED FILTER PANEL
+   ========================================================= */
+
+function setAdvancedFiltersOpen(
+    isOpen
+) {
+
+    advancedFilters.hidden =
+        !isOpen;
+
+
+    advancedFiltersButton
+        .setAttribute(
+            "aria-expanded",
+            String(isOpen)
+        );
+
+
+    advancedFiltersButton.textContent =
+        isOpen
+            ? "Hide Filters"
+            : "Advanced Filters";
+
+}
+
+
+
+advancedFiltersButton
+    .addEventListener(
+        "click",
+        () => {
+
+            setAdvancedFiltersOpen(
+                advancedFilters.hidden
+            );
+
+        }
+    );
 
 
 
@@ -318,18 +653,25 @@ function renderResults() {
         countryFilter.value;
 
 
+    const selectedBadgeKeys =
+        getSelectedBadgeKeys();
+
+
+
     const hasFilters =
         Boolean(
             searchTerm ||
             selectedYear ||
             selectedDivision ||
             selectedCountry ||
+            selectedBadgeKeys.length ||
             activePreset
         );
 
 
     /*
-     * No search/filter = show landing page.
+     * No filters means show the landing page
+     * rather than every player.
      */
 
     if (!hasFilters) {
@@ -355,52 +697,27 @@ function renderResults() {
 
 
     /*
-     * Count unique appearance years per player.
+     * Determine which players match the basic
+     * search / year / division / country /
+     * landing-preset criteria.
      *
-     * Used by the Returning Players preset.
+     * We then display that player's FULL career
+     * information in the directory.
      */
 
-    const appearanceYearsByPlayer =
-        new Map();
-
-
-    appearances.forEach(record => {
-
-        if (!record.player_id) {
-            return;
-        }
-
-
-        if (
-            !appearanceYearsByPlayer.has(
-                record.player_id
-            )
-        ) {
-
-            appearanceYearsByPlayer.set(
-                record.player_id,
-                new Set()
-            );
-
-        }
-
-
-        appearanceYearsByPlayer
-            .get(record.player_id)
-            .add(
-                Number(record.year)
-            );
-
-    });
+    const matchingPlayerKeys =
+        new Set();
 
 
 
-    /*
-     * Filter individual appearance records first.
-     */
+    appearances.forEach(
+        record => {
 
-    const filteredAppearances =
-        appearances.filter(record => {
+            const playerKey =
+                getPlayerKey(
+                    record
+                );
+
 
             const formattedName =
                 formatPlayerName(
@@ -408,9 +725,9 @@ function renderResults() {
                 ).toLowerCase();
 
 
-            const country =
+            const year =
                 String(
-                    record.country || ""
+                    record.year || ""
                 );
 
 
@@ -420,9 +737,9 @@ function renderResults() {
                 );
 
 
-            const year =
+            const country =
                 String(
-                    record.year || ""
+                    record.country || ""
                 );
 
 
@@ -441,7 +758,8 @@ function renderResults() {
 
             const matchesYear =
                 !selectedYear ||
-                year === selectedYear;
+                year ===
+                    selectedYear;
 
 
             const matchesDivision =
@@ -461,10 +779,6 @@ function renderResults() {
 
 
 
-            /*
-             * Landing-page presets
-             */
-
             if (
                 activePreset ===
                 "champions"
@@ -474,7 +788,6 @@ function renderResults() {
                     placement === 1;
 
             }
-
 
             else if (
                 activePreset ===
@@ -487,7 +800,6 @@ function renderResults() {
 
             }
 
-
             else if (
                 activePreset ===
                 "top8"
@@ -499,53 +811,130 @@ function renderResults() {
 
             }
 
-
             else if (
                 activePreset ===
                 "returning"
             ) {
 
-                const years =
-                    appearanceYearsByPlayer.get(
-                        record.player_id
+                const careerRecords =
+                    playerCareerMap.get(
+                        playerKey
+                    ) || [];
+
+
+                const careerYears =
+                    new Set(
+                        careerRecords
+                            .map(item =>
+                                Number(
+                                    item.year
+                                )
+                            )
+                            .filter(year =>
+                                !isNaN(year)
+                            )
                     );
 
 
                 matchesPreset =
-                    Boolean(
-                        years &&
-                        years.size >= 2
-                    );
+                    careerYears.size >= 2;
 
             }
 
 
-            return (
+
+            if (
                 matchesSearch &&
                 matchesYear &&
                 matchesDivision &&
                 matchesCountry &&
                 matchesPreset
-            );
+            ) {
 
-        });
+                matchingPlayerKeys.add(
+                    playerKey
+                );
+
+            }
+
+        }
+    );
 
 
 
     /*
-     * Convert appearance records into
-     * one row per player.
+     * Apply career-wide badge filters.
+     */
+
+    let finalPlayerKeys = [
+        ...matchingPlayerKeys
+    ];
+
+
+    if (
+        selectedBadgeKeys.length > 0
+    ) {
+
+        finalPlayerKeys =
+            finalPlayerKeys.filter(
+                playerKey => {
+
+                    const careerRecords =
+                        playerCareerMap.get(
+                            playerKey
+                        ) || [];
+
+
+                    const earnedBadges =
+                        new Set(
+                            calculatePlayerBadges(
+                                careerRecords
+                            ).map(
+                                badge =>
+                                    badge.key
+                            )
+                        );
+
+
+                    /*
+                     * ALL selected badges
+                     * must be earned.
+                     */
+
+                    return selectedBadgeKeys
+                        .every(
+                            badgeKey =>
+                                earnedBadges.has(
+                                    badgeKey
+                                )
+                        );
+
+                }
+            );
+
+    }
+
+
+
+    /*
+     * Build one directory row per player,
+     * using full career records.
      */
 
     const players =
-        groupAppearancesByPlayer(
-            filteredAppearances
+        finalPlayerKeys.map(
+            playerKey =>
+                summarizePlayer(
+                    playerCareerMap.get(
+                        playerKey
+                    ) || []
+                )
         );
 
 
 
     /*
-     * Best finish first, then alphabetical.
+     * Best finish first, then name.
      */
 
     players.sort(
@@ -595,221 +984,215 @@ function renderResults() {
 
 
 
-    players.forEach(player => {
+    players.forEach(
+        player => {
 
-        const profileParams =
-            new URLSearchParams();
-
-
-
-        /*
-         * Player ID stays internal.
-         * It appears only in the profile URL.
-         */
-
-        if (player.player_id) {
-
-            profileParams.set(
-                "id",
-                player.player_id
-            );
-
-        }
-
-
-        /*
-         * Preserve active filters when
-         * visiting the profile.
-         */
-
-        if (
-            searchElement
-                .value
-                .trim()
-        ) {
-
-            profileParams.set(
-                "search",
-                searchElement
-                    .value
-                    .trim()
-            );
-
-        }
-
-
-        if (yearFilter.value) {
-
-            profileParams.set(
-                "year",
-                yearFilter.value
-            );
-
-        }
-
-
-        if (
-            divisionFilter.value
-        ) {
-
-            profileParams.set(
-                "division",
-                divisionFilter.value
-            );
-
-        }
-
-
-        if (
-            countryFilter.value
-        ) {
-
-            profileParams.set(
-                "country",
-                countryFilter.value
-            );
-
-        }
-
-
-        if (activePreset) {
-
-            profileParams.set(
-                "preset",
-                activePreset
-            );
-
-        }
+            const profileParams =
+                new URLSearchParams();
 
 
 
-        let playerName =
-            escapeHTML(
-                player.name
-            );
+            /*
+             * Internal player ID.
+             */
 
+            if (player.player_id) {
 
-        if (player.player_id) {
-
-            playerName = `
-                <a
-                    class="player-link"
-                    href="player.html?${profileParams.toString()}"
-                >
-                    ${escapeHTML(player.name)}
-                </a>
-            `;
-
-        }
-
-
-
-        const divisions =
-            sortDivisions(
-                player.divisions
-            ).join(", ");
-
-
-
-        /*
-         * Display years.
-         */
-
-        let yearsDisplay =
-            "";
-
-
-        if (
-            player.years.length === 1
-        ) {
-
-            yearsDisplay =
-                escapeHTML(
-                    player.years[0]
+                profileParams.set(
+                    "id",
+                    player.player_id
                 );
 
-        } else {
+            }
 
-            yearsDisplay = `
+
+
+            /*
+             * Preserve current search/filter
+             * state in the profile URL.
+             */
+
+            const search =
+                searchElement
+                    .value
+                    .trim();
+
+
+            if (search) {
+
+                profileParams.set(
+                    "search",
+                    search
+                );
+
+            }
+
+
+            if (yearFilter.value) {
+
+                profileParams.set(
+                    "year",
+                    yearFilter.value
+                );
+
+            }
+
+
+            if (
+                divisionFilter.value
+            ) {
+
+                profileParams.set(
+                    "division",
+                    divisionFilter.value
+                );
+
+            }
+
+
+            if (
+                countryFilter.value
+            ) {
+
+                profileParams.set(
+                    "country",
+                    countryFilter.value
+                );
+
+            }
+
+
+            if (activePreset) {
+
+                profileParams.set(
+                    "preset",
+                    activePreset
+                );
+
+            }
+
+
+            selectedBadgeKeys.forEach(
+                badgeKey => {
+
+                    profileParams.append(
+                        "badge",
+                        badgeKey
+                    );
+
+                }
+            );
+
+
+
+            let playerName =
+                escapeHTML(
+                    player.name
+                );
+
+
+            if (player.player_id) {
+
+                playerName = `
+                    <a
+                        class="player-link"
+                        href="player.html?${profileParams.toString()}"
+                    >
+                        ${escapeHTML(player.name)}
+                    </a>
+                `;
+
+            }
+
+
+
+            const divisions =
+                sortDivisions(
+                    player.divisions
+                ).join(", ");
+
+
+
+            const yearsDisplay = `
                 <strong>
                     ${player.years.length}
                 </strong>
 
                 <span class="year-list">
                     ${escapeHTML(
-                        player.years.join(", ")
+                        player.years.join(
+                            ", "
+                        )
                     )}
                 </span>
             `;
 
-        }
 
 
+            const bestFinish =
+                player.bestPlacement !==
+                null
 
-        const bestFinish =
-            player.bestPlacement !==
-            null
-
-                ? formatPlacement(
-                    player.bestPlacement
-                )
-
-                : "—";
-
-
-
-        const row =
-            document.createElement(
-                "tr"
-            );
-
-
-        row.innerHTML = `
-            <td>
-                ${playerName}
-            </td>
-
-            <td>
-                ${escapeHTML(
-                    player.countries.join(
-                        " / "
+                    ? formatPlacement(
+                        player.bestPlacement
                     )
-                )}
-            </td>
 
-            <td>
-                ${escapeHTML(
-                    divisions
-                )}
-            </td>
-
-            <td class="years-cell">
-                ${yearsDisplay}
-            </td>
-
-            <td>
-                ${escapeHTML(
-                    bestFinish
-                )}
-            </td>
-        `;
+                    : "—";
 
 
-        resultsElement.appendChild(
-            row
-        );
 
-    });
+            const row =
+                document.createElement(
+                    "tr"
+                );
+
+
+            row.innerHTML = `
+                <td>
+                    ${playerName}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        player.countries.join(
+                            " / "
+                        )
+                    )}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        divisions
+                    )}
+                </td>
+
+                <td class="years-cell">
+                    ${yearsDisplay}
+                </td>
+
+                <td>
+                    ${escapeHTML(
+                        bestFinish
+                    )}
+                </td>
+            `;
+
+
+            resultsElement
+                .appendChild(
+                    row
+                );
+
+        }
+    );
 
 
 
     landingElement.hidden =
         true;
 
-
     resultsSection.hidden =
         false;
-
 
 
     resultCount.textContent =
@@ -825,271 +1208,151 @@ function renderResults() {
 
 
 /* =========================================================
-   GROUP APPEARANCES INTO PLAYERS
+   PLAYER SUMMARY
    ========================================================= */
 
-function groupAppearancesByPlayer(
-    records
-) {
+function summarizePlayer(records) {
 
-    const players =
-        new Map();
-
-
-    records.forEach(record => {
-
-        /*
-         * player_id should always exist.
-         *
-         * Fallback keeps old records usable.
-         */
-
-        const key =
-            record.player_id ||
-            (
-                normalizePlayerName(
-                    record.name
-                ) +
-                "||" +
-                String(
-                    record.country || ""
-                ).toUpperCase()
-            );
+    const sortedRecords = [
+        ...records
+    ].sort(
+        (a, b) =>
+            Number(b.year) -
+            Number(a.year)
+    );
 
 
-        if (!players.has(key)) {
-
-            players.set(
-                key,
-                {
-                    player_id:
-                        record.player_id,
-
-                    names: [],
-
-                    countries:
-                        new Set(),
-
-                    divisions:
-                        new Set(),
-
-                    years:
-                        new Set(),
-
-                    placements: []
-                }
-            );
-
-        }
+    const newestRecord =
+        sortedRecords[0] || {};
 
 
-        const player =
-            players.get(key);
-
-
-
-        if (record.name) {
-
-            player.names.push(
-                {
-                    name:
-                        record.name,
-
-                    year:
-                        Number(
-                            record.year
-                        ) || 0
-                }
-            );
-
-        }
-
-
-
-        if (record.country) {
-
-            player.countries.add(
-                String(
-                    record.country
-                ).trim()
-            );
-
-        }
-
-
-
-        if (record.division) {
-
-            player.divisions.add(
-                record.division
-            );
-
-        }
-
-
-
-        if (record.year) {
-
-            const year =
-                Number(
-                    record.year
-                );
-
-
-            if (!isNaN(year)) {
-
-                player.years.add(
-                    year
-                );
-
-            }
-
-        }
-
-
-
-        const placement =
-            getPlacementNumber(
-                record.placement
-            );
-
-
-        if (placement !== null) {
-
-            player.placements.push(
-                placement
-            );
-
-        }
-
-    });
-
-
-
-    return [
-        ...players.values()
-    ].map(player => {
-
-        /*
-         * Use the newest recorded name
-         * until players.json/canonical_name
-         * is added later.
-         */
-
-        player.names.sort(
-            (a, b) =>
-                b.year - a.year
+    const name =
+        formatPlayerName(
+            newestRecord.name || ""
         );
 
 
-        const latestName =
-            player.names.length > 0
-                ? player.names[0].name
-                : "";
+    const countries = [
+        ...new Set(
+            sortedRecords
+                .map(record =>
+                    String(
+                        record.country ||
+                        ""
+                    ).trim()
+                )
+                .filter(Boolean)
+        )
+    ];
 
 
-        const displayName =
-            formatPlayerName(
-                latestName
+    const divisions = [
+        ...new Set(
+            records
+                .map(record =>
+                    record.division
+                )
+                .filter(Boolean)
+        )
+    ];
+
+
+    const years = [
+        ...new Set(
+            records
+                .map(record =>
+                    Number(record.year)
+                )
+                .filter(year =>
+                    !isNaN(year)
+                )
+        )
+    ].sort(
+        (a, b) =>
+            a - b
+    );
+
+
+    const placements =
+        records
+            .map(record =>
+                getPlacementNumber(
+                    record.placement
+                )
+            )
+            .filter(
+                placement =>
+                    placement !== null
             );
 
 
-        const bestPlacement =
-            player.placements.length > 0
-
-                ? Math.min(
-                    ...player.placements
-                )
-
-                : null;
+    const bestPlacement =
+        placements.length > 0
+            ? Math.min(
+                ...placements
+            )
+            : null;
 
 
-        return {
+    return {
 
-            player_id:
-                player.player_id,
+        player_id:
+            newestRecord.player_id ||
+            "",
 
-            name:
-                displayName,
+        name:
+            name,
 
-            countries: [
-                ...player.countries
-            ],
+        countries:
+            countries,
 
-            divisions: [
-                ...player.divisions
-            ],
+        divisions:
+            divisions,
 
-            years: [
-                ...player.years
-            ].sort(
-                (a, b) =>
-                    a - b
-            ),
+        years:
+            years,
 
-            bestPlacement:
-                bestPlacement
+        bestPlacement:
+            bestPlacement
 
-        };
-
-    });
+    };
 
 }
 
 
 
 /* =========================================================
-   LANDING-PAGE SUGGESTION BUTTONS
+   LANDING SUGGESTIONS
    ========================================================= */
 
 document
     .querySelectorAll(
         ".suggestion-card"
     )
-    .forEach(button => {
+    .forEach(
+        button => {
 
-        button.addEventListener(
-            "click",
-            () => {
+            button.addEventListener(
+                "click",
+                () => {
 
-                /*
-                 * Start each suggestion
-                 * from a clean filter state.
-                 */
+                    resetFilters(
+                        false
+                    );
 
-                searchElement.value =
-                    "";
-
-                yearFilter.value =
-                    "";
-
-                divisionFilter.value =
-                    "";
-
-                countryFilter.value =
-                    "";
-
-                activePreset =
-                    "";
-
-
-
-                if (
-                    button.dataset.preset
-                ) {
-
-                    activePreset =
-                        button.dataset.preset;
-
-                }
-
-
-
-                if (
-                    button.dataset.year
-                ) {
 
                     if (
+                        button.dataset.preset
+                    ) {
+
+                        activePreset =
+                            button.dataset.preset;
+
+                    }
+
+
+                    if (
+                        button.dataset.year &&
                         optionExists(
                             yearFilter,
                             button.dataset.year
@@ -1101,15 +1364,9 @@ document
 
                     }
 
-                }
-
-
-
-                if (
-                    button.dataset.division
-                ) {
 
                     if (
+                        button.dataset.division &&
                         optionExists(
                             divisionFilter,
                             button.dataset.division
@@ -1121,15 +1378,9 @@ document
 
                     }
 
-                }
-
-
-
-                if (
-                    button.dataset.country
-                ) {
 
                     if (
+                        button.dataset.country &&
                         optionExists(
                             countryFilter,
                             button.dataset.country
@@ -1141,15 +1392,35 @@ document
 
                     }
 
+
+
+                    /*
+                     * If the suggestion changes one
+                     * of the advanced filters, show
+                     * that filter so the user can see
+                     * what is active.
+                     */
+
+                    if (
+                        button.dataset.year ||
+                        button.dataset.division ||
+                        button.dataset.country
+                    ) {
+
+                        setAdvancedFiltersOpen(
+                            true
+                        );
+
+                    }
+
+
+                    renderResults();
+
                 }
+            );
 
-
-                renderResults();
-
-            }
-        );
-
-    });
+        }
+    );
 
 
 
@@ -1160,11 +1431,6 @@ document
 searchElement.addEventListener(
     "input",
     () => {
-
-        /*
-         * Manually searching exits a special
-         * preset such as Champions.
-         */
 
         activePreset =
             "";
@@ -1222,28 +1488,9 @@ clearFiltersButton.addEventListener(
     "click",
     () => {
 
-        searchElement.value =
-            "";
-
-        yearFilter.value =
-            "";
-
-        divisionFilter.value =
-            "";
-
-        countryFilter.value =
-            "";
-
-        activePreset =
-            "";
-
-
-        window.history.replaceState(
-            {},
-            "",
-            window.location.pathname
+        resetFilters(
+            true
         );
-
 
         renderResults();
 
@@ -1253,7 +1500,59 @@ clearFiltersButton.addEventListener(
 
 
 /* =========================================================
-   KEEP CURRENT FILTERS IN URL
+   RESET FILTERS
+   ========================================================= */
+
+function resetFilters(
+    closeAdvancedFilters
+) {
+
+    searchElement.value =
+        "";
+
+    yearFilter.value =
+        "";
+
+    divisionFilter.value =
+        "";
+
+    countryFilter.value =
+        "";
+
+    activePreset =
+        "";
+
+
+    document
+        .querySelectorAll(
+            ".badge-filter-checkbox"
+        )
+        .forEach(
+            checkbox => {
+
+                checkbox.checked =
+                    false;
+
+            }
+        );
+
+
+    if (
+        closeAdvancedFilters
+    ) {
+
+        setAdvancedFiltersOpen(
+            false
+        );
+
+    }
+
+}
+
+
+
+/* =========================================================
+   UPDATE PAGE URL
    ========================================================= */
 
 function updateURL() {
@@ -1322,6 +1621,19 @@ function updateURL() {
     }
 
 
+    getSelectedBadgeKeys()
+        .forEach(
+            badgeKey => {
+
+                params.append(
+                    "badge",
+                    badgeKey
+                );
+
+            }
+        );
+
+
     const query =
         params.toString();
 
@@ -1343,224 +1655,6 @@ function updateURL() {
 
 
 /* =========================================================
-   PLAYER NAME FORMATTING
-   ========================================================= */
-
-function formatPlayerName(name) {
-
-    const text =
-        String(name || "")
-            .trim();
-
-
-    if (!text) {
-        return "";
-    }
-
-
-    /*
-     * If capitalization already looks intentional,
-     * preserve it.
-     *
-     * Examples:
-     * Sean McDonald
-     * João Silva
-     */
-
-    const hasUppercase =
-        /\p{Lu}/u.test(text);
-
-
-    const hasLowercase =
-        /\p{Ll}/u.test(text);
-
-
-    if (
-        hasUppercase &&
-        hasLowercase
-    ) {
-
-        return text;
-
-    }
-
-
-    /*
-     * Convert ALL CAPS or all lowercase
-     * to title case.
-     */
-
-    return text
-        .toLocaleLowerCase()
-        .replace(
-            /(^|[\s\-'])\p{L}/gu,
-            character =>
-                character.toLocaleUpperCase()
-        );
-
-}
-
-
-
-/*
- * Used only for fallback identity matching.
- */
-
-function normalizePlayerName(name) {
-
-    return String(name || "")
-
-        .normalize("NFD")
-
-        .replace(
-            /[\u0300-\u036f]/g,
-            ""
-        )
-
-        .replace(
-            /[’‘]/g,
-            "'"
-        )
-
-        .trim()
-
-        .replace(
-            /\s+/g,
-            " "
-        )
-
-        .toLowerCase();
-
-}
-
-
-
-/* =========================================================
-   DIVISION ORDER
-   ========================================================= */
-
-function sortDivisions(
-    divisions
-) {
-
-    const order = {
-        "Juniors": 1,
-        "Seniors": 2,
-        "Masters": 3
-    };
-
-
-    return [
-        ...divisions
-    ].sort(
-        (a, b) => {
-
-            return (
-                (order[a] || 99) -
-                (order[b] || 99)
-            );
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   PLACEMENT HELPERS
-   ========================================================= */
-
-function getPlacementNumber(value) {
-
-    if (
-        value === null ||
-        value === undefined
-    ) {
-
-        return null;
-
-    }
-
-
-    const text =
-        String(value)
-            .trim();
-
-
-    /*
-     * Accepted:
-     *
-     * 1
-     * 1st
-     * 17
-     * 17th
-     * T17
-     *
-     * "Top 32" is intentionally not
-     * treated as exactly 32nd.
-     */
-
-    const match =
-        text.match(
-            /^T?(\d+)(?:st|nd|rd|th)?$/i
-        );
-
-
-    if (!match) {
-
-        return null;
-
-    }
-
-
-    return Number(
-        match[1]
-    );
-
-}
-
-
-
-function formatPlacement(number) {
-
-    const lastTwo =
-        number % 100;
-
-
-    if (
-        lastTwo >= 11 &&
-        lastTwo <= 13
-    ) {
-
-        return `${number}th`;
-
-    }
-
-
-    switch (
-        number % 10
-    ) {
-
-        case 1:
-            return `${number}st`;
-
-        case 2:
-            return `${number}nd`;
-
-        case 3:
-            return `${number}rd`;
-
-        default:
-            return `${number}th`;
-
-    }
-
-}
-
-
-
-/* =========================================================
    HTML SAFETY
    ========================================================= */
 
@@ -1575,9 +1669,7 @@ function escapeHTML(value) {
     element.textContent =
         value === null ||
         value === undefined
-
             ? ""
-
             : String(value);
 
 
@@ -1588,7 +1680,7 @@ function escapeHTML(value) {
 
 
 /* =========================================================
-   START SITE
+   START
    ========================================================= */
 
 loadData();
