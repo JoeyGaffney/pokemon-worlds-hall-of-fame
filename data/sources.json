@@ -20,7 +20,7 @@
             },
             {
                 "type": "paragraph",
-                "text": "The archived standings page contained competitor names, countries, divisions, and tournament results. This information was used as the primary source for the 2007 database entries."
+                "text": "The archived standings page contained competitor names, countries, divisions, and tournament results. This information was used as the primary source for the 2004 database entries."
             },
             {
                 "type": "image",
@@ -47,12 +47,9 @@
             {
                 "type": "paragraph",
                 "text": "Missing from this year is the rest of the attendees and their respective records."
-            },
-        ],
-    }
-]
-
-[
+            }
+        ]
+    },
     {
         "id": "worlds-2005",
         "year": 2005,
@@ -77,22 +74,22 @@
                 "text": "The archived standings page contained competitor names, countries, divisions, and tournament results. This information was used as the primary source for the 2005 database entries."
             },
             {
-                "type": "image",
-                "src": "assets/sources/2004-worlds-juniors.png",
-                "alt": "Archived 2004 World Championships Juniors standings",
-                "caption": "Archived Juniors standings from the 2004 World Championships."
+                "type": "pdf",
+                "src": "assets/sources/2005-worlds-juniors-standings.pdf",
+                "alt": "Archived 2005 World Championships Juniors standings",
+                "caption": "Archived Juniors standings from the 2005 World Championships."
             },
             {
                 "type": "image",
-                "src": "assets/sources/2004-worlds-seniors-bracket.png",
-                "alt": "Archived 2004 World Championships Seniors standings",
-                "caption": "Archived Seniors standings from the 2004 World Championships."
+                "src": "assets/sources/2005-worlds-seniors-standings.pdf",
+                "alt": "Archived 2005 World Championships Seniors standings",
+                "caption": "Archived Seniors standings from the 2005 World Championships."
             },
             {
                 "type": "image",
-                "src": "assets/sources/2004-worlds-masters-bracket.png",
-                "alt": "Archived 2004 World Championships Masters standings",
-                "caption": "Archived Masters standings from the 2004 World Championships."
+                "src": "assets/sources/2005-worlds-masters-standings.pdf",
+                "alt": "Archived 2005 World Championships Masters standings",
+                "caption": "Archived Masters standings from the 2005 World Championships."
             },
             {
                 "type": "heading",
@@ -101,8 +98,7 @@
             {
                 "type": "paragraph",
                 "text": "Missing from this year is players who had dropped from the tournament before the end of eight rounds."
-            },
-        ],
+            }
+        ]
     }
 ]
-
