@@ -4,6 +4,17 @@ const sourcesElement =
     );
 
 
+const sourceNavigation =
+    document.getElementById(
+        "sourceNavigation"
+    );
+
+
+
+/* =========================================================
+   LOAD SOURCES
+   ========================================================= */
+
 async function loadSources() {
 
     try {
@@ -23,12 +34,12 @@ async function loadSources() {
         }
 
 
-        const sources =
+        const posts =
             await response.json();
 
 
         renderSources(
-            sources
+            posts
         );
 
 
@@ -38,9 +49,19 @@ async function loadSources() {
 
 
         sourcesElement.innerHTML = `
-            <p class="error-message">
-                Sources could not be loaded.
-            </p>
+
+            <div class="source-error">
+
+                <h2>
+                    Sources could not be loaded
+                </h2>
+
+                <p>
+                    Please try again later.
+                </p>
+
+            </div>
+
         `;
 
     }
@@ -49,17 +70,35 @@ async function loadSources() {
 
 
 
-function renderSources(sources) {
+/* =========================================================
+   RENDER ALL POSTS
+   ========================================================= */
+
+function renderSources(posts) {
 
     if (
-        !Array.isArray(sources) ||
-        sources.length === 0
+        !Array.isArray(posts) ||
+        posts.length === 0
     ) {
 
+        sourceNavigation.innerHTML =
+            "";
+
+
         sourcesElement.innerHTML = `
-            <p>
-                Source information is currently being added.
-            </p>
+
+            <div class="empty-sources">
+
+                <h2>
+                    Research notes coming soon
+                </h2>
+
+                <p>
+                    Source documentation is currently being added.
+                </p>
+
+            </div>
+
         `;
 
         return;
@@ -67,108 +106,36 @@ function renderSources(sources) {
     }
 
 
-    const sourcesByYear =
-        new Map();
+    const sortedPosts = [
+        ...posts
+    ].sort(
+        (a, b) => {
+
+            const yearA =
+                Number(a.year) || 0;
+
+            const yearB =
+                Number(b.year) || 0;
 
 
-    sources.forEach(
-        source => {
-
-            const year =
-                String(
-                    source.year ||
-                    "General"
-                );
-
-
-            if (
-                !sourcesByYear.has(
-                    year
-                )
-            ) {
-
-                sourcesByYear.set(
-                    year,
-                    []
-                );
-
-            }
-
-
-            sourcesByYear
-                .get(year)
-                .push(source);
+            return yearB - yearA;
 
         }
     );
 
 
-    const years = [
-        ...sourcesByYear.keys()
-    ].sort(
-        (a, b) => {
-
-            if (
-                a === "General"
-            ) {
-                return 1;
-            }
-
-
-            if (
-                b === "General"
-            ) {
-                return -1;
-            }
-
-
-            return (
-                Number(b) -
-                Number(a)
-            );
-
-        }
+    renderNavigation(
+        sortedPosts
     );
 
 
     sourcesElement.innerHTML =
-        years
+        sortedPosts
             .map(
-                year => {
-
-                    const yearSources =
-                        sourcesByYear.get(
-                            year
-                        );
-
-
-                    return `
-
-                        <section class="source-year">
-
-                            <h2>
-                                ${escapeHTML(year)}
-                            </h2>
-
-
-                            <div class="source-cards">
-
-                                ${yearSources
-                                    .map(
-                                        source =>
-                                            renderSource(
-                                                source
-                                            )
-                                    )
-                                    .join("")}
-
-                            </div>
-
-                        </section>
-
-                    `;
-
-                }
+                post =>
+                    renderPost(
+                        post
+                    )
             )
             .join("");
 
@@ -176,75 +143,173 @@ function renderSources(sources) {
 
 
 
-function renderSource(source) {
+/* =========================================================
+   YEAR NAVIGATION
+   ========================================================= */
 
-    const title =
-        escapeHTML(
-            source.title ||
-            "Source"
+function renderNavigation(posts) {
+
+    sourceNavigation.innerHTML = `
+
+        <span class="source-navigation-label">
+            Jump to:
+        </span>
+
+        ${posts
+            .map(
+                post => {
+
+                    const id =
+                        getPostId(
+                            post
+                        );
+
+
+                    return `
+
+                        <a href="#${id}">
+                            ${escapeHTML(
+                                post.year ||
+                                post.title
+                            )}
+                        </a>
+
+                    `;
+
+                }
+            )
+            .join("")}
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   RENDER ARTICLE
+   ========================================================= */
+
+function renderPost(post) {
+
+    const id =
+        getPostId(
+            post
         );
 
 
-    const type =
-        source.type
+    const title =
+        escapeHTML(
+            post.title ||
+            "Research Notes"
+        );
+
+
+    const subtitle =
+        post.subtitle
 
             ? `
-                <span class="source-type">
-                    ${escapeHTML(source.type)}
-                </span>
-            `
-
-            : "";
-
-
-    const notes =
-        source.notes
-
-            ? `
-                <p class="source-notes">
-                    ${escapeHTML(source.notes)}
+                <p class="source-post-subtitle">
+                    ${escapeHTML(post.subtitle)}
                 </p>
             `
 
             : "";
 
 
-    const link =
-        source.url
+    const year =
+        post.year
 
             ? `
-                <a
-                    href="${escapeAttribute(source.url)}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="source-link"
-                >
-                    View Source ↗
-                </a>
+                <span class="source-post-year">
+                    ${escapeHTML(post.year)}
+                </span>
             `
+
+            : "";
+
+
+    const heroImage =
+        post.heroImage
+
+            ? renderImage(
+                post.heroImage,
+                true
+            )
+
+            : "";
+
+
+    const content =
+        Array.isArray(
+            post.content
+        )
+
+            ? post.content
+                .map(
+                    block =>
+                        renderContentBlock(
+                            block
+                        )
+                )
+                .join("")
+
+            : "";
+
+
+    const references =
+        Array.isArray(
+            post.sources
+        ) &&
+        post.sources.length > 0
+
+            ? renderReferences(
+                post.sources
+            )
 
             : "";
 
 
     return `
 
-        <article class="source-card">
+        <article
+            class="source-post"
+            id="${id}"
+        >
 
-            <div class="source-card-heading">
+            <header class="source-post-header">
 
-                <h3>
+                ${year}
+
+                <h2>
                     ${title}
-                </h3>
+                </h2>
 
-                ${type}
+                ${subtitle}
+
+            </header>
+
+
+            ${heroImage}
+
+
+            <div class="source-post-body">
+
+                ${content}
 
             </div>
 
 
-            ${notes}
+            ${references}
 
 
-            ${link}
+            <div class="source-post-footer">
+
+                <a href="#">
+                    Back to top ↑
+                </a>
+
+            </div>
 
         </article>
 
@@ -253,6 +318,431 @@ function renderSource(source) {
 }
 
 
+
+/* =========================================================
+   CONTENT BLOCKS
+   ========================================================= */
+
+function renderContentBlock(block) {
+
+    if (
+        !block ||
+        !block.type
+    ) {
+        return "";
+    }
+
+
+    switch (
+        block.type
+    ) {
+
+        case "heading":
+
+            return `
+
+                <h3 class="source-section-heading">
+                    ${escapeHTML(
+                        block.text
+                    )}
+                </h3>
+
+            `;
+
+
+        case "paragraph":
+
+            return `
+
+                <p>
+                    ${renderInlineLinks(
+                        block.text
+                    )}
+                </p>
+
+            `;
+
+
+        case "image":
+
+            return renderImage(
+                block,
+                false
+            );
+
+
+        case "images":
+
+            return renderImageGallery(
+                block.images
+            );
+
+
+        case "note":
+
+            return `
+
+                <aside class="source-note">
+
+                    ${
+                        block.title
+
+                            ? `
+                                <strong>
+                                    ${escapeHTML(
+                                        block.title
+                                    )}
+                                </strong>
+                            `
+
+                            : ""
+                    }
+
+                    <p>
+                        ${renderInlineLinks(
+                            block.text
+                        )}
+                    </p>
+
+                </aside>
+
+            `;
+
+
+        case "quote":
+
+            return `
+
+                <blockquote class="source-quote">
+
+                    <p>
+                        ${escapeHTML(
+                            block.text
+                        )}
+                    </p>
+
+                    ${
+                        block.attribution
+
+                            ? `
+                                <cite>
+                                    ${escapeHTML(
+                                        block.attribution
+                                    )}
+                                </cite>
+                            `
+
+                            : ""
+                    }
+
+                </blockquote>
+
+            `;
+
+
+        default:
+
+            return "";
+
+    }
+
+}
+
+
+
+/* =========================================================
+   IMAGE
+   ========================================================= */
+
+function renderImage(
+    image,
+    isHero
+) {
+
+    if (
+        !image ||
+        !image.src
+    ) {
+        return "";
+    }
+
+
+    const caption =
+        image.caption
+
+            ? `
+                <figcaption>
+                    ${escapeHTML(
+                        image.caption
+                    )}
+                </figcaption>
+            `
+
+            : "";
+
+
+    const className =
+        isHero
+            ? "source-hero-image"
+            : "source-content-image";
+
+
+    return `
+
+        <figure class="${className}">
+
+            <a
+                href="${escapeAttribute(
+                    image.src
+                )}"
+                target="_blank"
+            >
+
+                <img
+                    src="${escapeAttribute(
+                        image.src
+                    )}"
+                    alt="${escapeAttribute(
+                        image.alt ||
+                        image.caption ||
+                        ""
+                    )}"
+                    loading="lazy"
+                >
+
+            </a>
+
+            ${caption}
+
+        </figure>
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   IMAGE GALLERY
+   ========================================================= */
+
+function renderImageGallery(images) {
+
+    if (
+        !Array.isArray(images) ||
+        images.length === 0
+    ) {
+        return "";
+    }
+
+
+    return `
+
+        <div class="source-image-gallery">
+
+            ${images
+                .map(
+                    image =>
+                        renderImage(
+                            image,
+                            false
+                        )
+                )
+                .join("")}
+
+        </div>
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   REFERENCES
+   ========================================================= */
+
+function renderReferences(sources) {
+
+    return `
+
+        <section class="source-reference-section">
+
+            <h3>
+                Sources
+            </h3>
+
+            <ol class="source-reference-list">
+
+                ${sources
+                    .map(
+                        source => {
+
+                            const title =
+                                escapeHTML(
+                                    source.title ||
+                                    "Source"
+                                );
+
+
+                            const type =
+                                source.type
+
+                                    ? `
+                                        <span class="reference-type">
+                                            ${escapeHTML(
+                                                source.type
+                                            )}
+                                        </span>
+                                    `
+
+                                    : "";
+
+
+                            const notes =
+                                source.notes
+
+                                    ? `
+                                        <div class="reference-notes">
+                                            ${escapeHTML(
+                                                source.notes
+                                            )}
+                                        </div>
+                                    `
+
+                                    : "";
+
+
+                            const linkedTitle =
+                                source.url
+
+                                    ? `
+                                        <a
+                                            href="${escapeAttribute(
+                                                source.url
+                                            )}"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                        >
+                                            ${title}
+                                        </a>
+                                    `
+
+                                    : title;
+
+
+                            return `
+
+                                <li>
+
+                                    <div class="reference-heading">
+
+                                        ${linkedTitle}
+
+                                        ${type}
+
+                                    </div>
+
+                                    ${notes}
+
+                                </li>
+
+                            `;
+
+                        }
+                    )
+                    .join("")}
+
+            </ol>
+
+        </section>
+
+    `;
+
+}
+
+
+
+/* =========================================================
+   OPTIONAL INLINE LINKS
+   ========================================================= */
+
+/*
+ * Allows links inside paragraph text using:
+ *
+ * [link text](https://example.com)
+ */
+
+function renderInlineLinks(text) {
+
+    const escaped =
+        escapeHTML(
+            text || ""
+        );
+
+
+    return escaped.replace(
+        /\[([^\]]+)\]\((https?:\/\/[^\s)]+)\)/g,
+        (
+            match,
+            label,
+            url
+        ) => {
+
+            return `
+                <a
+                    href="${escapeAttribute(url)}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                >
+                    ${label}
+                </a>
+            `;
+
+        }
+    );
+
+}
+
+
+
+/* =========================================================
+   ARTICLE ID
+   ========================================================= */
+
+function getPostId(post) {
+
+    if (post.id) {
+
+        return String(
+            post.id
+        );
+
+    }
+
+
+    return String(
+        post.year ||
+        post.title ||
+        "source"
+    )
+        .toLowerCase()
+        .replace(
+            /[^a-z0-9]+/g,
+            "-"
+        )
+        .replace(
+            /^-|-$/g,
+            ""
+        );
+
+}
+
+
+
+/* =========================================================
+   HTML SAFETY
+   ========================================================= */
 
 function escapeHTML(value) {
 
@@ -298,5 +788,9 @@ function escapeAttribute(value) {
 }
 
 
+
+/* =========================================================
+   START
+   ========================================================= */
 
 loadSources();
