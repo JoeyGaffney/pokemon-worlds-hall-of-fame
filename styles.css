@@ -971,3 +971,141 @@ tbody tr:hover {
     outline: 2px solid #7e9cd2;
     outline-offset: 3px;
 }
+
+/* =========================================================
+   SITE NAVIGATION
+   ========================================================= */
+
+.site-nav {
+    display: flex;
+    gap: 18px;
+    margin-top: 12px;
+}
+
+
+.site-nav a {
+    color: #555;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+
+.site-nav a:hover {
+    text-decoration: underline;
+}
+
+
+.site-nav a.active {
+    color: #111;
+}
+
+
+
+/* =========================================================
+   SOURCES
+   ========================================================= */
+
+.sources-intro {
+    max-width: 850px;
+    margin: 32px 0 40px;
+}
+
+
+.sources-intro h1 {
+    margin-bottom: 12px;
+}
+
+
+.sources-intro p {
+    line-height: 1.6;
+    color: #555;
+}
+
+
+.sources-list {
+    padding-bottom: 60px;
+}
+
+
+.source-year {
+    margin-bottom: 42px;
+}
+
+
+.source-year > h2 {
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+
+    border-bottom: 1px solid #ddd;
+}
+
+
+.source-cards {
+    display: grid;
+    gap: 12px;
+}
+
+
+.source-card {
+    padding: 18px 20px;
+
+    background: white;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+
+.source-card-heading {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+
+.source-card-heading h3 {
+    margin: 0;
+    font-size: 17px;
+}
+
+
+.source-type {
+    display: inline-block;
+
+    padding: 4px 8px;
+
+    border-radius: 999px;
+
+    background: #f1f1f1;
+
+    color: #555;
+
+    font-size: 12px;
+    font-weight: 600;
+}
+
+
+.source-notes {
+    margin: 10px 0;
+
+    color: #555;
+
+    line-height: 1.5;
+}
+
+
+.source-link {
+    display: inline-block;
+
+    margin-top: 6px;
+
+    font-weight: 600;
+
+    text-decoration: none;
+}
+
+
+.source-link:hover {
+    text-decoration: underline;
+}
