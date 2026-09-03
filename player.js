@@ -65,6 +65,10 @@ function buildBackLink() {
     );
 
 
+    /*
+     * Preserve any badge filters.
+     */
+
     params
         .getAll("badge")
         .forEach(
@@ -179,6 +183,13 @@ async function loadPlayer() {
 
 function renderPlayer(records) {
 
+    /*
+     * Sort newest year first.
+     *
+     * If multiple entries somehow exist in the
+     * same year, use division order.
+     */
+
     records.sort(
         (a, b) => {
 
@@ -212,8 +223,10 @@ function renderPlayer(records) {
 
 
     /*
-     * For now, use the newest recorded version
-     * of the player's name.
+     * DISPLAY NAME
+     *
+     * For now, use the newest recorded spelling
+     * and format it using shared.js.
      */
 
     const displayName =
@@ -223,9 +236,13 @@ function renderPlayer(records) {
 
 
     document.title =
-        `${displayName} | Pokémon TCG Worlds Hall of Fame`;
+        `${displayName} | Pokemon TCG Worlds Hall of Fame`;
 
 
+
+    /* =====================================================
+       EXACT PLACEMENTS
+       ===================================================== */
 
     const placements =
         records
@@ -240,6 +257,10 @@ function renderPlayer(records) {
             );
 
 
+    /*
+     * BEST FINISH
+     */
+
     const bestFinish =
         placements.length > 0
             ? Math.min(
@@ -248,12 +269,12 @@ function renderPlayer(records) {
             : null;
 
 
-    const championships =
-        placements.filter(
-            placement =>
-                placement === 1
-        ).length;
 
+    /*
+     * TOP 8 FINISHES
+     *
+     * Uses known exact placements only.
+     */
 
     const top8s =
         placements.filter(
@@ -262,6 +283,87 @@ function renderPlayer(records) {
         ).length;
 
 
+
+    /*
+     * TOP 32 FINISHES
+     *
+     * Recognizes both exact placements and
+     * incomplete values such as:
+     *
+     * Top 32
+     * Top 16
+     * Top 8
+     */
+
+    const top32s =
+        records.filter(
+            record =>
+                isTop32Finish(
+                    record.placement
+                )
+        ).length;
+
+
+
+    /*
+     * LONGEST QUALIFICATION / INVITE STREAK
+     *
+     * This uses WORLDS_YEARS from shared.js.
+     *
+     * Therefore:
+     *
+     * 2019 -> 2022
+     *
+     * counts as consecutive because no Worlds
+     * were held in 2020 or 2021.
+     */
+
+    const longestInviteStreak =
+        getLongestQualifierStreak(
+            records
+        );
+
+
+
+    /*
+     * BEST 3 FINISH SUM
+     *
+     * Example:
+     *
+     * 1st + 4th + 7th = 12
+     *
+     * Only known exact placements are used.
+     *
+     * If fewer than three exact placements are
+     * known, show — rather than a partial score.
+     */
+
+    const sortedPlacements = [
+        ...placements
+    ].sort(
+        (a, b) =>
+            a - b
+    );
+
+
+    const bestThreeFinishSum =
+        sortedPlacements.length >= 3
+
+            ? sortedPlacements
+                .slice(0, 3)
+                .reduce(
+                    (total, placement) =>
+                        total + placement,
+                    0
+                )
+
+            : null;
+
+
+
+    /* =====================================================
+       APPEARANCE YEARS
+       ===================================================== */
 
     const years = [
         ...new Set(
@@ -294,6 +396,10 @@ function renderPlayer(records) {
 
 
 
+    /* =====================================================
+       COUNTRIES
+       ===================================================== */
+
     const countries = [
         ...new Set(
             records
@@ -309,9 +415,9 @@ function renderPlayer(records) {
 
 
 
-    /*
-     * BADGES
-     */
+    /* =====================================================
+       BADGES
+       ===================================================== */
 
     const badges =
         calculatePlayerBadges(
@@ -351,40 +457,56 @@ function renderPlayer(records) {
 
 
 
-    /*
-     * RESULTS
-     *
-     * Qual is deliberately not shown yet.
-     */
+    /* =====================================================
+       RESULTS TABLE
+       ===================================================== */
 
     const resultRows =
         records
             .map(
-                record => `
-                    <tr>
+                record => {
 
-                        <td>
-                            ${escapeHTML(record.year)}
-                        </td>
+                    const placementDisplay =
+                        hasValue(
+                            record.placement
+                        )
+                            ? escapeHTML(
+                                record.placement
+                            )
+                            : "—";
 
-                        <td>
-                            ${escapeHTML(record.division)}
-                        </td>
 
-                        <td>
-                            ${escapeHTML(record.country)}
-                        </td>
+                    return `
+                        <tr>
 
-                        <td>
-                            ${escapeHTML(record.placement)}
-                        </td>
+                            <td>
+                                ${escapeHTML(record.year)}
+                            </td>
 
-                    </tr>
-                `
+                            <td>
+                                ${escapeHTML(record.division)}
+                            </td>
+
+                            <td>
+                                ${escapeHTML(record.country)}
+                            </td>
+
+                            <td>
+                                ${placementDisplay}
+                            </td>
+
+                        </tr>
+                    `;
+
+                }
             )
             .join("");
 
 
+
+    /* =====================================================
+       RENDER PROFILE
+       ===================================================== */
 
     profileElement.innerHTML = `
 
@@ -446,11 +568,15 @@ function renderPlayer(records) {
             <div class="stat-card">
 
                 <div class="stat-value">
-                    ${championships}
+                    ${
+                        longestInviteStreak > 0
+                            ? longestInviteStreak
+                            : "—"
+                    }
                 </div>
 
                 <div class="stat-label">
-                    World Championships
+                    Longest Invite Streak
                 </div>
 
             </div>
@@ -464,6 +590,36 @@ function renderPlayer(records) {
 
                 <div class="stat-label">
                     Top 8 Finishes
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-value">
+                    ${top32s}
+                </div>
+
+                <div class="stat-label">
+                    Top 32 Finishes
+                </div>
+
+            </div>
+
+
+            <div class="stat-card">
+
+                <div class="stat-value">
+                    ${
+                        bestThreeFinishSum !== null
+                            ? bestThreeFinishSum
+                            : "—"
+                    }
+                </div>
+
+                <div class="stat-label">
+                    Best 3 Finish Sum
                 </div>
 
             </div>
@@ -537,7 +693,103 @@ function renderPlayer(records) {
 
 
 /* =========================================================
-   ERROR
+   TOP 32 DETECTION
+   ========================================================= */
+
+function isTop32Finish(value) {
+
+    if (
+        value === null ||
+        value === undefined
+    ) {
+        return false;
+    }
+
+
+    /*
+     * Exact placement examples:
+     *
+     * 7
+     * 17
+     * 17th
+     * T17
+     */
+
+    const exactPlacement =
+        getPlacementNumber(
+            value
+        );
+
+
+    if (
+        exactPlacement !== null
+    ) {
+
+        return (
+            exactPlacement <= 32
+        );
+
+    }
+
+
+    /*
+     * Approximate placement examples:
+     *
+     * Top 8
+     * Top 16
+     * Top 32
+     */
+
+    const text =
+        String(value)
+            .trim();
+
+
+    const topMatch =
+        text.match(
+            /^top\s*(\d+)$/i
+        );
+
+
+    if (!topMatch) {
+
+        return false;
+
+    }
+
+
+    const topNumber =
+        Number(
+            topMatch[1]
+        );
+
+
+    return (
+        topNumber <= 32
+    );
+
+}
+
+
+
+/* =========================================================
+   VALUE CHECK
+   ========================================================= */
+
+function hasValue(value) {
+
+    return (
+        value !== null &&
+        value !== undefined &&
+        String(value).trim() !== ""
+    );
+
+}
+
+
+
+/* =========================================================
+   ERROR DISPLAY
    ========================================================= */
 
 function showError(message) {
