@@ -205,7 +205,7 @@
         "id": "worlds-2008",
         "year": 2008,
         "title": "2008 Pokémon TCG World Championships",
-        "subtitle": "The 2008 World Championships in Anaheim",
+        "subtitle": "The 2008 World Championships in Orlando",
         "heroImage": {
             "src": "assets/sources/2008-LOGO.png",
             "alt": "2008 Pokémon World Championships",
@@ -251,5 +251,165 @@
                 "text": "Missing any players who dropped before final round standings."
             }
         ]
-    }
+    },
+    {
+        "id": "worlds-2009",
+        "year": 2009,
+        "title": "2009 Pokémon TCG World Championships",
+        "subtitle": "The 2009 World Championships in San Diego",
+        "heroImage": {
+            "src": "assets/sources/2009-LOGO.png",
+            "alt": "2009 Pokémon World Championships",
+            "caption": "2009 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2009 World Championships records are my least complete. If you have any information please contact me at jgaffney99@gmail.com."
+            },
+            {
+                "type": "heading",
+                "text": "Standings"
+            },
+            {
+                "type": "paragraph",
+                "text": "The final standings for each age division."
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing invitee list, final standings."
+            }
+        ]
+    },
+    {
+        "id": "worlds-2010",
+        "year": 2010,
+        "title": "2010 Pokémon TCG World Championships",
+        "subtitle": "The 2010 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2010-LOGO.png",
+            "alt": "2010 Pokémon World Championships",
+            "caption": "2010 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2010 World Championships record consists of an invite list from the wayback archive."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2010-worlds-invite-list.pdf",
+                "title": "Archived 2010 World Championships invite list",
+                "description": "Archived list of invitees to the 2010 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20120516052640/http://www.pokemonworldchampionships.com/2010/standings"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing grinders info and full standings."
+            }
+        ]
+    },
+    {
+        "id": "worlds-2011",
+        "year": 2011,
+        "title": "2011 Pokémon TCG World Championships",
+        "subtitle": "The 2011 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2011-LOGO.png",
+            "alt": "2011 Pokémon World Championships",
+            "caption": "2011 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2011 World Championships record consists of an invite list from the wayback archive."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2011-worlds-invite-list.pdf",
+                "title": "Archived 2011 World Championships invite list",
+                "description": "Archived list of invitees to the 2011 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20120111212321id_/http://www.pokemonworldchampionships.com:80/2011/standings"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing grinders info and full standings."
+            }
+        ]
+    },
+    {
+        "id": "worlds-2012",
+        "year": 2012,
+        "title": "2012 Pokémon TCG World Championships",
+        "subtitle": "The 2012 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2012-LOGO.jpg",
+            "alt": "2012 Pokémon World Championships",
+            "caption": "2012 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2012 World Championships record consists of an invite list from the wayback archive and a blurry standings pic of the Masters division."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2012-worlds-invite-list.pdf",
+                "title": "Archived 2012 World Championships invite list",
+                "description": "Archived list of invitees to the 2012 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20120807173545id_/http://www.pokemonworldchampionships.com/2012/standings"
+            },
+            {
+                "type": "image",
+                "src": "assets/sources/2012-worlds-masters-standings.jpg",
+                "alt": "Archived 2012 Masters standings",
+                "caption": "Archived Masters standings from 2012.",
+                "sourceUrl": "https://x.com/cardleaders/status/234501159094722560"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing grinders info and full standings for Juniors and Seniors."
+            }
+        ]
+    },
 ]
