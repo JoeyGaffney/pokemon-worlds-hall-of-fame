@@ -445,7 +445,7 @@
             {
                 "type": "pdf",
                 "src": "assets/sources/2013-worlds-seniors-standings.pdf",
-                "title": "Archived 2013 World Championships invite list",
+                "title": "Archived 2013 World Championships Seniors Standings",
                 "description": "Archived standings from the 2013 World Championships in Seniors."
             },
             {
@@ -455,6 +455,113 @@
             {
                 "type": "paragraph",
                 "text": "Missing full standings for Juniors and Masters. Missing non-TPCi names from standings in Seniors."
+            }
+        ]
+    },
+    {
+        "id": "worlds-2014",
+        "year": 2014,
+        "title": "2014 Pokémon TCG World Championships",
+        "subtitle": "The 2014 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2014-LOGO.jpg",
+            "alt": "2014 Pokémon World Championships",
+            "caption": "2014 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2014 World Championships record consists of an invite list from the Pokemon website and standings viewable from my Pokemon Trainer Central page."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2014-worlds-invite-list.pdf",
+                "title": "Archived 2014 World Championships invite list",
+                "description": "Archived list of invitees to the 2014 World Championships.",
+                "sourceUrl": "https://www.pokemon.com/us/play-pokemon/worlds/2014/info/tcg-invitees"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2014-worlds-standings.pdf",
+                "title": "Archived 2014 World Championships Standings",
+                "description": "Archived standings from the 2014 World Championships."
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing non-TPCi names from final standings as well as linking screen names to real names."
+            }
+        ]
+    },
+    {
+        "id": "worlds-2015",
+        "year": 2015,
+        "title": "2015 Pokémon TCG World Championships",
+        "subtitle": "The 2015 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2015-LOGO.jpg",
+            "alt": "2015 Pokémon World Championships",
+            "caption": "2015 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2015 World Championships record consists of an invite list from the Pokemon website and standings from the wayback archive."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2015-worlds-invite-list.pdf",
+                "title": "Archived 2015 World Championships invite list",
+                "description": "Archived list of invitees to the 2015 World Championships.",
+                "sourceUrl": "https://www.pokemon.com/us/play-pokemon/worlds/2015/info/tcg-invitees"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2015-worlds-standings-juniors.pdf",
+                "title": "Archived 2015 World Championships Juniors Standings",
+                "description": "Archived standings from the 2015 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20151120063924/http://assets.pokemon.com/standings/us/worlds/2015/tcg/#0_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2015-worlds-standings-seniors.pdf",
+                "title": "Archived 2015 World Championships Seniors Standings",
+                "description": "Archived standings from the 2015 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20151120063924/http://assets.pokemon.com/standings/us/worlds/2015/tcg/#0_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2015-worlds-standings-masters.pdf",
+                "title": "Archived 2015 World Championships Masters Standings",
+                "description": "Archived standings from the 2015 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20151120063924/http://assets.pokemon.com/standings/us/worlds/2015/tcg/#0_0_1"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing non-TPCi names from final standings as well as linking screen names to real names."
             }
         ]
     }
