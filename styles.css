@@ -1319,6 +1319,7 @@ tbody tr:hover {
 
 .source-hero-image,
 .source-content-image {
+    max-width: 500px;
     margin:
         30px
         0;
