@@ -481,6 +481,28 @@ function renderImage(
             : "";
 
 
+    const sourceLink =
+        image.sourceUrl
+
+            ? `
+                <div class="source-image-link">
+
+                    <a
+                        href="${escapeAttribute(
+                            image.sourceUrl
+                        )}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        View original on the Wayback Machine ↗
+                    </a>
+
+                </div>
+            `
+
+            : "";
+
+
     const className =
         isHero
             ? "source-hero-image"
@@ -513,6 +535,8 @@ function renderImage(
             </a>
 
             ${caption}
+
+            ${sourceLink}
 
         </figure>
 
