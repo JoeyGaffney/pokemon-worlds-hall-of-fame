@@ -1621,3 +1621,76 @@ tbody tr:hover {
 .source-image-link a:hover {
     text-decoration: underline;
 }
+
+/* =========================================================
+   PDF SOURCE CARDS
+   ========================================================= */
+
+.source-pdf-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+
+    max-width: 720px;
+
+    margin:
+        30px
+        auto;
+
+    padding:
+        18px
+        20px;
+
+    background: #f6f7f9;
+
+    border: 1px solid #ddd;
+    border-radius: 10px;
+}
+
+
+.source-pdf-icon {
+    font-size: 30px;
+    line-height: 1;
+}
+
+
+.source-pdf-content {
+    flex: 1;
+}
+
+
+.source-pdf-content h4 {
+    margin:
+        0
+        0
+        7px;
+
+    font-size: 17px;
+}
+
+
+.source-pdf-description {
+    margin:
+        0
+        0
+        10px !important;
+
+    font-size: 14px !important;
+
+    color: #666 !important;
+}
+
+
+.source-pdf-link {
+    display: inline-block;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.source-pdf-link:hover {
+    text-decoration: underline;
+}
