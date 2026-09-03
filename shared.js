@@ -407,44 +407,137 @@ function calculatePlayerBadges(records) {
     const badges = [];
 
 
-    const placements =
-        records
-            .map(record =>
-                getPlacementNumber(
-                    record.placement
-                )
-            )
-            .filter(
-                placement =>
-                    placement !== null
-            );
-
-
-    const bestFinish =
-        placements.length > 0
-            ? Math.min(
-                ...placements
-            )
-            : null;
-
-
-
-    /* =====================================================
-       BEST FINISH BADGES
-       ===================================================== */
-
     /*
-     * These are intentionally hierarchical.
+     * -----------------------------------------------------
+     * BEST PLACEMENT FOR EACH WORLD CHAMPIONSHIP YEAR
+     * -----------------------------------------------------
      *
-     * A Champion gets Champion rather than:
+     * Placement badges are classified per year.
+     *
+     * This prevents a single Championship win from
+     * automatically granting:
      *
      * Champion
      * Finalist
      * Top 4
      * Top 8
+     *
+     * But if those accomplishments happened in DIFFERENT
+     * years, the badges can stack.
      */
 
-    if (bestFinish === 1) {
+    const yearBestPlacements =
+        new Map();
+
+
+    records.forEach(record => {
+
+        const year =
+            Number(record.year);
+
+
+        const placement =
+            getPlacementNumber(
+                record.placement
+            );
+
+
+        if (
+            isNaN(year) ||
+            placement === null
+        ) {
+            return;
+        }
+
+
+        if (
+            !yearBestPlacements.has(year) ||
+            placement <
+                yearBestPlacements.get(year)
+        ) {
+
+            yearBestPlacements.set(
+                year,
+                placement
+            );
+
+        }
+
+    });
+
+
+    const yearlyPlacements = [
+        ...yearBestPlacements.values()
+    ];
+
+
+
+    /*
+     * -----------------------------------------------------
+     * PLACEMENT ACHIEVEMENT TYPES
+     * -----------------------------------------------------
+     */
+
+    let hasChampion =
+        false;
+
+    let hasFinalist =
+        false;
+
+    let hasTop4 =
+        false;
+
+    let hasTop8 =
+        false;
+
+
+    yearlyPlacements.forEach(
+        placement => {
+
+            if (placement === 1) {
+
+                hasChampion =
+                    true;
+
+            }
+
+            else if (placement === 2) {
+
+                hasFinalist =
+                    true;
+
+            }
+
+            else if (
+                placement >= 3 &&
+                placement <= 4
+            ) {
+
+                hasTop4 =
+                    true;
+
+            }
+
+            else if (
+                placement >= 5 &&
+                placement <= 8
+            ) {
+
+                hasTop8 =
+                    true;
+
+            }
+
+        }
+    );
+
+
+
+    /*
+     * CHAMPION
+     */
+
+    if (hasChampion) {
 
         badges.push({
 
@@ -473,7 +566,15 @@ function calculatePlayerBadges(records) {
 
     }
 
-    else if (bestFinish === 2) {
+
+
+    /*
+     * FINALIST
+     *
+     * Only earned from a separate 2nd-place year.
+     */
+
+    if (hasFinalist) {
 
         badges.push({
 
@@ -502,10 +603,15 @@ function calculatePlayerBadges(records) {
 
     }
 
-    else if (
-        bestFinish !== null &&
-        bestFinish <= 4
-    ) {
+
+
+    /*
+     * TOP 4
+     *
+     * Requires a separate 3rd or 4th-place result.
+     */
+
+    if (hasTop4) {
 
         badges.push({
 
@@ -522,7 +628,7 @@ function calculatePlayerBadges(records) {
                 "badge-top4",
 
             description:
-                "Finished in the Top 4 at Worlds",
+                "Finished 3rd or 4th at a Pokémon World Championship",
 
             sortGroup:
                 30,
@@ -534,10 +640,15 @@ function calculatePlayerBadges(records) {
 
     }
 
-    else if (
-        bestFinish !== null &&
-        bestFinish <= 8
-    ) {
+
+
+    /*
+     * TOP 8
+     *
+     * Requires a separate 5th-8th-place result.
+     */
+
+    if (hasTop8) {
 
         badges.push({
 
@@ -554,7 +665,7 @@ function calculatePlayerBadges(records) {
                 "badge-top8",
 
             description:
-                "Finished in the Top 8 at Worlds",
+                "Finished between 5th and 8th at a Pokémon World Championship",
 
             sortGroup:
                 40,
@@ -568,28 +679,34 @@ function calculatePlayerBadges(records) {
 
 
 
-    /* =====================================================
-       MULTIPLE CHAMPIONSHIPS
-       ===================================================== */
+    /*
+     * -----------------------------------------------------
+     * MULTIPLE CHAMPIONSHIPS
+     * -----------------------------------------------------
+     */
 
     const championshipCount =
-        placements.filter(
+        yearlyPlacements.filter(
             placement =>
                 placement === 1
         ).length;
 
 
+    /*
+     * Exactly two Championships.
+     */
+
     if (
-        championshipCount >= 2
+        championshipCount === 2
     ) {
 
         badges.push({
 
             key:
-                `champion-count-${championshipCount}`,
+                "double-champion",
 
             label:
-                `${championshipCount}x Champion`,
+                "Double Champion",
 
             icon:
                 "👑",
@@ -598,13 +715,13 @@ function calculatePlayerBadges(records) {
                 "badge-champion",
 
             description:
-                `Won ${championshipCount} World Championships`,
+                "Won two Pokémon World Championships",
 
             sortGroup:
                 50,
 
             sortValue:
-                championshipCount
+                2
 
         });
 
@@ -612,12 +729,64 @@ function calculatePlayerBadges(records) {
 
 
 
-    /* =====================================================
-       MULTIPLE TOP 8 FINISHES
-       ===================================================== */
+    /*
+     * Three or more Championships.
+     *
+     * Someone who reaches three Championships
+     * receives Triple Crown instead of
+     * Double Champion.
+     */
+
+    if (
+        championshipCount >= 3
+    ) {
+
+        badges.push({
+
+            key:
+                "triple-crown",
+
+            label:
+                "Triple Crown",
+
+            icon:
+                "🐐",
+
+            className:
+                "badge-champion",
+
+            description:
+                "Won at least three Pokémon World Championships",
+
+            sortGroup:
+                50,
+
+            sortValue:
+                3
+
+        });
+
+    }
+
+
+
+    /*
+     * -----------------------------------------------------
+     * MULTIPLE TOP 8
+     * -----------------------------------------------------
+     *
+     * Any finish from 1st through 8th counts.
+     *
+     * This replaces:
+     *
+     * 2x Top 8
+     * 3x Top 8
+     * 4x Top 8
+     * etc.
+     */
 
     const top8Count =
-        placements.filter(
+        yearlyPlacements.filter(
             placement =>
                 placement <= 8
         ).length;
@@ -630,10 +799,10 @@ function calculatePlayerBadges(records) {
         badges.push({
 
             key:
-                `top8-count-${top8Count}`,
+                "multiple-top8",
 
             label:
-                `${top8Count}x Top 8`,
+                "Multiple Top 8",
 
             icon:
                 "✨",
@@ -642,7 +811,7 @@ function calculatePlayerBadges(records) {
                 "badge-top8",
 
             description:
-                `Recorded ${top8Count} World Championship Top 8 finishes`,
+                "Recorded multiple World Championship Top 8 finishes",
 
             sortGroup:
                 60,
@@ -656,9 +825,11 @@ function calculatePlayerBadges(records) {
 
 
 
-    /* =====================================================
-       QUALIFIER STREAK
-       ===================================================== */
+    /*
+     * -----------------------------------------------------
+     * QUALIFIER STREAK
+     * -----------------------------------------------------
+     */
 
     const qualifierStreak =
         getLongestQualifierStreak(
@@ -699,9 +870,11 @@ function calculatePlayerBadges(records) {
 
 
 
-    /* =====================================================
-       WORLDS APPEARANCE MILESTONES
-       ===================================================== */
+    /*
+     * -----------------------------------------------------
+     * WORLDS APPEARANCE MILESTONES
+     * -----------------------------------------------------
+     */
 
     const years = [
         ...new Set(
@@ -717,13 +890,7 @@ function calculatePlayerBadges(records) {
 
 
     /*
-     * These are cumulative milestone badges.
-     *
-     * A player with 16 Worlds appearances gets:
-     *
-     * 5x Worlds Competitor
-     * 10x Worlds Competitor
-     * 15x Worlds Competitor
+     * Cumulative milestones.
      */
 
     const worldsMilestones = [
@@ -773,23 +940,59 @@ function calculatePlayerBadges(records) {
 
 
 
-    /* =====================================================
-       MULTIPLE DIVISIONS
-       ===================================================== */
+    /*
+     * -----------------------------------------------------
+     * AGE DIVISIONS
+     * -----------------------------------------------------
+     */
 
-    const divisions = [
-        ...new Set(
+    const divisions =
+        new Set(
             records
                 .map(record =>
                     record.division
                 )
                 .filter(Boolean)
-        )
-    ];
+        );
 
+
+    const competedJuniors =
+        divisions.has(
+            "Juniors"
+        );
+
+
+    const competedSeniors =
+        divisions.has(
+            "Seniors"
+        );
+
+
+    const competedMasters =
+        divisions.has(
+            "Masters"
+        );
+
+
+    const competedAllDivisions =
+        (
+            competedJuniors &&
+            competedSeniors &&
+            competedMasters
+        );
+
+
+    /*
+     * Two age divisions.
+     *
+     * If they've competed in all three, we give
+     * them the more prestigious All Age Divisions
+     * badge instead of both.
+     */
 
     if (
-        divisions.length >= 2
+        divisions.size >= 2 &&
+        !competedAllDivisions
     ) {
 
         badges.push({
@@ -807,13 +1010,50 @@ function calculatePlayerBadges(records) {
                 "badge-division",
 
             description:
-                `Competed in ${divisions.length} different age divisions`,
+                "Competed in multiple age divisions",
 
             sortGroup:
                 90,
 
             sortValue:
-                divisions.length
+                divisions.size
+
+        });
+
+    }
+
+
+
+    /*
+     * JUNIORS + SENIORS + MASTERS
+     */
+
+    if (
+        competedAllDivisions
+    ) {
+
+        badges.push({
+
+            key:
+                "all-age-divisions",
+
+            label:
+                "All Age Divisions",
+
+            icon:
+                "🌟",
+
+            className:
+                "badge-division",
+
+            description:
+                "Competed at Worlds in Juniors, Seniors, and Masters",
+
+            sortGroup:
+                90,
+
+            sortValue:
+                3
 
         });
 
