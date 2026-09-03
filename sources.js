@@ -498,7 +498,7 @@ function renderImage(
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        View original on the Wayback Machine ↗
+                        View original Source ↗
                     </a>
 
                 </div>
