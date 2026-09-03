@@ -329,7 +329,7 @@
         "id": "worlds-2011",
         "year": 2011,
         "title": "2011 Pokémon TCG World Championships",
-        "subtitle": "The 2011 World Championships in Hawaii",
+        "subtitle": "The 2011 World Championships in San Diego",
         "heroImage": {
             "src": "assets/sources/2011-LOGO.png",
             "alt": "2011 Pokémon World Championships",
@@ -416,7 +416,7 @@
         "id": "worlds-2013",
         "year": 2013,
         "title": "2013 Pokémon TCG World Championships",
-        "subtitle": "The 2013 World Championships in Hawaii",
+        "subtitle": "The 2013 World Championships in Vancouver",
         "heroImage": {
             "src": "assets/sources/2013-LOGO.jpg",
             "alt": "2013 Pokémon World Championships",
@@ -462,7 +462,7 @@
         "id": "worlds-2014",
         "year": 2014,
         "title": "2014 Pokémon TCG World Championships",
-        "subtitle": "The 2014 World Championships in Hawaii",
+        "subtitle": "The 2014 World Championships in DC",
         "heroImage": {
             "src": "assets/sources/2014-LOGO.jpg",
             "alt": "2014 Pokémon World Championships",
@@ -508,7 +508,7 @@
         "id": "worlds-2015",
         "year": 2015,
         "title": "2015 Pokémon TCG World Championships",
-        "subtitle": "The 2015 World Championships in Hawaii",
+        "subtitle": "The 2015 World Championships in Boston",
         "heroImage": {
             "src": "assets/sources/2015-LOGO.jpg",
             "alt": "2015 Pokémon World Championships",
@@ -569,9 +569,9 @@
         "id": "worlds-2016",
         "year": 2016,
         "title": "2016 Pokémon TCG World Championships",
-        "subtitle": "The 2016 World Championships in Hawaii",
+        "subtitle": "The 2016 World Championships in San Francisco",
         "heroImage": {
-            "src": "assets/sources/2016-LOGO.jpg",
+            "src": "assets/sources/2016-LOGO.png",
             "alt": "2016 Pokémon World Championships",
             "caption": "2016 Pokémon TCG World Championships."
         },
@@ -608,7 +608,7 @@
         "id": "worlds-2017",
         "year": 2017,
         "title": "2017 Pokémon TCG World Championships",
-        "subtitle": "The 2017 World Championships in Hawaii",
+        "subtitle": "The 2017 World Championships in Anaheim",
         "heroImage": {
             "src": "assets/sources/2017-LOGO.jpg",
             "alt": "2017 Pokémon World Championships",
@@ -683,9 +683,9 @@
         "id": "worlds-2018",
         "year": 2018,
         "title": "2018 Pokémon TCG World Championships",
-        "subtitle": "The 2018 World Championships in Hawaii",
+        "subtitle": "The 2018 World Championships in Nashville",
         "heroImage": {
-            "src": "assets/sources/2018-LOGO.jpg",
+            "src": "assets/sources/2018-LOGO.png",
             "alt": "2018 Pokémon World Championships",
             "caption": "2018 Pokémon TCG World Championships."
         },
@@ -737,7 +737,7 @@
         "id": "worlds-2019",
         "year": 2019,
         "title": "2019 Pokémon TCG World Championships",
-        "subtitle": "The 2019 World Championships in Hawaii",
+        "subtitle": "The 2019 World Championships in DC",
         "heroImage": {
             "src": "assets/sources/2019-LOGO.jpg",
             "alt": "2019 Pokémon World Championships",
