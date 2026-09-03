@@ -807,6 +807,195 @@
                 "text": "Complete Record"
             }
         ]
+    },
+    {
+        "id": "worlds-2022",
+        "year": 2022,
+        "title": "2022 Pokémon TCG World Championships",
+        "subtitle": "The 2022 World Championships in London",
+        "heroImage": {
+            "src": "assets/sources/2022-LOGO.jpg",
+            "alt": "2022 Pokémon World Championships",
+            "caption": "2022 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2022 World Championships record consists of standings from rk9."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2022-worlds-standings-masters.pdf",
+                "title": "Archived 2022 World Championships Masters Standings",
+                "description": "Archived standings from the 2022 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/worlds-2022-tcg"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2022-worlds-standings-seniors.pdf",
+                "title": "Archived 2022 World Championships Seniors Standings",
+                "description": "Archived standings from the 2022 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/worlds-2022-tcg"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2022-worlds-standings-juniors.pdf",
+                "title": "Archived 2022 World Championships Juniors Standings",
+                "description": "Archived standings from the 2022 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/worlds-2022-tcg"
+            }
+        ]
+    },
+    {
+        "id": "worlds-2023",
+        "year": 2023,
+        "title": "2023 Pokémon TCG World Championships",
+        "subtitle": "The 2023 World Championships in Yokohama",
+        "heroImage": {
+            "src": "assets/sources/2023-LOGO.jpg",
+            "alt": "2023 Pokémon World Championships",
+            "caption": "2023 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2023 World Championships record consists of standings from rk9."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2023-worlds-standings-masters.pdf",
+                "title": "Archived 2023 World Championships Masters Standings",
+                "description": "Archived standings from the 2023 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WO231XX4Zap22aDmHqRH"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2023-worlds-standings-seniors.pdf",
+                "title": "Archived 2023 World Championships Seniors Standings",
+                "description": "Archived standings from the 2023 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WO231XX4Zap22aDmHqRH"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2023-worlds-standings-juniors.pdf",
+                "title": "Archived 2023 World Championships Juniors Standings",
+                "description": "Archived standings from the 2023 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WO231XX4Zap22aDmHqRH"
+            }
+        ]
+    },
+    {
+        "id": "worlds-2024",
+        "year": 2024,
+        "title": "2024 Pokémon TCG World Championships",
+        "subtitle": "The 2024 World Championships in Honolulu",
+        "heroImage": {
+            "src": "assets/sources/2024-LOGO.jpg",
+            "alt": "2024 Pokémon World Championships",
+            "caption": "2024 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2024 World Championships record consists of standings from rk9."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2024-worlds-standings-masters.pdf",
+                "title": "Archived 2024 World Championships Masters Standings",
+                "description": "Archived standings from the 2024 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01mIMYt8if4wVuaO0"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2024-worlds-standings-seniors.pdf",
+                "title": "Archived 2024 World Championships Seniors Standings",
+                "description": "Archived standings from the 2024 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01mIMYt8if4wVuaO0"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2024-worlds-standings-juniors.pdf",
+                "title": "Archived 2024 World Championships Juniors Standings",
+                "description": "Archived standings from the 2024 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01mIMYt8if4wVuaO0"
+            }
+        ]
+    },
+    {
+        "id": "worlds-2025",
+        "year": 2025,
+        "title": "2025 Pokémon TCG World Championships",
+        "subtitle": "The 2025 World Championships in Anaheim",
+        "heroImage": {
+            "src": "assets/sources/2025-LOGO.jpg",
+            "alt": "2025 Pokémon World Championships",
+            "caption": "2025 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2025 World Championships record consists of standings from rk9."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2025-worlds-standings-masters.pdf",
+                "title": "Archived 2025 World Championships Masters Standings",
+                "description": "Archived standings from the 2025 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01w2Vf7wv855Yvhir"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2025-worlds-standings-seniors.pdf",
+                "title": "Archived 2025 World Championships Seniors Standings",
+                "description": "Archived standings from the 2025 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01w2Vf7wv855Yvhir"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2025-worlds-standings-juniors.pdf",
+                "title": "Archived 2025 World Championships Juniors Standings",
+                "description": "Archived standings from the 2025 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01w2Vf7wv855Yvhir"
+            }
+        ]
+    },
+    {
+        "id": "worlds-2026",
+        "year": 2026,
+        "title": "2026 Pokémon TCG World Championships",
+        "subtitle": "The 2026 World Championships in San Francisco",
+        "heroImage": {
+            "src": "assets/sources/2026-LOGO.jpg",
+            "alt": "2026 Pokémon World Championships",
+            "caption": "2026 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2026 World Championships record consists of standings from rk9."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2026-worlds-standings-masters.pdf",
+                "title": "Archived 2026 World Championships Masters Standings",
+                "description": "Archived standings from the 2026 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01wI9lfI55wHtvrdy"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2026-worlds-standings-seniors.pdf",
+                "title": "Archived 2026 World Championships Seniors Standings",
+                "description": "Archived standings from the 2026 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01wI9lfI55wHtvrdy"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2026-worlds-standings-juniors.pdf",
+                "title": "Archived 2026 World Championships Juniors Standings",
+                "description": "Archived standings from the 2026 World Championships.",
+                "sourceUrl": "https://rk9.gg/pairings/WCS01wI9lfI55wHtvrdy"
+            }
+        ]
     }
-    
 ]
