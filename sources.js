@@ -408,7 +408,11 @@ function renderContentBlock(block) {
 
             `;
 
-
+        case "pdf":
+            return renderPDF(
+                block
+            );
+            
         case "quote":
 
             return `
@@ -728,7 +732,77 @@ function renderInlineLinks(text) {
 
 }
 
+/* =========================================================
+   PDF
+   ========================================================= */
 
+function renderPDF(pdf) {
+
+    if (
+        !pdf ||
+        !pdf.src
+    ) {
+        return "";
+    }
+
+
+    const title =
+        escapeHTML(
+            pdf.title ||
+            "PDF Document"
+        );
+
+
+    const description =
+        pdf.description
+
+            ? `
+                <p class="source-pdf-description">
+                    ${escapeHTML(
+                        pdf.description
+                    )}
+                </p>
+            `
+
+            : "";
+
+
+    return `
+
+        <div class="source-pdf-card">
+
+            <div class="source-pdf-icon">
+                📄
+            </div>
+
+
+            <div class="source-pdf-content">
+
+                <h4>
+                    ${title}
+                </h4>
+
+                ${description}
+
+
+                <a
+                    href="${escapeAttribute(
+                        pdf.src
+                    )}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="source-pdf-link"
+                >
+                    View PDF ↗
+                </a>
+
+            </div>
+
+        </div>
+
+    `;
+
+}
 
 /* =========================================================
    ARTICLE ID
