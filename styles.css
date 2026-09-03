@@ -1694,3 +1694,32 @@ tbody tr:hover {
 .source-pdf-link:hover {
     text-decoration: underline;
 }
+
+.source-pdf-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+
+.source-pdf-link,
+.source-pdf-secondary-link {
+    display: inline-block;
+
+    font-size: 14px;
+    font-weight: 700;
+
+    text-decoration: none;
+}
+
+
+.source-pdf-link:hover,
+.source-pdf-secondary-link:hover {
+    text-decoration: underline;
+}
+
+
+.source-pdf-secondary-link {
+    color: #555;
+}
