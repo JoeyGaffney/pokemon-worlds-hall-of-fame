@@ -51,3 +51,58 @@
         ],
     }
 ]
+
+[
+    {
+        "id": "worlds-2005",
+        "year": 2005,
+        "title": "2005 Pokémon TCG World Championships",
+        "subtitle": "Worlds in San Diego",
+        "heroImage": {
+            "src": "assets/sources/2005-LOGO.png",
+            "alt": "2005 Pokémon World Championships",
+            "caption": "2005 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2005 World Championships actually has preserved full standings for each age division. I discovered these on the wayback archive after doing a deep search through hundreds of files and finding a workaround to load pages."
+            },
+            {
+                "type": "heading",
+                "text": "Standings"
+            },
+            {
+                "type": "paragraph",
+                "text": "The archived standings page contained competitor names, countries, divisions, and tournament results. This information was used as the primary source for the 2005 database entries."
+            },
+            {
+                "type": "image",
+                "src": "assets/sources/2004-worlds-juniors.png",
+                "alt": "Archived 2004 World Championships Juniors standings",
+                "caption": "Archived Juniors standings from the 2004 World Championships."
+            },
+            {
+                "type": "image",
+                "src": "assets/sources/2004-worlds-seniors-bracket.png",
+                "alt": "Archived 2004 World Championships Seniors standings",
+                "caption": "Archived Seniors standings from the 2004 World Championships."
+            },
+            {
+                "type": "image",
+                "src": "assets/sources/2004-worlds-masters-bracket.png",
+                "alt": "Archived 2004 World Championships Masters standings",
+                "caption": "Archived Masters standings from the 2004 World Championships."
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing from this year is players who had dropped from the tournament before the end of eight rounds."
+            },
+        ],
+    }
+]
+
