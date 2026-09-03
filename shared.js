@@ -481,43 +481,72 @@ function calculatePlayerBadges(records) {
      * WORLDS APPEARANCES
      */
 
-    const years = [
-        ...new Set(
-            records
-                .map(record =>
-                    Number(record.year)
-                )
-                .filter(year =>
-                    !isNaN(year)
-                )
-        )
-    ];
+    /*
+ * WORLDS APPEARANCE MILESTONES
+ *
+ * These badges are cumulative.
+ *
+ * Example:
+ * 12 appearances earns both
+ * 5x and 10x Worlds Competitor.
+ */
+
+const years = [
+    ...new Set(
+        records
+            .map(record =>
+                Number(record.year)
+            )
+            .filter(year =>
+                !isNaN(year)
+            )
+    )
+];
 
 
-    if (years.length >= 3) {
+const worldsMilestones = [
+    5,
+    10,
+    15,
+    20
+];
 
-        badges.push({
-            key:
-                `worlds-count-${years.length}`,
 
-            label:
-                `${years.length}x Worlds Competitor`,
+worldsMilestones.forEach(
+    milestone => {
 
-            icon: "🌎",
+        if (
+            years.length >= milestone
+        ) {
 
-            className:
-                "badge-worlds",
+            badges.push({
 
-            description:
-                `Competed at Worlds in ${years.length} different years`,
+                key:
+                    `worlds-count-${milestone}`,
 
-            sortGroup: 80,
+                label:
+                    `${milestone}x Worlds Competitor`,
 
-            sortValue:
-                years.length
-        });
+                icon:
+                    "🌎",
+
+                className:
+                    "badge-worlds",
+
+                description:
+                    `Competed at Worlds in at least ${milestone} different years`,
+
+                sortGroup:
+                    80,
+
+                sortValue:
+                    milestone
+            });
+
+        }
 
     }
+);
 
 
 
