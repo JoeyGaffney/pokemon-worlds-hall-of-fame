@@ -76,20 +76,20 @@
             {
                 "type": "pdf",
                 "src": "assets/sources/2005-worlds-juniors-standings.pdf",
-                "alt": "Archived 2005 World Championships Juniors standings",
-                "caption": "Archived Juniors standings from the 2005 World Championships."
+                "title": "Archived 2005 World Championships Juniors standings",
+                "description": "Archived Juniors standings from the 2005 World Championships."
             },
             {
-                "type": "image",
+                "type": "pdf",
                 "src": "assets/sources/2005-worlds-seniors-standings.pdf",
-                "alt": "Archived 2005 World Championships Seniors standings",
-                "caption": "Archived Seniors standings from the 2005 World Championships."
+                "title": "Archived 2005 World Championships Seniors standings",
+                "description": "Archived Seniors standings from the 2005 World Championships."
             },
             {
-                "type": "image",
+                "type": "pdf",
                 "src": "assets/sources/2005-worlds-masters-standings.pdf",
-                "alt": "Archived 2005 World Championships Masters standings",
-                "caption": "Archived Masters standings from the 2005 World Championships."
+                "title": "Archived 2005 World Championships Masters standings",
+                "description": "Archived Masters standings from the 2005 World Championships."
             },
             {
                 "type": "heading",
