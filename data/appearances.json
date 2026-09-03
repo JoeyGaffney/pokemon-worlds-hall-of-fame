@@ -8393,7 +8393,7 @@
     "division": "Masters",
     "name": "Jason Klaczynski",
     "country": "US",
-    "placement": "",
+    "placement": 1,
     "qual": "Gym Challenge"
   },
   {
@@ -32679,6 +32679,15 @@
     "qual": ""
   },
   {
+    "player_id": "p004936",
+    "year": 2013,
+    "division": "Masters",
+    "name": "Jason Klaczynski",
+    "country": "US",
+    "placement": 1,
+    "qual": ""
+  },
+  {
     "player_id": "p008909",
     "year": 2014,
     "division": "Juniors",
@@ -49829,7 +49838,7 @@
     "division": "Seniors",
     "name": "Zachary Bokhari",
     "country": "US",
-    "placement": 1,
+    "placement": "1899-12-31T08:00:00.000Z",
     "qual": ""
   },
   {
@@ -49838,7 +49847,7 @@
     "division": "Seniors",
     "name": "Michael Long",
     "country": "CA",
-    "placement": "1900-01-01T08:00:00.000Z",
+    "placement": 2,
     "qual": ""
   },
   {
@@ -107717,7 +107726,7 @@
     "division": "Seniors",
     "name": "Anthem M.",
     "country": "US",
-    "placement": 37,
+    "placement": "1900-02-05T08:00:00.000Z",
     "qual": ""
   },
   {
@@ -107726,7 +107735,7 @@
     "division": "Seniors",
     "name": "Marcelo R.",
     "country": "BR",
-    "placement": "1900-02-06T08:00:00.000Z",
+    "placement": 38,
     "qual": ""
   },
   {
