@@ -814,7 +814,7 @@
         "title": "2022 Pokémon TCG World Championships",
         "subtitle": "The 2022 World Championships in London",
         "heroImage": {
-            "src": "assets/sources/2022-LOGO.jpg",
+            "src": "assets/sources/2022-LOGO.png",
             "alt": "2022 Pokémon World Championships",
             "caption": "2022 Pokémon TCG World Championships."
         },
@@ -852,7 +852,7 @@
         "title": "2023 Pokémon TCG World Championships",
         "subtitle": "The 2023 World Championships in Yokohama",
         "heroImage": {
-            "src": "assets/sources/2023-LOGO.jpg",
+            "src": "assets/sources/2023-LOGO.png",
             "alt": "2023 Pokémon World Championships",
             "caption": "2023 Pokémon TCG World Championships."
         },
@@ -890,7 +890,7 @@
         "title": "2024 Pokémon TCG World Championships",
         "subtitle": "The 2024 World Championships in Honolulu",
         "heroImage": {
-            "src": "assets/sources/2024-LOGO.jpg",
+            "src": "assets/sources/2024-LOGO.png",
             "alt": "2024 Pokémon World Championships",
             "caption": "2024 Pokémon TCG World Championships."
         },
@@ -928,7 +928,7 @@
         "title": "2025 Pokémon TCG World Championships",
         "subtitle": "The 2025 World Championships in Anaheim",
         "heroImage": {
-            "src": "assets/sources/2025-LOGO.jpg",
+            "src": "assets/sources/2025-LOGO.png",
             "alt": "2025 Pokémon World Championships",
             "caption": "2025 Pokémon TCG World Championships."
         },
@@ -966,7 +966,7 @@
         "title": "2026 Pokémon TCG World Championships",
         "subtitle": "The 2026 World Championships in San Francisco",
         "heroImage": {
-            "src": "assets/sources/2026-LOGO.jpg",
+            "src": "assets/sources/2026-LOGO.png",
             "alt": "2026 Pokémon World Championships",
             "caption": "2026 Pokémon TCG World Championships."
         },
