@@ -411,5 +411,51 @@
                 "text": "Missing grinders info and full standings for Juniors and Seniors."
             }
         ]
+    },
+    {
+        "id": "worlds-2013",
+        "year": 2013,
+        "title": "2013 Pokémon TCG World Championships",
+        "subtitle": "The 2013 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2013-LOGO.jpg",
+            "alt": "2013 Pokémon World Championships",
+            "caption": "2013 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2013 World Championships record consists of an invite list from the wayback archive and standings viewable from my Pokemon Trainer Central page."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2013-worlds-invite-list.pdf",
+                "title": "Archived 2013 World Championships invite list",
+                "description": "Archived list of invitees to the 2013 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20140209201309id_/http://www.pokemonworldchampionships.com/2013/worlds/players"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2013-worlds-seniors-standings.pdf",
+                "title": "Archived 2013 World Championships invite list",
+                "description": "Archived standings from the 2013 World Championships in Seniors.",
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing full standings for Juniors and Masters. Missing non-TPCi names from standings in Seniors."
+            }
+        ]
     }
 ]
