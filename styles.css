@@ -881,3 +881,93 @@ tbody tr:hover {
     }
 
 }
+
+/* =========================================================
+   DISPLAYED COLUMN OPTIONS
+   ========================================================= */
+
+.column-filter-group {
+    grid-column: 1 / -1;
+}
+
+
+.column-filter-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+
+.column-filter-option {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+
+    padding: 8px 11px;
+
+    border: 1px solid #ddd;
+    border-radius: 999px;
+
+    background: white;
+
+    font-size: 13px;
+
+    cursor: pointer;
+
+    user-select: none;
+}
+
+
+.column-filter-option:hover {
+    border-color: #aaa;
+}
+
+
+.column-filter-option:has(input:checked) {
+    background: #eef3ff;
+    border-color: #8fa8dc;
+}
+
+
+.column-filter-option:has(input:disabled) {
+    opacity: 0.7;
+    cursor: default;
+}
+
+
+.column-filter-option input {
+    margin: 0;
+}
+
+
+/* =========================================================
+   SORTABLE TABLE HEADERS
+   ========================================================= */
+
+.table-sort-button {
+    padding: 0;
+
+    border: 0;
+
+    background: transparent;
+
+    color: inherit;
+
+    font: inherit;
+    font-weight: 700;
+
+    cursor: pointer;
+
+    white-space: nowrap;
+}
+
+
+.table-sort-button:hover {
+    text-decoration: underline;
+}
+
+
+.table-sort-button:focus-visible {
+    outline: 2px solid #7e9cd2;
+    outline-offset: 3px;
+}
