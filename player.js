@@ -41,7 +41,9 @@ function buildBackLink() {
         "year",
         "division",
         "country",
-        "preset"
+        "preset",
+        "sort",
+        "dir"
     ];
 
 
@@ -66,7 +68,7 @@ function buildBackLink() {
 
 
     /*
-     * Preserve any badge filters.
+     * Preserve badge filters.
      */
 
     params
@@ -77,6 +79,24 @@ function buildBackLink() {
                 backParams.append(
                     "badge",
                     badgeKey
+                );
+
+            }
+        );
+
+
+    /*
+     * Preserve displayed columns.
+     */
+
+    params
+        .getAll("col")
+        .forEach(
+            columnKey => {
+
+                backParams.append(
+                    "col",
+                    columnKey
                 );
 
             }
@@ -183,13 +203,6 @@ async function loadPlayer() {
 
 function renderPlayer(records) {
 
-    /*
-     * Sort newest year first.
-     *
-     * If multiple entries somehow exist in the
-     * same year, use division order.
-     */
-
     records.sort(
         (a, b) => {
 
@@ -199,9 +212,7 @@ function renderPlayer(records) {
 
 
             if (yearDifference !== 0) {
-
                 return yearDifference;
-
             }
 
 
@@ -222,13 +233,6 @@ function renderPlayer(records) {
 
 
 
-    /*
-     * DISPLAY NAME
-     *
-     * For now, use the newest recorded spelling
-     * and format it using shared.js.
-     */
-
     const displayName =
         formatPlayerName(
             records[0].name
@@ -239,10 +243,6 @@ function renderPlayer(records) {
         `${displayName} | Pokemon TCG Worlds Hall of Fame`;
 
 
-
-    /* =====================================================
-       EXACT PLACEMENTS
-       ===================================================== */
 
     const placements =
         records
@@ -257,9 +257,6 @@ function renderPlayer(records) {
             );
 
 
-    /*
-     * BEST FINISH
-     */
 
     const bestFinish =
         placements.length > 0
@@ -270,12 +267,6 @@ function renderPlayer(records) {
 
 
 
-    /*
-     * TOP 8 FINISHES
-     *
-     * Uses known exact placements only.
-     */
-
     const top8s =
         placements.filter(
             placement =>
@@ -283,17 +274,6 @@ function renderPlayer(records) {
         ).length;
 
 
-
-    /*
-     * TOP 32 FINISHES
-     *
-     * Recognizes both exact placements and
-     * incomplete values such as:
-     *
-     * Top 32
-     * Top 16
-     * Top 8
-     */
 
     const top32s =
         records.filter(
@@ -305,38 +285,12 @@ function renderPlayer(records) {
 
 
 
-    /*
-     * LONGEST QUALIFICATION / INVITE STREAK
-     *
-     * This uses WORLDS_YEARS from shared.js.
-     *
-     * Therefore:
-     *
-     * 2019 -> 2022
-     *
-     * counts as consecutive because no Worlds
-     * were held in 2020 or 2021.
-     */
-
     const longestInviteStreak =
         getLongestQualifierStreak(
             records
         );
 
 
-
-    /*
-     * BEST 3 FINISH SUM
-     *
-     * Example:
-     *
-     * 1st + 4th + 7th = 12
-     *
-     * Only known exact placements are used.
-     *
-     * If fewer than three exact placements are
-     * known, show — rather than a partial score.
-     */
 
     const sortedPlacements = [
         ...placements
@@ -360,10 +314,6 @@ function renderPlayer(records) {
             : null;
 
 
-
-    /* =====================================================
-       APPEARANCE YEARS
-       ===================================================== */
 
     const years = [
         ...new Set(
@@ -396,10 +346,6 @@ function renderPlayer(records) {
 
 
 
-    /* =====================================================
-       COUNTRIES
-       ===================================================== */
-
     const countries = [
         ...new Set(
             records
@@ -414,10 +360,6 @@ function renderPlayer(records) {
     ];
 
 
-
-    /* =====================================================
-       BADGES
-       ===================================================== */
 
     const badges =
         calculatePlayerBadges(
@@ -456,10 +398,6 @@ function renderPlayer(records) {
             : "";
 
 
-
-    /* =====================================================
-       RESULTS TABLE
-       ===================================================== */
 
     const resultRows =
         records
@@ -503,10 +441,6 @@ function renderPlayer(records) {
             .join("");
 
 
-
-    /* =====================================================
-       RENDER PROFILE
-       ===================================================== */
 
     profileElement.innerHTML = `
 
@@ -706,15 +640,6 @@ function isTop32Finish(value) {
     }
 
 
-    /*
-     * Exact placement examples:
-     *
-     * 7
-     * 17
-     * 17th
-     * T17
-     */
-
     const exactPlacement =
         getPlacementNumber(
             value
@@ -732,14 +657,6 @@ function isTop32Finish(value) {
     }
 
 
-    /*
-     * Approximate placement examples:
-     *
-     * Top 8
-     * Top 16
-     * Top 32
-     */
-
     const text =
         String(value)
             .trim();
@@ -752,20 +669,14 @@ function isTop32Finish(value) {
 
 
     if (!topMatch) {
-
         return false;
-
     }
 
 
-    const topNumber =
+    return (
         Number(
             topMatch[1]
-        );
-
-
-    return (
-        topNumber <= 32
+        ) <= 32
     );
 
 }
@@ -789,7 +700,7 @@ function hasValue(value) {
 
 
 /* =========================================================
-   ERROR DISPLAY
+   ERROR
    ========================================================= */
 
 function showError(message) {
