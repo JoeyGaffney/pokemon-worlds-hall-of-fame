@@ -26,21 +26,21 @@
                 "type": "image",
                 "src": "assets/sources/2004-worlds-juniors.png",
                 "alt": "Archived 2004 World Championships Juniors standings",
-                "caption": "Archived Juniors standings from the 2004 World Championships."
+                "caption": "Archived Juniors standings from the 2004 World Championships.",
                 "sourceUrl": "https://web.archive.org/web/20060104165000/http://op.pokemon-tcg.com/content/events/faqs/2003-2004/worlds/15over32cut.asp"
             },
             {
                 "type": "image",
                 "src": "assets/sources/2004-worlds-seniors-bracket.png",
                 "alt": "Archived 2004 World Championships Seniors standings",
-                "caption": "Archived Seniors standings from the 2004 World Championships."
+                "caption": "Archived Seniors standings from the 2004 World Championships.",
                 "sourceUrl": "https://web.archive.org/web/20060104160255/http://op.pokemon-tcg.com/content/events/faqs/2003-2004/worlds/11to1432cut.asp"
             },
             {
                 "type": "image",
                 "src": "assets/sources/2004-worlds-masters-bracket.png",
                 "alt": "Archived 2004 World Championships Masters standings",
-                "caption": "Archived Masters standings from the 2004 World Championships."
+                "caption": "Archived Masters standings from the 2004 World Championships.",
                  "sourceUrl": "https://web.archive.org/web/20060104165000/http://op.pokemon-tcg.com/content/events/faqs/2003-2004/worlds/15over32cut.asp"
             },
             {
@@ -80,21 +80,21 @@
                 "type": "pdf",
                 "src": "assets/sources/2005-worlds-juniors-standings.pdf",
                 "title": "Archived 2005 World Championships Juniors standings",
-                "description": "Archived Juniors standings from the 2005 World Championships."
+                "description": "Archived Juniors standings from the 2005 World Championships.",
                 "sourceUrl": "https://web.archive.org/web/20051216051344/http://www.op.pokemon-tcg.com/content/events/faqs/2004-2005/worlds/brackets/standings_10-.pdf"
             },
             {
                 "type": "pdf",
                 "src": "assets/sources/2005-worlds-seniors-standings.pdf",
                 "title": "Archived 2005 World Championships Seniors standings",
-                "description": "Archived Seniors standings from the 2005 World Championships."
+                "description": "Archived Seniors standings from the 2005 World Championships.",
                 "sourceUrl": "https://web.archive.org/web/20051216045533/http://www.op.pokemon-tcg.com/content/events/faqs/2004-2005/worlds/brackets/standings_11-14.pdf"
             },
             {
                 "type": "pdf",
                 "src": "assets/sources/2005-worlds-masters-standings.pdf",
                 "title": "Archived 2005 World Championships Masters standings",
-                "description": "Archived Masters standings from the 2005 World Championships."
+                "description": "Archived Masters standings from the 2005 World Championships.",
                 "sourceUrl": "https://web.archive.org/web/20060104234556/http://op.pokemon-tcg.com/content/events/faqs/2004-2005/worlds/brackets/standings_15+.pdf"
             },
             {
@@ -134,15 +134,15 @@
                 "type": "pdf",
                 "src": "assets/sources/2006-worlds-invite-list.pdf",
                 "title": "Archived 2006 World Championships invite list",
-                "description": "Archived list of invitees to the 2006 World Championships."
+                "description": "Archived list of invitees to the 2006 World Championships.",
                 "sourceUrl": "https://web.archive.org/web/20061114191847/http://www.op.pokemon-tcg.com:80/content/events/faqs/2005-2006/worlds_invitees.asp"
             },
             {
                 "type": "image",
                 "src": "assets/sources/2006-worlds-grinders-masters.jpg",
                 "alt": "Archived 2006 Grinders Masters standings",
-                "caption": "Archived Masters grinders standings from 2006."
-                "sourceURL": "https://www.pojo.com/pokemon/FeaturedWriters/JohnnyBlaze/2005/9-9.shtml"
+                "caption": "Archived Masters grinders standings from 2006.",
+                "sourceUrl": "https://www.pojo.com/pokemon/FeaturedWriters/JohnnyBlaze/2005/9-9.shtml"
             },
             {
                 "type": "heading",
