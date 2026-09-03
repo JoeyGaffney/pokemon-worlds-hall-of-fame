@@ -1809,3 +1809,86 @@ tbody tr:hover {
     }
 
 }
+
+/* =========================================================
+   TOP HEADER NAVIGATION
+   ========================================================= */
+
+.header-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+
+.header-top .site-title {
+    margin-bottom: 0;
+}
+
+
+.header-nav {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    flex-shrink: 0;
+}
+
+
+.header-nav-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 9px 14px;
+
+    border: 1px solid #ccc;
+    border-radius: 7px;
+
+    background: white;
+    color: #333;
+
+    font-size: 14px;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        background 0.15s ease,
+        border-color 0.15s ease;
+}
+
+
+.header-nav-button:hover {
+    background: #f2f2f2;
+    border-color: #aaa;
+}
+
+
+.header-nav-button.active {
+    background: #eef3ff;
+    border-color: #8fa8dc;
+    color: #294e91;
+}
+
+
+@media (max-width: 700px) {
+
+    .header-top {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 12px;
+    }
+
+
+    .header-nav {
+        width: 100%;
+    }
+
+
+    .header-nav-button {
+        flex: 1;
+    }
+
+}
