@@ -9,11 +9,11 @@
         content="width=device-width, initial-scale=1.0"
     >
 
-    <title>Pokémon TCG Worlds Hall of Fame</title>
+    <title>Pokemon TCG Worlds Hall of Fame</title>
 
     <link
         rel="stylesheet"
-        href="styles.css?v=7"
+        href="styles.css?v=10"
     >
 </head>
 
@@ -148,9 +148,7 @@
                 </div>
 
 
-                <div
-                    class="advanced-filter-group badge-filter-group"
-                >
+                <div class="advanced-filter-group badge-filter-group">
 
                     <label>
                         Badges
@@ -164,6 +162,26 @@
                     <div
                         id="badgeFilters"
                         class="badge-filter-list"
+                    >
+                    </div>
+
+                </div>
+
+
+                <div class="advanced-filter-group column-filter-group">
+
+                    <label>
+                        Displayed Columns
+                    </label>
+
+                    <p class="filter-help">
+                        Player Name is always shown. Choose which additional
+                        career statistics to display.
+                    </p>
+
+                    <div
+                        id="columnFilters"
+                        class="column-filter-list"
                     >
                     </div>
 
@@ -206,15 +224,8 @@
                     </span>
 
                     <span>
-
-                        <strong>
-                            World Champions
-                        </strong>
-
-                        <small>
-                            Every first-place finisher
-                        </small>
-
+                        <strong>World Champions</strong>
+                        <small>Every first-place finisher</small>
                     </span>
 
                 </button>
@@ -231,15 +242,8 @@
                     </span>
 
                     <span>
-
-                        <strong>
-                            World Finalists
-                        </strong>
-
-                        <small>
-                            Players finishing 1st or 2nd
-                        </small>
-
+                        <strong>World Finalists</strong>
+                        <small>Players finishing 1st or 2nd</small>
                     </span>
 
                 </button>
@@ -256,15 +260,8 @@
                     </span>
 
                     <span>
-
-                        <strong>
-                            Top 8 Finishers
-                        </strong>
-
-                        <small>
-                            Players reaching the Top 8
-                        </small>
-
+                        <strong>Top 8 Finishers</strong>
+                        <small>Players reaching the Top 8</small>
                     </span>
 
                 </button>
@@ -281,15 +278,8 @@
                     </span>
 
                     <span>
-
-                        <strong>
-                            2026 Worlds
-                        </strong>
-
-                        <small>
-                            Browse 2026 competitors
-                        </small>
-
+                        <strong>2026 Worlds</strong>
+                        <small>Browse 2026 competitors</small>
                     </span>
 
                 </button>
@@ -306,15 +296,8 @@
                     </span>
 
                     <span>
-
-                        <strong>
-                            Masters
-                        </strong>
-
-                        <small>
-                            Browse Masters competitors
-                        </small>
-
+                        <strong>Masters</strong>
+                        <small>Browse Masters competitors</small>
                     </span>
 
                 </button>
@@ -331,15 +314,8 @@
                     </span>
 
                     <span>
-
-                        <strong>
-                            Returning Players
-                        </strong>
-
-                        <small>
-                            Players with multiple Worlds appearances
-                        </small>
-
+                        <strong>Returning Players</strong>
+                        <small>Players with multiple Worlds appearances</small>
                     </span>
 
                 </button>
@@ -374,15 +350,8 @@
                 <table>
 
                     <thead>
-
-                        <tr>
-                            <th>Player Name</th>
-                            <th>Country</th>
-                            <th>Divisions Competed</th>
-                            <th>Years Competed</th>
-                            <th>Best Finish</th>
+                        <tr id="resultsHeader">
                         </tr>
-
                     </thead>
 
                     <tbody id="results">
@@ -397,8 +366,8 @@
     </main>
 
 
-    <script src="shared.js?v=7"></script>
-    <script src="app.js?v=7"></script>
+    <script src="shared.js?v=10"></script>
+    <script src="app.js?v=10"></script>
 
 </body>
 
