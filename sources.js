@@ -767,6 +767,25 @@ function renderPDF(pdf) {
             : "";
 
 
+    const sourceLink =
+        pdf.sourceUrl
+
+            ? `
+                <a
+                    href="${escapeAttribute(
+                        pdf.sourceUrl
+                    )}"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="source-pdf-secondary-link"
+                >
+                    View original source ↗
+                </a>
+            `
+
+            : "";
+
+
     return `
 
         <div class="source-pdf-card">
@@ -785,16 +804,22 @@ function renderPDF(pdf) {
                 ${description}
 
 
-                <a
-                    href="${escapeAttribute(
-                        pdf.src
-                    )}"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    class="source-pdf-link"
-                >
-                    View PDF ↗
-                </a>
+                <div class="source-pdf-links">
+
+                    <a
+                        href="${escapeAttribute(
+                            pdf.src
+                        )}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="source-pdf-link"
+                    >
+                        View PDF ↗
+                    </a>
+
+                    ${sourceLink}
+
+                </div>
 
             </div>
 
