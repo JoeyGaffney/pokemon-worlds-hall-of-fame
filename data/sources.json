@@ -153,5 +153,52 @@
                 "text": "Missing from this year is the actual standings, a list of LCQ winners in the other age divisions, and a final list of attendees (rather than just invitees)."
             }
         ]
+    },
+    {
+        "id": "worlds-2007",
+        "year": 2007,
+        "title": "2007 Pokémon TCG World Championships",
+        "subtitle": "The 2007 World Championships in Anaheim",
+        "heroImage": {
+            "src": "assets/sources/2007-LOGO.png",
+            "alt": "2007 Pokémon World Championships",
+            "caption": "2007 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2007 World Championships records were found on a wayback capture of the official website created for the World Championships."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors to compete in Hawaii."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2007-worlds-invite-list.pdf",
+                "title": "Archived 2007 World Championships invite list",
+                "description": "Archived list of invitees to the 2007 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20080516104219/http://www.go-pokemon.com/op/news/articles/13.html"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2007-grinders-list.pdf",
+                "title": "Archived 2007 grinders qualifiers list",
+                "description": "Archived list of Worlds qualifiers from the grinders.",
+                "sourceUrl": "https://web.archive.org/web/20080609200341/http://www.go-pokemon.com/op/premierevents/championshipseries/worlds/info/06-07/minisite/day1/lastchance/"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing from this year is the actual standings and a final list of attendees (rather than just invitees)."
+            }
+        ]
     }
 ]
