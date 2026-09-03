@@ -1,4 +1,56 @@
 /* =========================================================
+   WORLD CHAMPIONSHIP YEARS
+   ========================================================= */
+
+/*
+ * List every year in which a Pokémon TCG
+ * World Championship was actually held.
+ *
+ * Qualifier streaks are based on consecutive
+ * entries in THIS list, not consecutive
+ * calendar years.
+ *
+ * Example:
+ *
+ * 2019 -> 2022
+ *
+ * counts as consecutive because there were
+ * no World Championships in 2020 or 2021.
+ *
+ * When adding future data, simply add the new
+ * Worlds year to this list.
+ *
+ * If Worlds is ever skipped again, just do not
+ * add that year.
+ */
+
+const WORLDS_YEARS = [
+    2004,
+    2005,
+    2006,
+    2007,
+    2008,
+    2009,
+    2010,
+    2011,
+    2012,
+    2013,
+    2014,
+    2015,
+    2016,
+    2017,
+    2018,
+    2019,
+    2022,
+    2023,
+    2024,
+    2025,
+    2026
+];
+
+
+
+/* =========================================================
    PLAYER NAME HELPERS
    ========================================================= */
 
@@ -16,8 +68,8 @@ function formatPlayerName(name) {
 
     /*
      * If the name already contains both uppercase
-     * and lowercase letters, assume the capitalization
-     * is intentional.
+     * and lowercase letters, assume the
+     * capitalization is intentional.
      */
 
     const hasUppercase =
@@ -88,7 +140,11 @@ function normalizePlayerName(name) {
 function getPlayerKey(record) {
 
     if (record.player_id) {
-        return String(record.player_id);
+
+        return String(
+            record.player_id
+        );
+
     }
 
 
@@ -126,6 +182,19 @@ function getPlacementNumber(value) {
         String(value)
             .trim();
 
+
+    /*
+     * Accepted examples:
+     *
+     * 1
+     * 1st
+     * 17
+     * 17th
+     * T17
+     *
+     * Something like "Top 32" is deliberately
+     * NOT interpreted as exactly 32nd.
+     */
 
     const match =
         text.match(
@@ -165,7 +234,9 @@ function formatPlacement(number) {
         lastTwo >= 11 &&
         lastTwo <= 13
     ) {
+
         return `${number}th`;
+
     }
 
 
@@ -190,14 +261,71 @@ function formatPlacement(number) {
 
 
 /* =========================================================
+   WORLD CHAMPIONSHIP YEAR HELPERS
+   ========================================================= */
+
+function getWorldsYearIndex(year) {
+
+    return WORLDS_YEARS.indexOf(
+        Number(year)
+    );
+
+}
+
+
+
+function areConsecutiveWorldsYears(
+    previousYear,
+    currentYear
+) {
+
+    const previousIndex =
+        getWorldsYearIndex(
+            previousYear
+        );
+
+
+    const currentIndex =
+        getWorldsYearIndex(
+            currentYear
+        );
+
+
+    /*
+     * If either year isn't in our known event list,
+     * do not assume they're consecutive.
+     */
+
+    if (
+        previousIndex === -1 ||
+        currentIndex === -1
+    ) {
+        return false;
+    }
+
+
+    return (
+        currentIndex ===
+        previousIndex + 1
+    );
+
+}
+
+
+
+/* =========================================================
    QUALIFIER STREAK
    ========================================================= */
 
 function getLongestQualifierStreak(records) {
 
     /*
-     * Presence in the database means that player
+     * Presence in the database means the player
      * qualified for Worlds that year.
+     *
+     * Streaks are based on consecutive World
+     * Championships rather than consecutive
+     * calendar years.
      */
 
     const years = [
@@ -231,12 +359,23 @@ function getLongestQualifierStreak(records) {
         i++
     ) {
 
+        const previousYear =
+            years[i - 1];
+
+
+        const currentYear =
+            years[i];
+
+
         if (
-            years[i] ===
-            years[i - 1] + 1
+            areConsecutiveWorldsYears(
+                previousYear,
+                currentYear
+            )
         ) {
 
             currentStreak++;
+
 
             longestStreak =
                 Math.max(
@@ -283,30 +422,53 @@ function calculatePlayerBadges(records) {
 
     const bestFinish =
         placements.length > 0
-            ? Math.min(...placements)
+            ? Math.min(
+                ...placements
+            )
             : null;
 
 
 
+    /* =====================================================
+       BEST FINISH BADGES
+       ===================================================== */
+
     /*
-     * BEST FINISH
-     *
      * These are intentionally hierarchical.
-     * A Champion gets Champion rather than
-     * Champion + Finalist + Top 4 + Top 8.
+     *
+     * A Champion gets Champion rather than:
+     *
+     * Champion
+     * Finalist
+     * Top 4
+     * Top 8
      */
 
     if (bestFinish === 1) {
 
         badges.push({
-            key: "champion",
-            label: "Champion",
-            icon: "🏆",
-            className: "badge-champion",
+
+            key:
+                "champion",
+
+            label:
+                "Champion",
+
+            icon:
+                "🏆",
+
+            className:
+                "badge-champion",
+
             description:
                 "Won a Pokémon World Championship",
-            sortGroup: 10,
-            sortValue: 0
+
+            sortGroup:
+                10,
+
+            sortValue:
+                0
+
         });
 
     }
@@ -314,14 +476,28 @@ function calculatePlayerBadges(records) {
     else if (bestFinish === 2) {
 
         badges.push({
-            key: "finalist",
-            label: "Finalist",
-            icon: "🥈",
-            className: "badge-finalist",
+
+            key:
+                "finalist",
+
+            label:
+                "Finalist",
+
+            icon:
+                "🥈",
+
+            className:
+                "badge-finalist",
+
             description:
                 "Finished second at a Pokémon World Championship",
-            sortGroup: 20,
-            sortValue: 0
+
+            sortGroup:
+                20,
+
+            sortValue:
+                0
+
         });
 
     }
@@ -332,14 +508,28 @@ function calculatePlayerBadges(records) {
     ) {
 
         badges.push({
-            key: "top4",
-            label: "Top 4",
-            icon: "⭐",
-            className: "badge-top4",
+
+            key:
+                "top4",
+
+            label:
+                "Top 4",
+
+            icon:
+                "⭐",
+
+            className:
+                "badge-top4",
+
             description:
                 "Finished in the Top 4 at Worlds",
-            sortGroup: 30,
-            sortValue: 0
+
+            sortGroup:
+                30,
+
+            sortValue:
+                0
+
         });
 
     }
@@ -350,23 +540,37 @@ function calculatePlayerBadges(records) {
     ) {
 
         badges.push({
-            key: "top8",
-            label: "Top 8",
-            icon: "🎖️",
-            className: "badge-top8",
+
+            key:
+                "top8",
+
+            label:
+                "Top 8",
+
+            icon:
+                "🎖️",
+
+            className:
+                "badge-top8",
+
             description:
                 "Finished in the Top 8 at Worlds",
-            sortGroup: 40,
-            sortValue: 0
+
+            sortGroup:
+                40,
+
+            sortValue:
+                0
+
         });
 
     }
 
 
 
-    /*
-     * MULTIPLE CHAMPIONSHIPS
-     */
+    /* =====================================================
+       MULTIPLE CHAMPIONSHIPS
+       ===================================================== */
 
     const championshipCount =
         placements.filter(
@@ -375,16 +579,20 @@ function calculatePlayerBadges(records) {
         ).length;
 
 
-    if (championshipCount >= 2) {
+    if (
+        championshipCount >= 2
+    ) {
 
         badges.push({
+
             key:
                 `champion-count-${championshipCount}`,
 
             label:
                 `${championshipCount}x Champion`,
 
-            icon: "👑",
+            icon:
+                "👑",
 
             className:
                 "badge-champion",
@@ -392,19 +600,21 @@ function calculatePlayerBadges(records) {
             description:
                 `Won ${championshipCount} World Championships`,
 
-            sortGroup: 50,
+            sortGroup:
+                50,
 
             sortValue:
                 championshipCount
+
         });
 
     }
 
 
 
-    /*
-     * MULTIPLE TOP 8 FINISHES
-     */
+    /* =====================================================
+       MULTIPLE TOP 8 FINISHES
+       ===================================================== */
 
     const top8Count =
         placements.filter(
@@ -413,16 +623,20 @@ function calculatePlayerBadges(records) {
         ).length;
 
 
-    if (top8Count >= 2) {
+    if (
+        top8Count >= 2
+    ) {
 
         badges.push({
+
             key:
                 `top8-count-${top8Count}`,
 
             label:
                 `${top8Count}x Top 8`,
 
-            icon: "✨",
+            icon:
+                "✨",
 
             className:
                 "badge-top8",
@@ -430,19 +644,21 @@ function calculatePlayerBadges(records) {
             description:
                 `Recorded ${top8Count} World Championship Top 8 finishes`,
 
-            sortGroup: 60,
+            sortGroup:
+                60,
 
             sortValue:
                 top8Count
+
         });
 
     }
 
 
 
-    /*
-     * QUALIFIER STREAK
-     */
+    /* =====================================================
+       QUALIFIER STREAK
+       ===================================================== */
 
     const qualifierStreak =
         getLongestQualifierStreak(
@@ -450,109 +666,116 @@ function calculatePlayerBadges(records) {
         );
 
 
-    if (qualifierStreak >= 2) {
+    if (
+        qualifierStreak >= 2
+    ) {
 
         badges.push({
+
             key:
                 `qualifier-streak-${qualifierStreak}`,
 
             label:
                 `${qualifierStreak}x Qualifier Streak`,
 
-            icon: "🔥",
+            icon:
+                "🔥",
 
             className:
                 "badge-streak",
 
             description:
-                `Qualified for Worlds ${qualifierStreak} consecutive years`,
+                `Qualified for ${qualifierStreak} consecutive World Championships`,
 
-            sortGroup: 70,
+            sortGroup:
+                70,
 
             sortValue:
                 qualifierStreak
+
         });
 
     }
 
 
 
+    /* =====================================================
+       WORLDS APPEARANCE MILESTONES
+       ===================================================== */
+
+    const years = [
+        ...new Set(
+            records
+                .map(record =>
+                    Number(record.year)
+                )
+                .filter(year =>
+                    !isNaN(year)
+                )
+        )
+    ];
+
+
     /*
-     * WORLDS APPEARANCES
+     * These are cumulative milestone badges.
+     *
+     * A player with 16 Worlds appearances gets:
+     *
+     * 5x Worlds Competitor
+     * 10x Worlds Competitor
+     * 15x Worlds Competitor
      */
 
-    /*
- * WORLDS APPEARANCE MILESTONES
- *
- * These badges are cumulative.
- *
- * Example:
- * 12 appearances earns both
- * 5x and 10x Worlds Competitor.
- */
-
-const years = [
-    ...new Set(
-        records
-            .map(record =>
-                Number(record.year)
-            )
-            .filter(year =>
-                !isNaN(year)
-            )
-    )
-];
+    const worldsMilestones = [
+        5,
+        10,
+        15,
+        20
+    ];
 
 
-const worldsMilestones = [
-    5,
-    10,
-    15,
-    20
-];
+    worldsMilestones.forEach(
+        milestone => {
 
+            if (
+                years.length >= milestone
+            ) {
 
-worldsMilestones.forEach(
-    milestone => {
+                badges.push({
 
-        if (
-            years.length >= milestone
-        ) {
+                    key:
+                        `worlds-count-${milestone}`,
 
-            badges.push({
+                    label:
+                        `${milestone}x Worlds Competitor`,
 
-                key:
-                    `worlds-count-${milestone}`,
+                    icon:
+                        "🌎",
 
-                label:
-                    `${milestone}x Worlds Competitor`,
+                    className:
+                        "badge-worlds",
 
-                icon:
-                    "🌎",
+                    description:
+                        `Competed at Worlds in at least ${milestone} different years`,
 
-                className:
-                    "badge-worlds",
+                    sortGroup:
+                        80,
 
-                description:
-                    `Competed at Worlds in at least ${milestone} different years`,
+                    sortValue:
+                        milestone
 
-                sortGroup:
-                    80,
+                });
 
-                sortValue:
-                    milestone
-            });
+            }
 
         }
-
-    }
-);
+    );
 
 
 
-    /*
-     * MULTIPLE DIVISIONS
-     */
+    /* =====================================================
+       MULTIPLE DIVISIONS
+       ===================================================== */
 
     const divisions = [
         ...new Set(
@@ -565,16 +788,20 @@ worldsMilestones.forEach(
     ];
 
 
-    if (divisions.length >= 2) {
+    if (
+        divisions.length >= 2
+    ) {
 
         badges.push({
+
             key:
                 "multi-division",
 
             label:
                 "Multi-Division",
 
-            icon: "🔀",
+            icon:
+                "🔀",
 
             className:
                 "badge-division",
@@ -582,10 +809,12 @@ worldsMilestones.forEach(
             description:
                 `Competed in ${divisions.length} different age divisions`,
 
-            sortGroup: 90,
+            sortGroup:
+                90,
 
             sortValue:
                 divisions.length
+
         });
 
     }
@@ -649,9 +878,16 @@ function compareBadges(a, b) {
 function sortDivisions(divisions) {
 
     const order = {
-        "Juniors": 1,
-        "Seniors": 2,
-        "Masters": 3
+
+        "Juniors":
+            1,
+
+        "Seniors":
+            2,
+
+        "Masters":
+            3
+
     };
 
 
