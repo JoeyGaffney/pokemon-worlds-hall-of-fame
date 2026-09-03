@@ -5108,7 +5108,7 @@
     "division": "Juniors",
     "name": "Hiroki Yano",
     "country": "JP",
-    "placement": "",
+    "placement": 1,
     "qual": "Nationals"
   },
   {
@@ -5242,15 +5242,6 @@
     "year": 2006,
     "division": "Juniors",
     "name": "Anna S",
-    "country": "NE",
-    "placement": "",
-    "qual": "Nationals"
-  },
-  {
-    "player_id": "p005749",
-    "year": 2006,
-    "division": "Juniors",
-    "name": "David Booij",
     "country": "NE",
     "placement": "",
     "qual": "Nationals"
@@ -5594,7 +5585,7 @@
     "division": "Juniors",
     "name": "Spencer D",
     "country": "US",
-    "placement": "",
+    "placement": 2,
     "qual": "Nationals"
   },
   {
@@ -5760,12 +5751,12 @@
     "qual": "Gym Challenge"
   },
   {
-    "player_id": "p005185",
+    "player_id": "p009730",
     "year": 2006,
     "division": "Juniors",
-    "name": "Arnold van Bemmelen",
+    "name": "Arnoud van Bemmelen",
     "country": "US",
-    "placement": "",
+    "placement": 3,
     "qual": "Gym Challenge"
   },
   {
@@ -5900,7 +5891,7 @@
     "division": "Juniors",
     "name": "James Ballard",
     "country": "US",
-    "placement": "",
+    "placement": "Top 8",
     "qual": "Gym Challenge"
   },
   {
@@ -5947,6 +5938,15 @@
     "country": "US",
     "placement": "",
     "qual": "Gym Challenge"
+  },
+  {
+    "player_id": "p005380",
+    "year": 2006,
+    "division": "Juniors",
+    "name": "Fares Sekkoum",
+    "country": "GB",
+    "placement": 4,
+    "qual": "Nationals"
   },
   {
     "player_id": "p004643",
@@ -6251,7 +6251,7 @@
     "division": "Seniors",
     "name": "Miska Saari",
     "country": "FI",
-    "placement": "",
+    "placement": 1,
     "qual": "Nationals"
   },
   {
@@ -6475,15 +6475,6 @@
     "year": 2006,
     "division": "Seniors",
     "name": "Tanto K",
-    "country": "JP",
-    "placement": "",
-    "qual": "Nationals"
-  },
-  {
-    "player_id": "p005259",
-    "year": 2006,
-    "division": "Seniors",
-    "name": "Yuta K",
     "country": "JP",
     "placement": "",
     "qual": "Nationals"
@@ -6912,12 +6903,12 @@
     "qual": "Nationals"
   },
   {
-    "player_id": "p005305",
+    "player_id": "p009731",
     "year": 2006,
     "division": "Seniors",
-    "name": "Ty Wheeler",
+    "name": "Tad Wheeler",
     "country": "US",
-    "placement": "",
+    "placement": 3,
     "qual": "Nationals"
   },
   {
@@ -7133,7 +7124,7 @@
     "division": "Seniors",
     "name": "Austin Reed",
     "country": "US",
-    "placement": "",
+    "placement": 4,
     "qual": "Gym Challenge"
   },
   {
@@ -7342,6 +7333,15 @@
     "country": "US",
     "placement": "",
     "qual": "Gym Challenge"
+  },
+  {
+    "player_id": "p005749",
+    "year": 2006,
+    "division": "Seniors",
+    "name": "David Booij",
+    "country": "NE",
+    "placement": 2,
+    "qual": "Nationals"
   },
   {
     "player_id": "p004932",
@@ -7708,15 +7708,6 @@
     "year": 2006,
     "division": "Masters",
     "name": "Christopher Fotheringham",
-    "country": "GB",
-    "placement": "",
-    "qual": "Nationals"
-  },
-  {
-    "player_id": "p005380",
-    "year": 2006,
-    "division": "Masters",
-    "name": "Fares Sekkoum",
     "country": "GB",
     "placement": "",
     "qual": "Nationals"
@@ -8411,7 +8402,7 @@
     "division": "Masters",
     "name": "Jeremy Maron",
     "country": "US",
-    "placement": "",
+    "placement": 3,
     "qual": "Gym Challenge"
   },
   {
@@ -8537,7 +8528,7 @@
     "division": "Masters",
     "name": "Jimmy Ballard",
     "country": "US",
-    "placement": "",
+    "placement": 2,
     "qual": "Gym Challenge"
   },
   {
@@ -8611,6 +8602,15 @@
     "country": "US",
     "placement": "",
     "qual": "Gym Challenge"
+  },
+  {
+    "player_id": "p005617",
+    "year": 2006,
+    "division": "Masters",
+    "name": "Yuta Komatsuda",
+    "country": "JP",
+    "placement": 4,
+    "qual": "Nationals"
   },
   {
     "player_id": "p005015",
@@ -27630,12 +27630,12 @@
     "qual": ""
   },
   {
-    "player_id": "p007021",
+    "player_id": "p009723",
     "year": 2013,
     "division": "Juniors",
-    "name": "Yugo S.",
+    "name": "Yugo Sato",
     "country": "JP",
-    "placement": "",
+    "placement": 2,
     "qual": ""
   },
   {
@@ -28437,6 +28437,24 @@
     "name": "Abaan Ahmed",
     "country": "US",
     "placement": 3,
+    "qual": ""
+  },
+  {
+    "player_id": "p009732",
+    "year": 2013,
+    "division": "Juniors",
+    "name": "Samuel Battis",
+    "country": "US",
+    "placement": 4,
+    "qual": ""
+  },
+  {
+    "player_id": "p009709",
+    "year": 2013,
+    "division": "Juniors",
+    "name": "Ondrej Kujal",
+    "country": "CZ",
+    "placement": 1,
     "qual": ""
   },
   {
@@ -31698,12 +31716,12 @@
     "qual": ""
   },
   {
-    "player_id": "p007335",
+    "player_id": "p009733",
     "year": 2013,
     "division": "Masters",
-    "name": "Rick V.",
+    "name": "Rick Verwaal",
     "country": "NL",
-    "placement": "",
+    "placement": "Top 8",
     "qual": ""
   },
   {
@@ -32382,12 +32400,12 @@
     "qual": ""
   },
   {
-    "player_id": "p007390",
+    "player_id": "p008695",
     "year": 2013,
     "division": "Masters",
-    "name": "Johnny R.",
+    "name": "Johnny Rabus",
     "country": "US",
-    "placement": "",
+    "placement": "Top 8",
     "qual": ""
   },
   {
@@ -32436,12 +32454,12 @@
     "qual": ""
   },
   {
-    "player_id": "p007393",
+    "player_id": "p006946",
     "year": 2013,
     "division": "Masters",
-    "name": "Dustin Z.",
+    "name": "Dustin Zimmerman",
     "country": "US",
-    "placement": "",
+    "placement": 4,
     "qual": ""
   },
   {
@@ -32490,12 +32508,12 @@
     "qual": ""
   },
   {
-    "player_id": "p007397",
+    "player_id": "p009734",
     "year": 2013,
     "division": "Masters",
-    "name": "James G.",
+    "name": "James Good",
     "country": "US",
-    "placement": "",
+    "placement": 3,
     "qual": ""
   },
   {
@@ -32517,12 +32535,12 @@
     "qual": ""
   },
   {
-    "player_id": "p007399",
+    "player_id": "p008614",
     "year": 2013,
     "division": "Masters",
-    "name": "Simon N.",
+    "name": "Simon Narode",
     "country": "US",
-    "placement": "",
+    "placement": 2,
     "qual": ""
   },
   {
@@ -32616,12 +32634,12 @@
     "qual": ""
   },
   {
-    "player_id": "p007408",
+    "player_id": "p005430",
     "year": 2013,
     "division": "Masters",
-    "name": "Jonathan B.",
+    "name": "Jonathan Bristow",
     "country": "US",
-    "placement": "",
+    "placement": "Top 8",
     "qual": ""
   },
   {
@@ -32685,7 +32703,16 @@
     "name": "Jason Klaczynski",
     "country": "US",
     "placement": 1,
-    "qual": ""
+    "qual": "LCQ"
+  },
+  {
+    "player_id": "p002687",
+    "year": 2013,
+    "division": "Masters",
+    "name": "Takuya Yoneda",
+    "country": "JP",
+    "placement": "Top 8",
+    "qual": "LCQ"
   },
   {
     "player_id": "p008909",
@@ -49838,7 +49865,7 @@
     "division": "Seniors",
     "name": "Zachary Bokhari",
     "country": "US",
-    "placement": "1899-12-31T08:00:00.000Z",
+    "placement": 1,
     "qual": ""
   },
   {
@@ -107699,7 +107726,7 @@
     "division": "Seniors",
     "name": "Achille P.",
     "country": "FR",
-    "placement": 34,
+    "placement": "1900-02-02T08:00:00.000Z",
     "qual": ""
   },
   {
@@ -107726,7 +107753,7 @@
     "division": "Seniors",
     "name": "Anthem M.",
     "country": "US",
-    "placement": "1900-02-05T08:00:00.000Z",
+    "placement": 37,
     "qual": ""
   },
   {
