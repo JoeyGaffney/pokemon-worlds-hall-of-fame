@@ -1,1686 +1,374 @@
-let appearances = [];
+<!DOCTYPE html>
+<html lang="en">
 
-let activePreset = "";
+<head>
+    <meta charset="UTF-8">
 
-let playerCareerMap =
-    new Map();
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
 
+    <title>Pokemon TCG Worlds Hall of Fame</title>
 
+    <link
+        rel="stylesheet"
+        href="styles.css?v=10"
+    >
+</head>
 
-/* =========================================================
-   PAGE ELEMENTS
-   ========================================================= */
+<body>
 
-const resultsElement =
-    document.getElementById(
-        "results"
-    );
+    <header class="site-header">
 
-const searchElement =
-    document.getElementById(
-        "search"
-    );
+        <div class="container">
 
-const yearFilter =
-    document.getElementById(
-        "yearFilter"
-    );
+            <div class="site-title">
 
-const divisionFilter =
-    document.getElementById(
-        "divisionFilter"
-    );
+                <img
+                    src="assets/logo.png"
+                    alt="Pokemon TCG Worlds Hall of Fame logo"
+                    class="site-logo"
+                >
 
-const countryFilter =
-    document.getElementById(
-        "countryFilter"
-    );
+                <div class="site-title-text">
 
-const badgeFiltersElement =
-    document.getElementById(
-        "badgeFilters"
-    );
+                    <h1>
+                        Pokemon TCG Worlds Hall of Fame
+                    </h1>
 
-const resultCount =
-    document.getElementById(
-        "resultCount"
-    );
+                    <p>
+                        Historical competitor and placement data from the
+                        Pokémon TCG World Championships.
+                    </p>
 
-const landingElement =
-    document.getElementById(
-        "landing"
-    );
+                </div>
 
-const resultsSection =
-    document.getElementById(
-        "resultsSection"
-    );
+            </div>
 
-const clearFiltersButton =
-    document.getElementById(
-        "clearFilters"
-    );
 
-const advancedFiltersButton =
-    document.getElementById(
-        "advancedFiltersButton"
-    );
+            <section class="controls">
 
-const advancedFilters =
-    document.getElementById(
-        "advancedFilters"
-    );
+                <input
+                    type="search"
+                    id="search"
+                    placeholder="Search players..."
+                    aria-label="Search players"
+                >
 
 
+                <button
+                    id="advancedFiltersButton"
+                    class="advanced-filter-button"
+                    type="button"
+                    aria-expanded="false"
+                    aria-controls="advancedFilters"
+                >
+                    Advanced Filters
+                </button>
 
-/* =========================================================
-   LOAD DATA
-   ========================================================= */
 
-async function loadData() {
+                <button
+                    id="clearFilters"
+                    class="clear-button"
+                    type="button"
+                >
+                    Clear
+                </button>
 
-    try {
+            </section>
 
-        const response =
-            await fetch(
-                "data/appearances.json"
-            );
 
+            <section
+                id="advancedFilters"
+                class="advanced-filters"
+                hidden
+            >
 
-        if (!response.ok) {
+                <div class="advanced-filter-group">
 
-            throw new Error(
-                "Could not load appearances.json"
-            );
+                    <label for="yearFilter">
+                        Year
+                    </label>
 
-        }
+                    <select id="yearFilter">
 
+                        <option value="">
+                            All Years
+                        </option>
 
-        appearances =
-            await response.json();
+                    </select>
 
+                </div>
 
-        buildPlayerCareerMap();
 
-        populateYearFilter();
+                <div class="advanced-filter-group">
 
-        populateCountryFilter();
+                    <label for="divisionFilter">
+                        Division
+                    </label>
 
-        populateBadgeFilters();
+                    <select id="divisionFilter">
 
-        restoreFiltersFromURL();
+                        <option value="">
+                            All Divisions
+                        </option>
 
-        renderResults();
+                        <option value="Juniors">
+                            Juniors
+                        </option>
 
+                        <option value="Seniors">
+                            Seniors
+                        </option>
 
-    } catch (error) {
+                        <option value="Masters">
+                            Masters
+                        </option>
 
-        console.error(error);
+                    </select>
 
+                </div>
 
-        landingElement.hidden =
-            true;
 
-        resultsSection.hidden =
-            false;
+                <div class="advanced-filter-group">
 
+                    <label for="countryFilter">
+                        Country
+                    </label>
 
-        resultsElement.innerHTML = `
-            <tr>
-                <td colspan="5">
-                    Error loading competitor data.
-                </td>
-            </tr>
-        `;
+                    <select id="countryFilter">
 
-    }
+                        <option value="">
+                            All Countries
+                        </option>
 
-}
+                    </select>
 
+                </div>
 
 
-/* =========================================================
-   CAREER MAP
-   ========================================================= */
+                <div class="advanced-filter-group badge-filter-group">
 
-function buildPlayerCareerMap() {
+                    <label>
+                        Badges
+                    </label>
 
-    playerCareerMap =
-        new Map();
+                    <p class="filter-help">
+                        Selecting multiple badges requires a player to
+                        have all selected badges.
+                    </p>
 
-
-    appearances.forEach(
-        record => {
-
-            const key =
-                getPlayerKey(
-                    record
-                );
-
-
-            if (
-                !playerCareerMap.has(
-                    key
-                )
-            ) {
-
-                playerCareerMap.set(
-                    key,
-                    []
-                );
-
-            }
-
-
-            playerCareerMap
-                .get(key)
-                .push(record);
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   FILTER OPTIONS
-   ========================================================= */
-
-function populateYearFilter() {
-
-    const years = [
-        ...new Set(
-            appearances
-                .map(record =>
-                    Number(record.year)
-                )
-                .filter(year =>
-                    !isNaN(year)
-                )
-        )
-    ].sort(
-        (a, b) =>
-            b - a
-    );
-
-
-    years.forEach(
-        year => {
-
-            const option =
-                document.createElement(
-                    "option"
-                );
-
-
-            option.value =
-                String(year);
-
-            option.textContent =
-                String(year);
-
-
-            yearFilter.appendChild(
-                option
-            );
-
-        }
-    );
-
-}
-
-
-
-function populateCountryFilter() {
-
-    const countries = [
-        ...new Set(
-            appearances
-                .map(record =>
-                    String(
-                        record.country ||
-                        ""
-                    ).trim()
-                )
-                .filter(Boolean)
-        )
-    ].sort(
-        (a, b) =>
-            a.localeCompare(
-                b,
-                undefined,
-                {
-                    sensitivity:
-                        "base"
-                }
-            )
-    );
-
-
-    countries.forEach(
-        country => {
-
-            const option =
-                document.createElement(
-                    "option"
-                );
-
-
-            option.value =
-                country;
-
-            option.textContent =
-                country;
-
-
-            countryFilter.appendChild(
-                option
-            );
-
-        }
-    );
-
-}
-
-
-
-/* =========================================================
-   BADGE FILTER OPTIONS
-   ========================================================= */
-
-function populateBadgeFilters() {
-
-    const badgeCatalog =
-        new Map();
-
-
-    playerCareerMap.forEach(
-        records => {
-
-            const badges =
-                calculatePlayerBadges(
-                    records
-                );
-
-
-            badges.forEach(
-                badge => {
-
-                    if (
-                        !badgeCatalog.has(
-                            badge.key
-                        )
-                    ) {
-
-                        badgeCatalog.set(
-                            badge.key,
-                            badge
-                        );
-
-                    }
-
-                }
-            );
-
-        }
-    );
-
-
-    const badges = [
-        ...badgeCatalog.values()
-    ].sort(
-        compareBadges
-    );
-
-
-    badgeFiltersElement.innerHTML =
-        "";
-
-
-    badges.forEach(
-        badge => {
-
-            const label =
-                document.createElement(
-                    "label"
-                );
-
-
-            label.className =
-                "badge-filter-option";
-
-
-            const checkbox =
-                document.createElement(
-                    "input"
-                );
-
-
-            checkbox.type =
-                "checkbox";
-
-            checkbox.value =
-                badge.key;
-
-            checkbox.className =
-                "badge-filter-checkbox";
-
-
-            const text =
-                document.createElement(
-                    "span"
-                );
-
-
-            text.textContent =
-                `${badge.icon} ${badge.label}`;
-
-
-            label.appendChild(
-                checkbox
-            );
-
-            label.appendChild(
-                text
-            );
-
-
-            badgeFiltersElement
-                .appendChild(
-                    label
-                );
-
-
-            checkbox.addEventListener(
-                "change",
-                () => {
-
-                    activePreset =
-                        "";
-
-                    renderResults();
-
-                }
-            );
-
-        }
-    );
-
-}
-
-
-
-function getSelectedBadgeKeys() {
-
-    return [
-        ...document.querySelectorAll(
-            ".badge-filter-checkbox:checked"
-        )
-    ].map(
-        checkbox =>
-            checkbox.value
-    );
-
-}
-
-
-
-/* =========================================================
-   URL RESTORATION
-   ========================================================= */
-
-function restoreFiltersFromURL() {
-
-    const params =
-        new URLSearchParams(
-            window.location.search
-        );
-
-
-    const savedSearch =
-        params.get(
-            "search"
-        );
-
-    const savedYear =
-        params.get(
-            "year"
-        );
-
-    const savedDivision =
-        params.get(
-            "division"
-        );
-
-    const savedCountry =
-        params.get(
-            "country"
-        );
-
-    const savedPreset =
-        params.get(
-            "preset"
-        );
-
-    const savedBadges =
-        params.getAll(
-            "badge"
-        );
-
-
-    if (savedSearch) {
-
-        searchElement.value =
-            savedSearch;
-
-    }
-
-
-    if (
-        savedYear &&
-        optionExists(
-            yearFilter,
-            savedYear
-        )
-    ) {
-
-        yearFilter.value =
-            savedYear;
-
-    }
-
-
-    if (
-        savedDivision &&
-        optionExists(
-            divisionFilter,
-            savedDivision
-        )
-    ) {
-
-        divisionFilter.value =
-            savedDivision;
-
-    }
-
-
-    if (
-        savedCountry &&
-        optionExists(
-            countryFilter,
-            savedCountry
-        )
-    ) {
-
-        countryFilter.value =
-            savedCountry;
-
-    }
-
-
-    if (savedPreset) {
-
-        activePreset =
-            savedPreset;
-
-    }
-
-
-    if (
-        savedBadges.length > 0
-    ) {
-
-        document
-            .querySelectorAll(
-                ".badge-filter-checkbox"
-            )
-            .forEach(
-                checkbox => {
-
-                    checkbox.checked =
-                        savedBadges.includes(
-                            checkbox.value
-                        );
-
-                }
-            );
-
-    }
-
-
-    const hasAdvancedFilters =
-        Boolean(
-            yearFilter.value ||
-            divisionFilter.value ||
-            countryFilter.value ||
-            getSelectedBadgeKeys().length
-        );
-
-
-    if (hasAdvancedFilters) {
-
-        setAdvancedFiltersOpen(
-            true
-        );
-
-    }
-
-}
-
-
-
-function optionExists(
-    selectElement,
-    value
-) {
-
-    return [
-        ...selectElement.options
-    ].some(
-        option =>
-            option.value === value
-    );
-
-}
-
-
-
-/* =========================================================
-   ADVANCED FILTER PANEL
-   ========================================================= */
-
-function setAdvancedFiltersOpen(
-    isOpen
-) {
-
-    advancedFilters.hidden =
-        !isOpen;
-
-
-    advancedFiltersButton
-        .setAttribute(
-            "aria-expanded",
-            String(isOpen)
-        );
-
-
-    advancedFiltersButton.textContent =
-        isOpen
-            ? "Hide Filters"
-            : "Advanced Filters";
-
-}
-
-
-
-advancedFiltersButton
-    .addEventListener(
-        "click",
-        () => {
-
-            setAdvancedFiltersOpen(
-                advancedFilters.hidden
-            );
-
-        }
-    );
-
-
-
-/* =========================================================
-   MAIN RESULTS
-   ========================================================= */
-
-function renderResults() {
-
-    const searchTerm =
-        searchElement
-            .value
-            .trim()
-            .toLowerCase();
-
-
-    const selectedYear =
-        yearFilter.value;
-
-
-    const selectedDivision =
-        divisionFilter.value;
-
-
-    const selectedCountry =
-        countryFilter.value;
-
-
-    const selectedBadgeKeys =
-        getSelectedBadgeKeys();
-
-
-
-    const hasFilters =
-        Boolean(
-            searchTerm ||
-            selectedYear ||
-            selectedDivision ||
-            selectedCountry ||
-            selectedBadgeKeys.length ||
-            activePreset
-        );
-
-
-    /*
-     * No filters means show the landing page
-     * rather than every player.
-     */
-
-    if (!hasFilters) {
-
-        landingElement.hidden =
-            false;
-
-        resultsSection.hidden =
-            true;
-
-        resultsElement.innerHTML =
-            "";
-
-        resultCount.textContent =
-            "";
-
-        updateURL();
-
-        return;
-
-    }
-
-
-
-    /*
-     * Determine which players match the basic
-     * search / year / division / country /
-     * landing-preset criteria.
-     *
-     * We then display that player's FULL career
-     * information in the directory.
-     */
-
-    const matchingPlayerKeys =
-        new Set();
-
-
-
-    appearances.forEach(
-        record => {
-
-            const playerKey =
-                getPlayerKey(
-                    record
-                );
-
-
-            const formattedName =
-                formatPlayerName(
-                    record.name
-                ).toLowerCase();
-
-
-            const year =
-                String(
-                    record.year || ""
-                );
-
-
-            const division =
-                String(
-                    record.division || ""
-                );
-
-
-            const country =
-                String(
-                    record.country || ""
-                );
-
-
-            const placement =
-                getPlacementNumber(
-                    record.placement
-                );
-
-
-            const matchesSearch =
-                !searchTerm ||
-                formattedName.includes(
-                    searchTerm
-                );
-
-
-            const matchesYear =
-                !selectedYear ||
-                year ===
-                    selectedYear;
-
-
-            const matchesDivision =
-                !selectedDivision ||
-                division ===
-                    selectedDivision;
-
-
-            const matchesCountry =
-                !selectedCountry ||
-                country ===
-                    selectedCountry;
-
-
-            let matchesPreset =
-                true;
-
-
-
-            if (
-                activePreset ===
-                "champions"
-            ) {
-
-                matchesPreset =
-                    placement === 1;
-
-            }
-
-            else if (
-                activePreset ===
-                "finalists"
-            ) {
-
-                matchesPreset =
-                    placement !== null &&
-                    placement <= 2;
-
-            }
-
-            else if (
-                activePreset ===
-                "top8"
-            ) {
-
-                matchesPreset =
-                    placement !== null &&
-                    placement <= 8;
-
-            }
-
-            else if (
-                activePreset ===
-                "returning"
-            ) {
-
-                const careerRecords =
-                    playerCareerMap.get(
-                        playerKey
-                    ) || [];
-
-
-                const careerYears =
-                    new Set(
-                        careerRecords
-                            .map(item =>
-                                Number(
-                                    item.year
-                                )
-                            )
-                            .filter(year =>
-                                !isNaN(year)
-                            )
-                    );
-
-
-                matchesPreset =
-                    careerYears.size >= 2;
-
-            }
-
-
-
-            if (
-                matchesSearch &&
-                matchesYear &&
-                matchesDivision &&
-                matchesCountry &&
-                matchesPreset
-            ) {
-
-                matchingPlayerKeys.add(
-                    playerKey
-                );
-
-            }
-
-        }
-    );
-
-
-
-    /*
-     * Apply career-wide badge filters.
-     */
-
-    let finalPlayerKeys = [
-        ...matchingPlayerKeys
-    ];
-
-
-    if (
-        selectedBadgeKeys.length > 0
-    ) {
-
-        finalPlayerKeys =
-            finalPlayerKeys.filter(
-                playerKey => {
-
-                    const careerRecords =
-                        playerCareerMap.get(
-                            playerKey
-                        ) || [];
-
-
-                    const earnedBadges =
-                        new Set(
-                            calculatePlayerBadges(
-                                careerRecords
-                            ).map(
-                                badge =>
-                                    badge.key
-                            )
-                        );
-
-
-                    /*
-                     * ALL selected badges
-                     * must be earned.
-                     */
-
-                    return selectedBadgeKeys
-                        .every(
-                            badgeKey =>
-                                earnedBadges.has(
-                                    badgeKey
-                                )
-                        );
-
-                }
-            );
-
-    }
-
-
-
-    /*
-     * Build one directory row per player,
-     * using full career records.
-     */
-
-    const players =
-        finalPlayerKeys.map(
-            playerKey =>
-                summarizePlayer(
-                    playerCareerMap.get(
-                        playerKey
-                    ) || []
-                )
-        );
-
-
-
-    /*
-     * Best finish first, then name.
-     */
-
-    players.sort(
-        (a, b) => {
-
-            const placementA =
-                a.bestPlacement ??
-                Infinity;
-
-
-            const placementB =
-                b.bestPlacement ??
-                Infinity;
-
-
-            if (
-                placementA !==
-                placementB
-            ) {
-
-                return (
-                    placementA -
-                    placementB
-                );
-
-            }
-
-
-            return (
-                a.name.localeCompare(
-                    b.name,
-                    undefined,
-                    {
-                        sensitivity:
-                            "base"
-                    }
-                )
-            );
-
-        }
-    );
-
-
-
-    resultsElement.innerHTML =
-        "";
-
-
-
-    players.forEach(
-        player => {
-
-            const profileParams =
-                new URLSearchParams();
-
-
-
-            /*
-             * Internal player ID.
-             */
-
-            if (player.player_id) {
-
-                profileParams.set(
-                    "id",
-                    player.player_id
-                );
-
-            }
-
-
-
-            /*
-             * Preserve current search/filter
-             * state in the profile URL.
-             */
-
-            const search =
-                searchElement
-                    .value
-                    .trim();
-
-
-            if (search) {
-
-                profileParams.set(
-                    "search",
-                    search
-                );
-
-            }
-
-
-            if (yearFilter.value) {
-
-                profileParams.set(
-                    "year",
-                    yearFilter.value
-                );
-
-            }
-
-
-            if (
-                divisionFilter.value
-            ) {
-
-                profileParams.set(
-                    "division",
-                    divisionFilter.value
-                );
-
-            }
-
-
-            if (
-                countryFilter.value
-            ) {
-
-                profileParams.set(
-                    "country",
-                    countryFilter.value
-                );
-
-            }
-
-
-            if (activePreset) {
-
-                profileParams.set(
-                    "preset",
-                    activePreset
-                );
-
-            }
-
-
-            selectedBadgeKeys.forEach(
-                badgeKey => {
-
-                    profileParams.append(
-                        "badge",
-                        badgeKey
-                    );
-
-                }
-            );
-
-
-
-            let playerName =
-                escapeHTML(
-                    player.name
-                );
-
-
-            if (player.player_id) {
-
-                playerName = `
-                    <a
-                        class="player-link"
-                        href="player.html?${profileParams.toString()}"
+                    <div
+                        id="badgeFilters"
+                        class="badge-filter-list"
                     >
-                        ${escapeHTML(player.name)}
-                    </a>
-                `;
+                    </div>
 
-            }
+                </div>
 
 
+                <div class="advanced-filter-group column-filter-group">
 
-            const divisions =
-                sortDivisions(
-                    player.divisions
-                ).join(", ");
+                    <label>
+                        Displayed Columns
+                    </label>
 
+                    <p class="filter-help">
+                        Player Name is always shown. Choose which additional
+                        career statistics to display.
+                    </p>
 
+                    <div
+                        id="columnFilters"
+                        class="column-filter-list"
+                    >
+                    </div>
 
-            const yearsDisplay = `
-                <strong>
-                    ${player.years.length}
-                </strong>
+                </div>
 
-                <span class="year-list">
-                    ${escapeHTML(
-                        player.years.join(
-                            ", "
-                        )
-                    )}
-                </span>
-            `;
+            </section>
 
+        </div>
 
+    </header>
 
-            const bestFinish =
-                player.bestPlacement !==
-                null
 
-                    ? formatPlacement(
-                        player.bestPlacement
-                    )
+    <main class="container">
 
-                    : "—";
+        <section
+            id="landing"
+            class="landing"
+        >
 
+            <h2>
+                Explore the Database
+            </h2>
 
+            <p>
+                Search for a player above or jump into one of these
+                views.
+            </p>
 
-            const row =
-                document.createElement(
-                    "tr"
-                );
 
+            <div class="suggestion-grid">
 
-            row.innerHTML = `
-                <td>
-                    ${playerName}
-                </td>
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-preset="champions"
+                >
 
-                <td>
-                    ${escapeHTML(
-                        player.countries.join(
-                            " / "
-                        )
-                    )}
-                </td>
+                    <span class="suggestion-icon">
+                        🏆
+                    </span>
 
-                <td>
-                    ${escapeHTML(
-                        divisions
-                    )}
-                </td>
+                    <span>
+                        <strong>World Champions</strong>
+                        <small>Every first-place finisher</small>
+                    </span>
 
-                <td class="years-cell">
-                    ${yearsDisplay}
-                </td>
+                </button>
 
-                <td>
-                    ${escapeHTML(
-                        bestFinish
-                    )}
-                </td>
-            `;
 
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-preset="finalists"
+                >
 
-            resultsElement
-                .appendChild(
-                    row
-                );
+                    <span class="suggestion-icon">
+                        🥈
+                    </span>
 
-        }
-    );
+                    <span>
+                        <strong>World Finalists</strong>
+                        <small>Players finishing 1st or 2nd</small>
+                    </span>
 
+                </button>
 
 
-    landingElement.hidden =
-        true;
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-preset="top8"
+                >
 
-    resultsSection.hidden =
-        false;
+                    <span class="suggestion-icon">
+                        ⭐
+                    </span>
 
+                    <span>
+                        <strong>Top 8 Finishers</strong>
+                        <small>Players reaching the Top 8</small>
+                    </span>
 
-    resultCount.textContent =
-        players.length === 1
-            ? "1 player"
-            : `${players.length} players`;
-
+                </button>
 
-    updateURL();
 
-}
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-year="2026"
+                >
 
+                    <span class="suggestion-icon">
+                        📅
+                    </span>
 
+                    <span>
+                        <strong>2026 Worlds</strong>
+                        <small>Browse 2026 competitors</small>
+                    </span>
 
-/* =========================================================
-   PLAYER SUMMARY
-   ========================================================= */
+                </button>
 
-function summarizePlayer(records) {
 
-    const sortedRecords = [
-        ...records
-    ].sort(
-        (a, b) =>
-            Number(b.year) -
-            Number(a.year)
-    );
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-division="Masters"
+                >
 
+                    <span class="suggestion-icon">
+                        🎴
+                    </span>
 
-    const newestRecord =
-        sortedRecords[0] || {};
+                    <span>
+                        <strong>Masters</strong>
+                        <small>Browse Masters competitors</small>
+                    </span>
 
+                </button>
 
-    const name =
-        formatPlayerName(
-            newestRecord.name || ""
-        );
 
+                <button
+                    type="button"
+                    class="suggestion-card"
+                    data-preset="returning"
+                >
 
-    const countries = [
-        ...new Set(
-            sortedRecords
-                .map(record =>
-                    String(
-                        record.country ||
-                        ""
-                    ).trim()
-                )
-                .filter(Boolean)
-        )
-    ];
+                    <span class="suggestion-icon">
+                        🔁
+                    </span>
 
+                    <span>
+                        <strong>Returning Players</strong>
+                        <small>Players with multiple Worlds appearances</small>
+                    </span>
 
-    const divisions = [
-        ...new Set(
-            records
-                .map(record =>
-                    record.division
-                )
-                .filter(Boolean)
-        )
-    ];
+                </button>
 
+            </div>
 
-    const years = [
-        ...new Set(
-            records
-                .map(record =>
-                    Number(record.year)
-                )
-                .filter(year =>
-                    !isNaN(year)
-                )
-        )
-    ].sort(
-        (a, b) =>
-            a - b
-    );
+        </section>
 
 
-    const placements =
-        records
-            .map(record =>
-                getPlacementNumber(
-                    record.placement
-                )
-            )
-            .filter(
-                placement =>
-                    placement !== null
-            );
+        <section
+            id="resultsSection"
+            class="results-section"
+            hidden
+        >
 
+            <div class="results-heading">
 
-    const bestPlacement =
-        placements.length > 0
-            ? Math.min(
-                ...placements
-            )
-            : null;
+                <h2>
+                    Players
+                </h2>
 
+                <p
+                    id="resultCount"
+                    aria-live="polite"
+                ></p>
 
-    return {
+            </div>
 
-        player_id:
-            newestRecord.player_id ||
-            "",
 
-        name:
-            name,
+            <div class="table-wrapper">
 
-        countries:
-            countries,
+                <table>
 
-        divisions:
-            divisions,
+                    <thead>
+                        <tr id="resultsHeader">
+                        </tr>
+                    </thead>
 
-        years:
-            years,
+                    <tbody id="results">
+                    </tbody>
 
-        bestPlacement:
-            bestPlacement
+                </table>
 
-    };
+            </div>
 
-}
+        </section>
 
+    </main>
 
 
-/* =========================================================
-   LANDING SUGGESTIONS
-   ========================================================= */
+    <script src="shared.js?v=10"></script>
+    <script src="app.js?v=10"></script>
 
-document
-    .querySelectorAll(
-        ".suggestion-card"
-    )
-    .forEach(
-        button => {
+</body>
 
-            button.addEventListener(
-                "click",
-                () => {
-
-                    resetFilters(
-                        false
-                    );
-
-
-                    if (
-                        button.dataset.preset
-                    ) {
-
-                        activePreset =
-                            button.dataset.preset;
-
-                    }
-
-
-                    if (
-                        button.dataset.year &&
-                        optionExists(
-                            yearFilter,
-                            button.dataset.year
-                        )
-                    ) {
-
-                        yearFilter.value =
-                            button.dataset.year;
-
-                    }
-
-
-                    if (
-                        button.dataset.division &&
-                        optionExists(
-                            divisionFilter,
-                            button.dataset.division
-                        )
-                    ) {
-
-                        divisionFilter.value =
-                            button.dataset.division;
-
-                    }
-
-
-                    if (
-                        button.dataset.country &&
-                        optionExists(
-                            countryFilter,
-                            button.dataset.country
-                        )
-                    ) {
-
-                        countryFilter.value =
-                            button.dataset.country;
-
-                    }
-
-
-
-                    /*
-                     * If the suggestion changes one
-                     * of the advanced filters, show
-                     * that filter so the user can see
-                     * what is active.
-                     */
-
-                    if (
-                        button.dataset.year ||
-                        button.dataset.division ||
-                        button.dataset.country
-                    ) {
-
-                        setAdvancedFiltersOpen(
-                            true
-                        );
-
-                    }
-
-
-                    renderResults();
-
-                }
-            );
-
-        }
-    );
-
-
-
-/* =========================================================
-   FILTER EVENTS
-   ========================================================= */
-
-searchElement.addEventListener(
-    "input",
-    () => {
-
-        activePreset =
-            "";
-
-        renderResults();
-
-    }
-);
-
-
-
-yearFilter.addEventListener(
-    "change",
-    () => {
-
-        activePreset =
-            "";
-
-        renderResults();
-
-    }
-);
-
-
-
-divisionFilter.addEventListener(
-    "change",
-    () => {
-
-        activePreset =
-            "";
-
-        renderResults();
-
-    }
-);
-
-
-
-countryFilter.addEventListener(
-    "change",
-    () => {
-
-        activePreset =
-            "";
-
-        renderResults();
-
-    }
-);
-
-
-
-clearFiltersButton.addEventListener(
-    "click",
-    () => {
-
-        resetFilters(
-            true
-        );
-
-        renderResults();
-
-    }
-);
-
-
-
-/* =========================================================
-   RESET FILTERS
-   ========================================================= */
-
-function resetFilters(
-    closeAdvancedFilters
-) {
-
-    searchElement.value =
-        "";
-
-    yearFilter.value =
-        "";
-
-    divisionFilter.value =
-        "";
-
-    countryFilter.value =
-        "";
-
-    activePreset =
-        "";
-
-
-    document
-        .querySelectorAll(
-            ".badge-filter-checkbox"
-        )
-        .forEach(
-            checkbox => {
-
-                checkbox.checked =
-                    false;
-
-            }
-        );
-
-
-    if (
-        closeAdvancedFilters
-    ) {
-
-        setAdvancedFiltersOpen(
-            false
-        );
-
-    }
-
-}
-
-
-
-/* =========================================================
-   UPDATE PAGE URL
-   ========================================================= */
-
-function updateURL() {
-
-    const params =
-        new URLSearchParams();
-
-
-    const search =
-        searchElement
-            .value
-            .trim();
-
-
-    if (search) {
-
-        params.set(
-            "search",
-            search
-        );
-
-    }
-
-
-    if (yearFilter.value) {
-
-        params.set(
-            "year",
-            yearFilter.value
-        );
-
-    }
-
-
-    if (
-        divisionFilter.value
-    ) {
-
-        params.set(
-            "division",
-            divisionFilter.value
-        );
-
-    }
-
-
-    if (
-        countryFilter.value
-    ) {
-
-        params.set(
-            "country",
-            countryFilter.value
-        );
-
-    }
-
-
-    if (activePreset) {
-
-        params.set(
-            "preset",
-            activePreset
-        );
-
-    }
-
-
-    getSelectedBadgeKeys()
-        .forEach(
-            badgeKey => {
-
-                params.append(
-                    "badge",
-                    badgeKey
-                );
-
-            }
-        );
-
-
-    const query =
-        params.toString();
-
-
-    const newURL =
-        query
-            ? `${window.location.pathname}?${query}`
-            : window.location.pathname;
-
-
-    window.history.replaceState(
-        {},
-        "",
-        newURL
-    );
-
-}
-
-
-
-/* =========================================================
-   HTML SAFETY
-   ========================================================= */
-
-function escapeHTML(value) {
-
-    const element =
-        document.createElement(
-            "div"
-        );
-
-
-    element.textContent =
-        value === null ||
-        value === undefined
-            ? ""
-            : String(value);
-
-
-    return element.innerHTML;
-
-}
-
-
-
-/* =========================================================
-   START
-   ========================================================= */
-
-loadData();
+</html>
