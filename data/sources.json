@@ -668,14 +668,6 @@
                 "title": "Archived 2017 World Championships Juniors Day 1 Standings",
                 "description": "Archived standings from the 2017 World Championships.",
                 "sourceUrl": "https://web.archive.org/web/20170906045031/https://assets.pokemon.com/standings/us/worlds/2017/tcg/#1_2_0"
-            },
-            {
-                "type": "heading",
-                "text": "Incomplete Records"
-            },
-            {
-                "type": "paragraph",
-                "text": "Complete Record."
             }
         ]
     },
@@ -797,14 +789,6 @@
                 "title": "Archived 2019 World Championships Juniors Day 1 Standings",
                 "description": "Archived standings from the 2019 World Championships.",
                 "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2019/tcg/index.html#0_0_1"
-            },
-            {
-                "type": "heading",
-                "text": "Incomplete Records"
-            },
-            {
-                "type": "paragraph",
-                "text": "Complete Record"
             }
         ]
     },
