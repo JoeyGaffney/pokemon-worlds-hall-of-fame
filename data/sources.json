@@ -564,5 +564,249 @@
                 "text": "Missing non-TPCi names from final standings as well as linking screen names to real names."
             }
         ]
+    },
+    {
+        "id": "worlds-2016",
+        "year": 2016,
+        "title": "2016 Pokémon TCG World Championships",
+        "subtitle": "The 2016 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2016-LOGO.jpg",
+            "alt": "2016 Pokémon World Championships",
+            "caption": "2016 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2016 World Championships record consists of standings from my trainer central account."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2016-worlds-standings-masters.pdf",
+                "title": "Archived 2016 World Championships Masters Standings",
+                "description": "Archived standings from the 2016 World Championships."
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing non-TPCi names from Masters standings as well as all info from other age divisions."
+            }
+        ]
+    },
+    {
+        "id": "worlds-2017",
+        "year": 2017,
+        "title": "2017 Pokémon TCG World Championships",
+        "subtitle": "The 2017 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2017-LOGO.jpg",
+            "alt": "2017 Pokémon World Championships",
+            "caption": "2017 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2017 World Championships record consists of standings from my trainer central account."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2017-worlds-standings-masters-day2.pdf",
+                "title": "Archived 2017 World Championships Masters Day 2 Standings",
+                "description": "Archived standings from the 2017 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20170906045031/https://assets.pokemon.com/standings/us/worlds/2017/tcg/#1_2_0"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2017-worlds-standings-seniors-day1.pdf",
+                "title": "Archived 2017 World Championships Masters Day 1 Standings",
+                "description": "Archived standings from the 2017 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20170906045031/https://assets.pokemon.com/standings/us/worlds/2017/tcg/#1_2_0"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2017-worlds-standings-seniors-day2.pdf",
+                "title": "Archived 2017 World Championships Seniors Day 2 Standings",
+                "description": "Archived standings from the 2017 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20170906045031/https://assets.pokemon.com/standings/us/worlds/2017/tcg/#1_2_0"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2017-worlds-standings-seniors-day1.pdf",
+                "title": "Archived 2017 World Championships Seniors Day 1 Standings",
+                "description": "Archived standings from the 2017 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20170906045031/https://assets.pokemon.com/standings/us/worlds/2017/tcg/#1_2_0"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2017-worlds-standings-juniors-day2.pdf",
+                "title": "Archived 2017 World Championships Juniors Day 2 Standings",
+                "description": "Archived standings from the 2017 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20170906045031/https://assets.pokemon.com/standings/us/worlds/2017/tcg/#1_2_0"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2017-worlds-standings-juniors-day1.pdf",
+                "title": "Archived 2017 World Championships Juniors Day 1 Standings",
+                "description": "Archived standings from the 2017 World Championships.",
+                "sourceUrl": "https://web.archive.org/web/20170906045031/https://assets.pokemon.com/standings/us/worlds/2017/tcg/#1_2_0"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Complete Record."
+            }
+        ]
+    },
+    {
+        "id": "worlds-2018",
+        "year": 2018,
+        "title": "2018 Pokémon TCG World Championships",
+        "subtitle": "The 2018 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2018-LOGO.jpg",
+            "alt": "2018 Pokémon World Championships",
+            "caption": "2018 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2018 World Championships record consists of standings from my trainer central account."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2018-worlds-standings-masters-day2.pdf",
+                "title": "Archived 2018 World Championships Masters Day 2 Standings",
+                "description": "Archived standings from the 2018 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2018/tcg/index.html#2_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2018-worlds-standings-seniors-day2.pdf",
+                "title": "Archived 2018 World Championships Seniors Day 2 Standings",
+                "description": "Archived standings from the 2018 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2018/tcg/index.html#2_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2018-worlds-standings-juniors-day2.pdf",
+                "title": "Archived 2018 World Championships Juniors Day 2 Standings",
+                "description": "Archived standings from the 2018 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2018/tcg/index.html#2_0_1"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing full invite list + Day 1 results"
+            }
+        ]
+    },
+    {
+        "id": "worlds-2019",
+        "year": 2019,
+        "title": "2019 Pokémon TCG World Championships",
+        "subtitle": "The 2019 World Championships in Hawaii",
+        "heroImage": {
+            "src": "assets/sources/2019-LOGO.jpg",
+            "alt": "2019 Pokémon World Championships",
+            "caption": "2019 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2019 World Championships record consists of standings the official Pokemon website restored using the Wayback Machine."
+            },
+            {
+                "type": "heading",
+                "text": "Competitors"
+            },
+            {
+                "type": "paragraph",
+                "text": "The list of qualified competitors."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2019-worlds-standings-masters-day2.pdf",
+                "title": "Archived 2019 World Championships Masters Day 2 Standings",
+                "description": "Archived standings from the 2019 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2019/tcg/index.html#0_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2019-worlds-standings-masters-day1.pdf",
+                "title": "Archived 2019 World Championships Masters Day 1 Standings",
+                "description": "Archived standings from the 2019 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2019/tcg/index.html#0_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2019-worlds-standings-seniors-day2.pdf",
+                "title": "Archived 2019 World Championships Seniors Day 2 Standings",
+                "description": "Archived standings from the 2019 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2019/tcg/index.html#0_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2019-worlds-standings-seniors-day1.pdf",
+                "title": "Archived 2019 World Championships Seniors Day 1 Standings",
+                "description": "Archived standings from the 2019 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2019/tcg/index.html#0_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2019-worlds-standings-juniors-day2.pdf",
+                "title": "Archived 2019 World Championships Juniors Day 2 Standings",
+                "description": "Archived standings from the 2019 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2019/tcg/index.html#0_0_1"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2019-worlds-standings-juniors-day1.pdf",
+                "title": "Archived 2019 World Championships Juniors Day 1 Standings",
+                "description": "Archived standings from the 2019 World Championships.",
+                "sourceUrl": "https://assets.pokemon.com/standings/us/worlds/2019/tcg/index.html#0_0_1"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Complete Record"
+            }
+        ]
     }
+    
 ]
