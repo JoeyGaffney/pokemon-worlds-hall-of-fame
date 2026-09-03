@@ -1,18 +1,18 @@
 [
     {
-        "id": "worlds-2007",
-        "year": 2007,
-        "title": "2007 Pokémon TCG World Championships",
-        "subtitle": "Research notes and surviving historical sources",
+        "id": "worlds-2004",
+        "year": 2004,
+        "title": "2004 Pokémon TCG World Championships",
+        "subtitle": "The First World Championships - Orlando",
         "heroImage": {
-            "src": "assets/sources/2007-worlds.jpg",
-            "alt": "2007 Pokémon World Championships",
-            "caption": "2007 Pokémon TCG World Championships."
+            "src": "assets/sources/2004-LOGO.png",
+            "alt": "2004 Pokémon World Championships",
+            "caption": "2004 Pokémon TCG World Championships."
         },
         "content": [
             {
                 "type": "paragraph",
-                "text": "The 2007 World Championships records were reconstructed using surviving official webpages and archived copies of the original tournament website."
+                "text": "The 2004 World Championships records were found on the wayback machine archives. Only the single elimination bracket is accessible so only data on the top 32 finishers in each age division is preserved."
             },
             {
                 "type": "heading",
@@ -24,9 +24,21 @@
             },
             {
                 "type": "image",
-                "src": "assets/sources/2007-standings.png",
-                "alt": "Archived 2007 World Championships standings",
-                "caption": "Archived standings from the 2007 World Championships."
+                "src": "assets/sources/2004-worlds-juniors.png",
+                "alt": "Archived 2004 World Championships Juniors standings",
+                "caption": "Archived Juniors standings from the 2004 World Championships."
+            },
+            {
+                "type": "image",
+                "src": "assets/sources/2004-worlds-seniors-bracket.png",
+                "alt": "Archived 2004 World Championships Seniors standings",
+                "caption": "Archived Seniors standings from the 2004 World Championships."
+            },
+            {
+                "type": "image",
+                "src": "assets/sources/2004-worlds-masters-bracket.png",
+                "alt": "Archived 2004 World Championships Masters standings",
+                "caption": "Archived Masters standings from the 2004 World Championships."
             },
             {
                 "type": "heading",
@@ -34,27 +46,8 @@
             },
             {
                 "type": "paragraph",
-                "text": "Some historical pages do not preserve enough information to determine an exact final placement. In those cases, the database records only the placement range that can be verified."
+                "text": "Missing from this year is the rest of the attendees and their respective records."
             },
-            {
-                "type": "note",
-                "title": "Data policy",
-                "text": "No exact placement is inferred when the surviving source only confirms a result such as Top 32."
-            }
         ],
-        "sources": [
-            {
-                "title": "2007 Pokémon TCG World Championships Standings",
-                "type": "Official Archive",
-                "url": "https://example.com",
-                "notes": "Primary source for competitor names and standings."
-            },
-            {
-                "title": "Wayback Machine Capture",
-                "type": "Web Archive",
-                "url": "https://web.archive.org/",
-                "notes": "Archived copy used where the original website is no longer available."
-            }
-        ]
     }
 ]
