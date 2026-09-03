@@ -200,5 +200,56 @@
                 "text": "Missing from this year is the actual standings and a final list of attendees (rather than just invitees)."
             }
         ]
+    },
+    {
+        "id": "worlds-2008",
+        "year": 2008,
+        "title": "2008 Pokémon TCG World Championships",
+        "subtitle": "The 2008 World Championships in Anaheim",
+        "heroImage": {
+            "src": "assets/sources/2008-LOGO.png",
+            "alt": "2008 Pokémon World Championships",
+            "caption": "2008 Pokémon TCG World Championships."
+        },
+        "content": [
+            {
+                "type": "paragraph",
+                "text": "The 2008 World Championships records were found on Pokegym in the archived gallery. Photos of standings and the final round of swiss for each age division were found and cross-referenced to recreate the final standings. The top cut bracket was recreated based on the World booklets information."
+            },
+            {
+                "type": "heading",
+                "text": "Standings"
+            },
+            {
+                "type": "paragraph",
+                "text": "The final standings for each age division."
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2008-worlds-juniors-standings.pdf",
+                "title": "Archived 2008 World Championships Juniors Standings and Pairings",
+                "description": "Archived pictures of 2008 Juniors Standings and Pairings"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2008-worlds-seniors-standings.pdf",
+                "title": "Archived 2008 World Championships Seniors Standings and Pairings",
+                "description": "Archived pictures of 2008 Seniors Standings and Pairings"
+            },
+            {
+                "type": "pdf",
+                "src": "assets/sources/2008-worlds-masters-standings.pdf",
+                "title": "Archived 2008 World Championships Masters Standings and Pairings",
+                "description": "Archived pictures of 2008 Masters Standings and Pairings"
+            },
+            {
+                "type": "heading",
+                "text": "Incomplete Records"
+            },
+            {
+                "type": "paragraph",
+                "text": "Missing any players who dropped before final round standings."
+            }
+        ]
     }
 ]
