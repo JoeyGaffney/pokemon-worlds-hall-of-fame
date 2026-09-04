@@ -2234,8 +2234,15 @@ document
    ========================================================= */
 
 searchElement.addEventListener(
-    "input",
-    () => {
+    "keydown",
+    event => {
+
+        if (
+            event.key !== "Enter"
+        ) {
+            return;
+        }
+
 
         activePreset =
             "";
