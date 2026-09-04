@@ -5058,19 +5058,10 @@
     "qual": "Nationals"
   },
   {
-    "player_id": "p005111",
+    "player_id": "p005480",
     "year": 2006,
     "division": "Juniors",
-    "name": "Alberto Ceolin",
-    "country": "IT",
-    "placement": "",
-    "qual": "Nationals"
-  },
-  {
-    "player_id": "p005112",
-    "year": 2006,
-    "division": "Juniors",
-    "name": "Edoardo M",
+    "name": "Edoardo M.",
     "country": "IT",
     "placement": "",
     "qual": "Nationals"
@@ -5283,10 +5274,10 @@
     "qual": "Nationals"
   },
   {
-    "player_id": "p005136",
+    "player_id": "p006987",
     "year": 2006,
     "division": "Juniors",
-    "name": "Fai C",
+    "name": "Fai C.",
     "country": "NO",
     "placement": "",
     "qual": "Nationals"
@@ -5310,10 +5301,10 @@
     "qual": "Nationals"
   },
   {
-    "player_id": "p005139",
+    "player_id": "p008577",
     "year": 2006,
     "division": "Juniors",
-    "name": "Filipe C",
+    "name": "Filipe Cardoso",
     "country": "PT",
     "placement": "",
     "qual": "Nationals"
@@ -6336,10 +6327,10 @@
     "qual": "Nationals"
   },
   {
-    "player_id": "p005243",
+    "player_id": "p009774",
     "year": 2006,
     "division": "Seniors",
-    "name": "Adam H",
+    "name": "Adam Hawkins",
     "country": "GB",
     "placement": "",
     "qual": "Nationals"
@@ -7341,6 +7332,15 @@
     "name": "David Booij",
     "country": "NE",
     "placement": 2,
+    "qual": "Nationals"
+  },
+  {
+    "player_id": "p005111",
+    "year": 2006,
+    "division": "Seniors",
+    "name": "Alberto Ceolin",
+    "country": "IT",
+    "placement": "",
     "qual": "Nationals"
   },
   {
@@ -8838,10 +8838,10 @@
     "qual": "Nationals - Belgium"
   },
   {
-    "player_id": "p005482",
+    "player_id": "p005178",
     "year": 2007,
     "division": "Juniors",
-    "name": "Grafton R.",
+    "name": "Grafton Roll",
     "country": "US",
     "placement": "",
     "qual": "Premier Rating - North America"
@@ -9297,10 +9297,10 @@
     "qual": "LCQ"
   },
   {
-    "player_id": "p005528",
+    "player_id": "p000918",
     "year": 2007,
     "division": "Seniors",
-    "name": "Adam H.",
+    "name": "Adam Hawkins",
     "country": "UK",
     "placement": "",
     "qual": "Nationals - United Kingdom"
@@ -15849,10 +15849,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006076",
+    "player_id": "p006528",
     "year": 2010,
     "division": "Juniors",
-    "name": "Erlend R",
+    "name": "Erlend R.",
     "country": "NO",
     "placement": "",
     "qual": ""
@@ -17073,10 +17073,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006200",
+    "player_id": "p005690",
     "year": 2010,
     "division": "Seniors",
-    "name": "Emil V",
+    "name": "Emil Vestre",
     "country": "NO",
     "placement": "",
     "qual": ""
@@ -17190,10 +17190,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006213",
+    "player_id": "p000918",
     "year": 2010,
     "division": "Seniors",
-    "name": "Adam H",
+    "name": "Adam Hawkins",
     "country": "UK",
     "placement": "",
     "qual": ""
@@ -17937,10 +17937,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006279",
+    "player_id": "p005231",
     "year": 2010,
     "division": "Masters",
-    "name": "Esa J",
+    "name": "Esa Juntunen",
     "country": "FI",
     "placement": "",
     "qual": ""
@@ -18036,10 +18036,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006288",
+    "player_id": "p006601",
     "year": 2010,
     "division": "Masters",
-    "name": "Frederic L",
+    "name": "Frederic L.",
     "country": "FR",
     "placement": "",
     "qual": ""
@@ -18180,19 +18180,19 @@
     "qual": ""
   },
   {
-    "player_id": "p006301",
+    "player_id": "p005111",
     "year": 2010,
     "division": "Masters",
-    "name": "Alberto C",
+    "name": "Alberto Ceolin",
     "country": "IT",
     "placement": "",
     "qual": ""
   },
   {
-    "player_id": "p006302",
+    "player_id": "p001111",
     "year": 2010,
     "division": "Masters",
-    "name": "Alessandro C",
+    "name": "Alessandro Cremascoli",
     "country": "IT",
     "placement": "",
     "qual": ""
@@ -18468,10 +18468,10 @@
     "qual": ""
   },
   {
-    "player_id": "p005136",
+    "player_id": "p006987",
     "year": 2010,
     "division": "Masters",
-    "name": "Fai C",
+    "name": "Fai C.",
     "country": "NO",
     "placement": "",
     "qual": ""
@@ -20928,7 +20928,7 @@
     "player_id": "p006520",
     "year": 2011,
     "division": "Seniors",
-    "name": "Felix De J.",
+    "name": "Felix de J.",
     "country": "NL",
     "placement": "",
     "qual": ""
@@ -21834,10 +21834,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006593",
+    "player_id": "p005231",
     "year": 2011,
     "division": "Masters",
-    "name": "Esa J.",
+    "name": "Esa Juntunen",
     "country": "FI",
     "placement": "",
     "qual": ""
@@ -22095,10 +22095,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006617",
+    "player_id": "p005111",
     "year": 2011,
     "division": "Masters",
-    "name": "Alberto C.",
+    "name": "Alberto Ceolin",
     "country": "IT",
     "placement": "",
     "qual": ""
@@ -22185,10 +22185,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006627",
+    "player_id": "p000889",
     "year": 2011,
     "division": "Masters",
-    "name": "Bert W.",
+    "name": "Bert Wolters",
     "country": "NL",
     "placement": "",
     "qual": ""
@@ -25065,10 +25065,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006847",
+    "player_id": "p005690",
     "year": 2012,
     "division": "Seniors",
-    "name": "Emil V.",
+    "name": "Emil Vestre",
     "country": "NO",
     "placement": "",
     "qual": ""
@@ -26802,10 +26802,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006962",
+    "player_id": "p008437",
     "year": 2012,
     "division": "Masters",
-    "name": "Felipe P",
+    "name": "felipe ponce",
     "country": "BR",
     "placement": "no show?",
     "qual": ""
@@ -27009,10 +27009,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006617",
+    "player_id": "p005111",
     "year": 2012,
     "division": "Masters",
-    "name": "Alberto C.",
+    "name": "Alberto Ceolin",
     "country": "IT",
     "placement": "no show?",
     "qual": ""
@@ -29178,10 +29178,10 @@
     "qual": ""
   },
   {
-    "player_id": "p007137",
+    "player_id": "p006253",
     "year": 2013,
     "division": "Seniors",
-    "name": "Emily K",
+    "name": "Emily K.",
     "country": "AU",
     "placement": 81,
     "qual": ""
@@ -29664,10 +29664,10 @@
     "qual": ""
   },
   {
-    "player_id": "p007172",
+    "player_id": "p009724",
     "year": 2013,
     "division": "Seniors",
-    "name": "trent o",
+    "name": "Trent Orndorff",
     "country": "",
     "placement": 135,
     "qual": "LCQ"
@@ -30060,10 +30060,10 @@
     "qual": ""
   },
   {
-    "player_id": "p007206",
+    "player_id": "p006520",
     "year": 2013,
     "division": "Seniors",
-    "name": "Felix de J",
+    "name": "Felix de J.",
     "country": "NL",
     "placement": "no show?",
     "qual": ""
@@ -30771,10 +30771,10 @@
     "qual": ""
   },
   {
-    "player_id": "p007268",
+    "player_id": "p008437",
     "year": 2013,
     "division": "Masters",
-    "name": "Felipe P.",
+    "name": "felipe ponce",
     "country": "BR",
     "placement": "",
     "qual": ""
@@ -31059,10 +31059,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006593",
+    "player_id": "p005231",
     "year": 2013,
     "division": "Masters",
-    "name": "Esa J.",
+    "name": "Esa Juntunen",
     "country": "FI",
     "placement": "",
     "qual": ""
@@ -31365,10 +31365,10 @@
     "qual": ""
   },
   {
-    "player_id": "p007310",
+    "player_id": "p001111",
     "year": 2013,
     "division": "Masters",
-    "name": "Alessandro C.",
+    "name": "Alessandro Cremascoli",
     "country": "IT",
     "placement": "",
     "qual": ""
@@ -31689,10 +31689,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006627",
+    "player_id": "p000889",
     "year": 2013,
     "division": "Masters",
-    "name": "Bert W.",
+    "name": "Bert Wolters",
     "country": "NL",
     "placement": "",
     "qual": ""
@@ -31869,10 +31869,10 @@
     "qual": ""
   },
   {
-    "player_id": "p007347",
+    "player_id": "p008577",
     "year": 2013,
     "division": "Masters",
-    "name": "Filipe C.",
+    "name": "Filipe Cardoso",
     "country": "PT",
     "placement": "",
     "qual": ""
@@ -33804,20 +33804,20 @@
     "qual": ""
   },
   {
-    "player_id": "p009724",
+    "player_id": "p009775",
     "year": 2014,
     "division": "Seniors",
     "name": "Trent Orndorff",
-    "country": "",
+    "country": "US",
     "placement": 1,
     "qual": ""
   },
   {
-    "player_id": "p009725",
+    "player_id": "p006793",
     "year": 2014,
     "division": "Seniors",
     "name": "Alex Croxton",
-    "country": "",
+    "country": "US",
     "placement": 2,
     "qual": ""
   },
@@ -33826,7 +33826,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Calvin Connor",
-    "country": "",
+    "country": "US",
     "placement": 3,
     "qual": ""
   },
@@ -33835,7 +33835,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Grant Manley",
-    "country": "",
+    "country": "US",
     "placement": 4,
     "qual": ""
   },
@@ -33853,16 +33853,16 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Jeffrey Cheng",
-    "country": "",
+    "country": "US",
     "placement": 6,
     "qual": ""
   },
   {
-    "player_id": "p009727",
+    "player_id": "p009712",
     "year": 2014,
     "division": "Seniors",
     "name": "Ishaan Jagiasi",
-    "country": "",
+    "country": "US",
     "placement": 7,
     "qual": ""
   },
@@ -33871,7 +33871,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Xander Pero",
-    "country": "",
+    "country": "US",
     "placement": 8,
     "qual": ""
   },
@@ -33907,7 +33907,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Jeremiah Williams",
-    "country": "",
+    "country": "US",
     "placement": 12,
     "qual": ""
   },
@@ -33952,7 +33952,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "GUSTAVO Wada",
-    "country": "",
+    "country": "BR",
     "placement": 17,
     "qual": ""
   },
@@ -33961,16 +33961,16 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Jeremy Gibson",
-    "country": "",
+    "country": "US",
     "placement": 18,
     "qual": ""
   },
   {
-    "player_id": "p007541",
+    "player_id": "p006118",
     "year": 2014,
     "division": "Seniors",
-    "name": "Micah O",
-    "country": "",
+    "name": "Micah Olton",
+    "country": "US",
     "placement": 19,
     "qual": ""
   },
@@ -34069,16 +34069,16 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Colter Decker",
-    "country": "",
+    "country": "US",
     "placement": 30,
     "qual": ""
   },
   {
-    "player_id": "p007552",
+    "player_id": "p007103",
     "year": 2014,
     "division": "Seniors",
     "name": "Arjun K",
-    "country": "",
+    "country": "US",
     "placement": 31,
     "qual": ""
   },
@@ -34096,7 +34096,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Nathan Stratford",
-    "country": "",
+    "country": "US",
     "placement": 33,
     "qual": ""
   },
@@ -34105,7 +34105,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Josh Fernando",
-    "country": "",
+    "country": "CA",
     "placement": 34,
     "qual": ""
   },
@@ -34141,7 +34141,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Alex Schemanske",
-    "country": "",
+    "country": "US",
     "placement": 38,
     "qual": ""
   },
@@ -34150,7 +34150,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Jacob Howard",
-    "country": "",
+    "country": "US",
     "placement": 39,
     "qual": ""
   },
@@ -34159,7 +34159,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Jon Eng",
-    "country": "",
+    "country": "US",
     "placement": 40,
     "qual": ""
   },
@@ -34191,11 +34191,11 @@
     "qual": ""
   },
   {
-    "player_id": "p007564",
+    "player_id": "p000717",
     "year": 2014,
     "division": "Seniors",
     "name": "Ciaran Farah",
-    "country": "",
+    "country": "CA",
     "placement": 44,
     "qual": ""
   },
@@ -34258,16 +34258,16 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Jesper Eriksen",
-    "country": "",
+    "country": "DK",
     "placement": 51,
     "qual": ""
   },
   {
-    "player_id": "p007572",
+    "player_id": "p009776",
     "year": 2014,
     "division": "Seniors",
     "name": "samantha Norrie",
-    "country": "",
+    "country": "CA",
     "placement": 52,
     "qual": ""
   },
@@ -34294,7 +34294,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Koichi Nishida",
-    "country": "",
+    "country": "US",
     "placement": 55,
     "qual": ""
   },
@@ -34308,11 +34308,11 @@
     "qual": ""
   },
   {
-    "player_id": "p007577",
+    "player_id": "p009716",
     "year": 2014,
     "division": "Seniors",
-    "name": "Ian W",
-    "country": "",
+    "name": "Ian Whiton",
+    "country": "US",
     "placement": 57,
     "qual": ""
   },
@@ -34330,7 +34330,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Nicholas Moffitt",
-    "country": "",
+    "country": "US",
     "placement": 59,
     "qual": ""
   },
@@ -34339,7 +34339,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Ethan Paguirigan",
-    "country": "",
+    "country": "CA",
     "placement": 60,
     "qual": ""
   },
@@ -34402,7 +34402,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Samuel Hough",
-    "country": "",
+    "country": "US",
     "placement": 67,
     "qual": ""
   },
@@ -34452,11 +34452,11 @@
     "qual": ""
   },
   {
-    "player_id": "p007591",
+    "player_id": "p004206",
     "year": 2014,
     "division": "Seniors",
     "name": "Allan Xu",
-    "country": "",
+    "country": "CA",
     "placement": 73,
     "qual": ""
   },
@@ -34600,7 +34600,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Hayden Cameron-Jacobus",
-    "country": "",
+    "country": "US",
     "placement": 89,
     "qual": ""
   },
@@ -34618,7 +34618,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Otavio Gouveia",
-    "country": "",
+    "country": "BR",
     "placement": 91,
     "qual": ""
   },
@@ -34654,7 +34654,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Henry Brand",
-    "country": "",
+    "country": "AU",
     "placement": 95,
     "qual": ""
   },
@@ -34771,7 +34771,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Alex Krekeler",
-    "country": "",
+    "country": "US",
     "placement": 108,
     "qual": ""
   },
@@ -35293,7 +35293,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Patrick Martinez",
-    "country": "",
+    "country": "US",
     "placement": "DROP",
     "qual": ""
   },
@@ -35316,11 +35316,11 @@
     "qual": ""
   },
   {
-    "player_id": "p007681",
+    "player_id": "p009777",
     "year": 2014,
     "division": "Seniors",
-    "name": "Emily K",
-    "country": "",
+    "name": "Emily K .",
+    "country": "AU",
     "placement": "DROP",
     "qual": ""
   },
@@ -35329,7 +35329,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Spencer Lawson",
-    "country": "",
+    "country": "US",
     "placement": "DROP",
     "qual": ""
   },
@@ -35338,7 +35338,7 @@
     "year": 2014,
     "division": "Seniors",
     "name": "Lance Bradshaw",
-    "country": "",
+    "country": "US",
     "placement": "DROP",
     "qual": ""
   },
@@ -40545,10 +40545,10 @@
     "qual": ""
   },
   {
-    "player_id": "p008197",
+    "player_id": "p007016",
     "year": 2015,
     "division": "Seniors",
-    "name": "Clothilde P",
+    "name": "Clothilde P.",
     "country": "FR",
     "placement": "",
     "qual": ""
@@ -42201,11 +42201,11 @@
     "qual": ""
   },
   {
-    "player_id": "p008343",
+    "player_id": "p009778",
     "year": 2015,
     "division": "Seniors",
     "name": "gage l",
-    "country": "US",
+    "country": "Trent Orndorff",
     "placement": "",
     "qual": ""
   },
@@ -42219,10 +42219,10 @@
     "qual": ""
   },
   {
-    "player_id": "p008345",
+    "player_id": "p007060",
     "year": 2015,
     "division": "Seniors",
-    "name": "Dexter A",
+    "name": "Dexter A.",
     "country": "US",
     "placement": "",
     "qual": ""
@@ -44586,10 +44586,10 @@
     "qual": ""
   },
   {
-    "player_id": "p006213",
+    "player_id": "p000918",
     "year": 2015,
     "division": "Masters",
-    "name": "Adam H",
+    "name": "Adam Hawkins",
     "country": "UK",
     "placement": "Q",
     "qual": ""
@@ -45117,10 +45117,10 @@
     "qual": ""
   },
   {
-    "player_id": "p008566",
+    "player_id": "p000889",
     "year": 2015,
     "division": "Masters",
-    "name": "Bert W",
+    "name": "Bert Wolters",
     "country": "NL",
     "placement": "Q",
     "qual": ""
@@ -45810,10 +45810,10 @@
     "qual": ""
   },
   {
-    "player_id": "p008609",
+    "player_id": "p009775",
     "year": 2015,
     "division": "Masters",
-    "name": "trent o",
+    "name": "Trent Orndorff",
     "country": "US",
     "placement": "Q",
     "qual": ""
@@ -67221,46 +67221,46 @@
     "qual": ""
   },
   {
-    "player_id": "p002371",
+    "player_id": "p009735",
     "year": 2022,
     "division": "Juniors",
-    "name": "Rikuto O.",
+    "name": "Rikuto Ohashi",
     "country": "JP",
     "placement": 1,
     "qual": ""
   },
   {
-    "player_id": "p000424",
+    "player_id": "p009321",
     "year": 2022,
     "division": "Juniors",
-    "name": "Tristan T.",
+    "name": "Tristan Tse",
     "country": "CA",
     "placement": 2,
     "qual": ""
   },
   {
-    "player_id": "p002372",
+    "player_id": "p009736",
     "year": 2022,
     "division": "Juniors",
-    "name": "CHUNG Y.",
+    "name": "CHUNG Yen Tso",
     "country": "TW",
     "placement": 3,
     "qual": ""
   },
   {
-    "player_id": "p000361",
+    "player_id": "p009737",
     "year": 2022,
     "division": "Juniors",
-    "name": "Prince W.",
+    "name": "Prince Williams",
     "country": "US",
     "placement": 4,
     "qual": ""
   },
   {
-    "player_id": "p002373",
+    "player_id": "p009738",
     "year": 2022,
     "division": "Juniors",
-    "name": "Misha S.",
+    "name": "Misha Shapkin",
     "country": "GB",
     "placement": 5,
     "qual": ""
@@ -67275,19 +67275,19 @@
     "qual": ""
   },
   {
-    "player_id": "p001750",
+    "player_id": "p009739",
     "year": 2022,
     "division": "Juniors",
-    "name": "Hatsuto K.",
+    "name": "Hatsuto Kogawa",
     "country": "JP",
     "placement": 7,
     "qual": ""
   },
   {
-    "player_id": "p002374",
+    "player_id": "p009740",
     "year": 2022,
     "division": "Juniors",
-    "name": "Kuto K.",
+    "name": "Kuto Kawamoto",
     "country": "JP",
     "placement": 8,
     "qual": ""
@@ -68859,64 +68859,64 @@
     "qual": ""
   },
   {
-    "player_id": "p002510",
+    "player_id": "p000825",
     "year": 2022,
     "division": "Seniors",
-    "name": "Liam H.",
+    "name": "Liam Halliburton",
     "country": "US",
     "placement": 1,
     "qual": ""
   },
   {
-    "player_id": "p002511",
+    "player_id": "p001049",
     "year": 2022,
     "division": "Seniors",
-    "name": "Sebastian L.",
+    "name": "Sebastian Lashmet",
     "country": "US",
     "placement": 2,
     "qual": ""
   },
   {
-    "player_id": "p002512",
+    "player_id": "p000885",
     "year": 2022,
     "division": "Seniors",
-    "name": "Soma Y.",
+    "name": "Soma Yoshimura",
     "country": "JP",
     "placement": 3,
     "qual": ""
   },
   {
-    "player_id": "p002513",
+    "player_id": "p002140",
     "year": 2022,
     "division": "Seniors",
-    "name": "João Gabriel P.",
+    "name": "João Gabriel Penteado",
     "country": "BR",
     "placement": 4,
     "qual": ""
   },
   {
-    "player_id": "p002514",
+    "player_id": "p001247",
     "year": 2022,
     "division": "Seniors",
-    "name": "Owen D.",
+    "name": "Owen Dalgard",
     "country": "US",
     "placement": 5,
     "qual": ""
   },
   {
-    "player_id": "p002515",
+    "player_id": "p000698",
     "year": 2022,
     "division": "Seniors",
-    "name": "Justin N.",
+    "name": "Justin Newdorf",
     "country": "US",
     "placement": 6,
     "qual": ""
   },
   {
-    "player_id": "p002516",
+    "player_id": "p004260",
     "year": 2022,
     "division": "Seniors",
-    "name": "Roberto C.",
+    "name": "Roberto Costanzo",
     "country": "FR",
     "placement": 7,
     "qual": ""
@@ -77328,73 +77328,73 @@
     "qual": ""
   },
   {
-    "player_id": "p000359",
+    "player_id": "p009741",
     "year": 2023,
     "division": "Juniors",
-    "name": "Shao Tong Y.",
+    "name": "Shao Tong Yen",
     "country": "TW",
     "placement": 1,
     "qual": ""
   },
   {
-    "player_id": "p000589",
+    "player_id": "p009742",
     "year": 2023,
     "division": "Juniors",
-    "name": "Gabriel T.",
+    "name": "Gabriel Torres",
     "country": "BR",
     "placement": 2,
     "qual": ""
   },
   {
-    "player_id": "p000579",
+    "player_id": "p009743",
     "year": 2023,
     "division": "Juniors",
-    "name": "HAYASHI Y.",
+    "name": "HAYASHI Yukito",
     "country": "JP",
     "placement": 3,
     "qual": ""
   },
   {
-    "player_id": "p001750",
+    "player_id": "p009739",
     "year": 2023,
     "division": "Juniors",
-    "name": "Hatsuto K.",
+    "name": "Hatsuto Kogawa",
     "country": "JP",
     "placement": 4,
     "qual": ""
   },
   {
-    "player_id": "p002382",
+    "player_id": "p009744",
     "year": 2023,
     "division": "Juniors",
-    "name": "Kazusa Y.",
+    "name": "Kazusa Yamamoto",
     "country": "JP",
     "placement": 5,
     "qual": ""
   },
   {
-    "player_id": "p000392",
+    "player_id": "p009745",
     "year": 2023,
     "division": "Juniors",
-    "name": "Kingsley C.",
+    "name": "Kingsley C",
     "country": "AU",
     "placement": 6,
     "qual": ""
   },
   {
-    "player_id": "p000095",
+    "player_id": "p009746",
     "year": 2023,
     "division": "Juniors",
-    "name": "Junwon C.",
+    "name": "Junwon Choi",
     "country": "KR",
     "placement": 7,
     "qual": ""
   },
   {
-    "player_id": "p000357",
+    "player_id": "p009747",
     "year": 2023,
     "division": "Juniors",
-    "name": "Haruku U.",
+    "name": "Haruku Umehara",
     "country": "JP",
     "placement": 8,
     "qual": ""
@@ -79065,82 +79065,82 @@
     "qual": ""
   },
   {
-    "player_id": "p000350",
+    "player_id": "p009748",
     "year": 2023,
     "division": "Seniors",
-    "name": "gabriel f.",
+    "name": "gabriel fernandez",
     "country": "BR",
     "placement": 1,
     "qual": ""
   },
   {
-    "player_id": "p002568",
+    "player_id": "p009749",
     "year": 2023,
     "division": "Seniors",
-    "name": "Sydney d.",
+    "name": "Sydney de Bruijn",
     "country": "NL",
     "placement": 2,
     "qual": ""
   },
   {
-    "player_id": "p002533",
+    "player_id": "p000744",
     "year": 2023,
     "division": "Seniors",
-    "name": "Yuya T.",
+    "name": "Yuya Tada",
     "country": "JP",
     "placement": 3,
     "qual": ""
   },
   {
-    "player_id": "p003306",
+    "player_id": "p008134",
     "year": 2023,
     "division": "Seniors",
-    "name": "세찬 오.",
+    "name": "Oh Se Chan",
     "country": "KR",
     "placement": 4,
     "qual": ""
   },
   {
-    "player_id": "p003307",
+    "player_id": "p008806",
     "year": 2023,
     "division": "Seniors",
-    "name": "Akinori A.",
+    "name": "Akinori Arakawa",
     "country": "JP",
     "placement": 5,
     "qual": ""
   },
   {
-    "player_id": "p002536",
+    "player_id": "p001050",
     "year": 2023,
     "division": "Seniors",
-    "name": "Rune H.",
+    "name": "Rune Heiremans",
     "country": "BE",
     "placement": 6,
     "qual": ""
   },
   {
-    "player_id": "p002546",
+    "player_id": "p004528",
     "year": 2023,
     "division": "Seniors",
-    "name": "Lucas J.",
+    "name": "Lucas Jordao",
     "country": "BR",
     "placement": 7,
     "qual": ""
   },
   {
-    "player_id": "p000421",
+    "player_id": "p009260",
     "year": 2023,
     "division": "Seniors",
-    "name": "Polaris A.",
+    "name": "Polaris Altares",
     "country": "US",
     "placement": 8,
     "qual": ""
   },
   {
-    "player_id": "p002583",
+    "player_id": "p001116",
     "year": 2023,
     "division": "Seniors",
-    "name": "Vinícius f.",
+    "name": "Vinícius fernandez",
     "country": "BR",
     "placement": 9,
     "qual": ""
@@ -86895,73 +86895,73 @@
     "qual": ""
   },
   {
-    "player_id": "p000429",
+    "player_id": "p009750",
     "year": 2024,
     "division": "Juniors",
-    "name": "Sakuya O.",
+    "name": "Sakuya Ota",
     "country": "JP",
     "placement": 1,
     "qual": ""
   },
   {
-    "player_id": "p000562",
+    "player_id": "p009751",
     "year": 2024,
     "division": "Juniors",
-    "name": "Logan B.",
+    "name": "Logan Bailey",
     "country": "US",
     "placement": 2,
     "qual": ""
   },
   {
-    "player_id": "p000548",
+    "player_id": "p009752",
     "year": 2024,
     "division": "Juniors",
-    "name": "Gregory V.",
+    "name": "Gregory Vexenat",
     "country": "FR",
     "placement": 3,
     "qual": ""
   },
   {
-    "player_id": "p000365",
+    "player_id": "p009753",
     "year": 2024,
     "division": "Juniors",
-    "name": "Cobey H.",
+    "name": "Cobey Huh",
     "country": "US",
     "placement": 4,
     "qual": ""
   },
   {
-    "player_id": "p000016",
+    "player_id": "p009754",
     "year": 2024,
     "division": "Juniors",
-    "name": "koutarou m.",
+    "name": "koutarou matsudaira",
     "country": "JP",
     "placement": 5,
     "qual": ""
   },
   {
-    "player_id": "p000677",
+    "player_id": "p009755",
     "year": 2024,
     "division": "Juniors",
-    "name": "Levon F.",
+    "name": "Levon Fatunz",
     "country": "DE",
     "placement": 6,
     "qual": ""
   },
   {
-    "player_id": "p000509",
+    "player_id": "p009756",
     "year": 2024,
     "division": "Juniors",
-    "name": "Edison C.",
+    "name": "Edison Chein",
     "country": "US",
     "placement": 7,
     "qual": ""
   },
   {
-    "player_id": "p000694",
+    "player_id": "p009757",
     "year": 2024,
     "division": "Juniors",
-    "name": "Kio N.",
+    "name": "Kio Nagisa",
     "country": "JP",
     "placement": 8,
     "qual": ""
@@ -90351,10 +90351,10 @@
     "qual": ""
   },
   {
-    "player_id": "p000357",
+    "player_id": "p009747",
     "year": 2024,
     "division": "Seniors",
-    "name": "Haruku U.",
+    "name": "Haruku Umehara",
     "country": "JP",
     "placement": 2,
     "qual": ""
@@ -90369,46 +90369,46 @@
     "qual": ""
   },
   {
-    "player_id": "p000350",
+    "player_id": "p009748",
     "year": 2024,
     "division": "Seniors",
-    "name": "gabriel f.",
+    "name": "gabriel fernandez",
     "country": "BR",
     "placement": 4,
     "qual": ""
   },
   {
-    "player_id": "p000424",
+    "player_id": "p009321",
     "year": 2024,
     "division": "Seniors",
-    "name": "Tristan T.",
+    "name": "Tristan Tse",
     "country": "CA",
     "placement": 5,
     "qual": ""
   },
   {
-    "player_id": "p000404",
+    "player_id": "p009758",
     "year": 2024,
     "division": "Seniors",
-    "name": "Omar C.",
+    "name": "Omar Cortes",
     "country": "US",
     "placement": 6,
     "qual": ""
   },
   {
-    "player_id": "p000592",
+    "player_id": "p009759",
     "year": 2024,
     "division": "Seniors",
-    "name": "Alberto Z.",
+    "name": "Alberto Zamuner",
     "country": "IT",
     "placement": 7,
     "qual": ""
   },
   {
-    "player_id": "p002515",
+    "player_id": "p000698",
     "year": 2024,
     "division": "Seniors",
-    "name": "Justin N.",
+    "name": "Justin Newdorf",
     "country": "US",
     "placement": 8,
     "qual": ""
@@ -104265,73 +104265,73 @@
     "qual": ""
   },
   {
-    "player_id": "p000001",
+    "player_id": "p009760",
     "year": 2025,
     "division": "Juniors",
-    "name": "Yuya O.",
+    "name": "Yuya Okita",
     "country": "JP",
     "placement": 1,
     "qual": ""
   },
   {
-    "player_id": "p000002",
+    "player_id": "p009761",
     "year": 2025,
     "division": "Juniors",
-    "name": "Jose Cruz G.",
+    "name": "Jose Cruz Galindo-Resendiz",
     "country": "US",
     "placement": 2,
     "qual": ""
   },
   {
-    "player_id": "p000003",
+    "player_id": "p009762",
     "year": 2025,
     "division": "Juniors",
-    "name": "HARUKI O.",
+    "name": "HARUKI Okunishi",
     "country": "MY",
     "placement": 3,
     "qual": ""
   },
   {
-    "player_id": "p000004",
+    "player_id": "p009763",
     "year": 2025,
     "division": "Juniors",
-    "name": "Cedrik B.",
+    "name": "Cedrik Balk",
     "country": "FI",
     "placement": 4,
     "qual": ""
   },
   {
-    "player_id": "p000005",
+    "player_id": "p009764",
     "year": 2025,
     "division": "Juniors",
-    "name": "MANA K.",
+    "name": "MANA Kato",
     "country": "JP",
     "placement": 5,
     "qual": ""
   },
   {
-    "player_id": "p000006",
+    "player_id": "p009765",
     "year": 2025,
     "division": "Juniors",
-    "name": "Minato I.",
+    "name": "Minato Iida",
     "country": "JP",
     "placement": 6,
     "qual": ""
   },
   {
-    "player_id": "p000007",
+    "player_id": "p009766",
     "year": 2025,
     "division": "Juniors",
-    "name": "Akito H.",
+    "name": "Akito Hirabayashi",
     "country": "JP",
     "placement": 7,
     "qual": ""
   },
   {
-    "player_id": "p000008",
+    "player_id": "p009767",
     "year": 2025,
     "division": "Juniors",
-    "name": "Shimpei Y.",
+    "name": "Shimpei Yamaguchi",
     "country": "JP",
     "placement": 8,
     "qual": ""
@@ -107424,73 +107424,73 @@
     "qual": "DAY 1 DROP"
   },
   {
-    "player_id": "p000349",
+    "player_id": "p009768",
     "year": 2025,
     "division": "Seniors",
-    "name": "Fuguan L.",
+    "name": "Fuguan Liao",
     "country": "CN",
     "placement": 1,
     "qual": ""
   },
   {
-    "player_id": "p000350",
+    "player_id": "p009748",
     "year": 2025,
     "division": "Seniors",
-    "name": "gabriel f.",
+    "name": "gabriel fernandez",
     "country": "BR",
     "placement": 2,
     "qual": ""
   },
   {
-    "player_id": "p000351",
+    "player_id": "p009769",
     "year": 2025,
     "division": "Seniors",
-    "name": "Riku N.",
+    "name": "Riku Nishihashi",
     "country": "JP",
     "placement": 3,
     "qual": ""
   },
   {
-    "player_id": "p000352",
+    "player_id": "p002001",
     "year": 2025,
     "division": "Seniors",
-    "name": "Joseph B.",
+    "name": "Joseph Bjerg",
     "country": "US",
     "placement": 4,
     "qual": ""
   },
   {
-    "player_id": "p000353",
+    "player_id": "p009770",
     "year": 2025,
     "division": "Seniors",
-    "name": "Kosei M.",
+    "name": "Kosei Matsumoto",
     "country": "JP",
     "placement": 5,
     "qual": ""
   },
   {
-    "player_id": "p000354",
+    "player_id": "p009771",
     "year": 2025,
     "division": "Seniors",
-    "name": "Zachary O.",
+    "name": "Zachary Oberelli",
     "country": "UK",
     "placement": 6,
     "qual": ""
   },
   {
-    "player_id": "p000355",
+    "player_id": "p009772",
     "year": 2025,
     "division": "Seniors",
-    "name": "Eisu Y.",
+    "name": "Eisu Yoshimoto",
     "country": "JP",
     "placement": 7,
     "qual": ""
   },
   {
-    "player_id": "p000356",
+    "player_id": "p009773",
     "year": 2025,
     "division": "Seniors",
-    "name": "Leonore B.",
+    "name": "Leonore Budka",
     "country": "DE",
     "placement": 8,
     "qual": ""
@@ -115452,10 +115452,10 @@
     "qual": ""
   },
   {
-    "player_id": "p001236",
+    "player_id": "p003260",
     "year": 2025,
     "division": "Masters",
-    "name": "유성 윤",
+    "name": "유성 윤.",
     "country": "KR",
     "placement": 540,
     "qual": ""
